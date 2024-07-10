@@ -11,6 +11,10 @@ const Database = {
 };
 
 Database.create().then((dados) => {
+  // Agrupar itens por ordem alfabética e por categoria
+  dados.sort((a, b) => (a.produto < b.produto ? -1 : true));
+  dados.sort((a, b) => (a.categoria < b.categoria ? -1 : true));
+
   const produtos = dados.map(
     ({ id, produto }, index) =>
       `<tr>
