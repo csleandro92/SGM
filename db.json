@@ -1,0 +1,37 @@
+[
+  {
+    "id": 759,
+    "produto": "Acém",
+    "categoria": "bovinos"
+  },
+  {
+    "id": 418,
+    "produto": "Alcatra",
+    "categoria": "bovinos"
+  },
+  {
+    "id": 945,
+    "produto": "Carré",
+    "categoria": "suinos"
+  },
+  {
+    "id": 185,
+    "produto": "Costelinha S/ Toucinho",
+    "categoria": "suinos"
+  },
+  {
+    "id": 132,
+    "produto": "Costela Gaúcha",
+    "categoria": "miudos"
+  },
+  {
+    "id": 443,
+    "produto": "Linguiça Lúcia Porco Grossa",
+    "categoria": "embutidos"
+  },
+  {
+    "id": 264,
+    "produto": "Chouriço",
+    "categoria": "embutidos"
+  }
+]
