@@ -1,9 +1,20 @@
+/* CSS Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Estilo Geral */
 :root {
   font-size: 62.5%;
 }
@@ -16,17 +27,39 @@ body {
   margin: auto;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
+.d-flex {
+  display: flex;
 }
 
 h1 {
   line-height: 1;
   padding: 0 0 2rem;
   border-bottom: 2px solid #454545;
-  margin: 20px 0;
+  margin: 20px 0 0;
   text-align: center;
+}
+
+nav ul {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+#menu a {
+  color: #c1c5c7;
+  background-color: #1f1d1d;
+  border: 1px solid transparent;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+#menu a:hover {
+  color: #1f1d1d;
+  background-color: #c1c5c7;
+  border-color: #1f1d1d;
 }
 
 table {
@@ -66,6 +99,20 @@ button.save {
   padding: 4px;
 }
 
-.estoque {
-  display: flex;
+#add-item {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 20px;
+}
+
+.material-symbols-outlined {
+  font-size: 4rem;
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
+}
+
+.material-symbols-outlined:hover {
+  transform: scale(1.1);
+  color: #a0a2a3;
 }

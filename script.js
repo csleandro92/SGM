@@ -1,47 +1,53 @@
-console.log("--- INICIANDO SGM ---");
-
+// Declaração de variáveis
 const table = document.querySelector("#app tbody");
 
+/* Objeto Database
+ * - responsável por receber os dados que serão semeados na tabela
+ */
 const Database = {
-  async create() {
-    const res = await fetch("./db.json");
-    const json = await res.json();
+  async readData() {
+    const response = await fetch("./db.json");
+    const json = await response.json();
     return json;
   },
 };
 
-Database.create().then((dados) => {
+Database.readData().then((data) => {
   // Agrupar itens por ordem alfabética e por categoria
-  dados.sort((a, b) => (a.produto < b.produto ? -1 : true));
-  dados.sort((a, b) => (a.categoria < b.categoria ? -1 : true));
+  data.sort((a, b) => (a.produto < b.produto ? -1 : true));
+  data.sort((a, b) => (a.categoria < b.categoria ? -1 : true));
 
-  const produtos = dados.map(
-    ({ id, produto }, index) =>
-      `<tr>
+  // Mapear os dados para exibir na tabela
+  const products = data.map(({ id, produto, estoque }, index) => {
+    return `<tr id="item-${index}">
         <td>${id}</td>
         <td>${produto}</td>
-        <td id="estoque-${index}"></td>
-        <td><button onclick="addEstoque(${index})">+</button>
-      </tr>
-      `
-  );
-  table.innerHTML = produtos.join("");
+        <td>${estoque || ""}</td>
+        <td><button onclick="addEstoque(${index})">+</button></td>
+      </tr>`; //FIX estoque
+  });
+
+  // Exibir os dados no browser
+  table.innerHTML = products.join("");
 });
 
 function addEstoque(index) {
-  const line = document.getElementById(`estoque-${index}`);
+  const line = document.querySelector(`#item-${index} td:nth-child(3n)`);
+
   const next = line.innerText || 0;
-  line.classList.add("estoque");
+
+  line.classList.add("d-flex");
   line.innerHTML = `<input type="number" id=${index}><button class="save" onclick="increment(${index}, ${next})">Salvar</button>`;
   document.getElementById(index).focus();
 }
 
 function increment(index, next) {
-  const line = document.getElementById(`estoque-${index}`);
+  const line = document.querySelector(`#item-${index} td:nth-child(3n)`);
+
   const current = document.getElementById(index).value || 0;
 
   const total = Number.parseInt(next) + Number.parseInt(current);
 
   line.innerText = total;
-  line.classList.remove("estoque");
+  line.classList.remove("d-flex");
 }
