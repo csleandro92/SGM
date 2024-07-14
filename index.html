@@ -14,47 +14,41 @@
 <body>
   <header>
     <h1>SGM</h1>
-    <nav>
+    <nav class=no-print>
       <ul id="menu">
-        <li><a href="#new">+ Nova</a></li>
-        <li><a href="#reset">Reiniciar</a></li>
+        <li><a href="#update">Atualizar Lista</a></li>
         <li><a href="#save">Salvar</a></li>
       </ul>
     </nav>
   </header>
-  <table align="center" id="app">
-    <thead>
-      <tr>
-        <th width="10%">id</th>
-        <th width="50%">produto</th>
-        <th width="30%">estoque</th>
-        <th width="10%">#</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- <tr>
-        <td>754</td>
-        <td>Acém</td>
-        <td></td>
-        <td>
-          <button>+</button>
-        </td>
-      </tr>
-      <tr>
-        <td>141</td>
-        <td>Alcatra</td>
-        <td>0</td>
-        <td>
-          <button>+</button>
-        </td>
-      </tr> -->
-    </tbody>
-  </table>
-  <div id="add-item">
-    <span class="material-symbols-outlined">
-      add_circle
-    </span>
-  </div>
+  <main>
+    <table>
+      <thead>
+        <tr><th colspan="3">açougue</th></tr>
+        <tr>
+          <th>cód</th>
+          <th width="60%">produto</th>
+          <th width="40%">estoque</th>
+          <th width="10%" class=no-print>#</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+    <div id="add-item" class=no-print>
+      <span class="material-symbols-outlined">
+        add_circle
+      </span>
+    </div>
+  </main>
+  <div class="footer"></div>
+  <footer class=no-print>
+    <p>
+      Feito com ❤ por
+      <br>
+      <a href="https://instagram.com/csleandro92" target="_blank">LSCONNECT</a> &copy; 2024
+    </p>
+  </footer>
 </body>
 
 </html>

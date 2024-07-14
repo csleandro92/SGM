@@ -1,53 +1,156 @@
-// Declaração de variáveis
-const table = document.querySelector("#app tbody");
+class Product {
+  constructor(id, product, category, stock) {
+    this.id = id;
+    this.product = product;
+    this.category = category;
+    this.stock = stock;
+  }
+}
 
-/* Objeto Database
- * - responsável por receber os dados que serão semeados na tabela
+const table = document.querySelector("table tbody");
+const menu = document.getElementById("menu");
+
+/* Storage
+ * - salvar os dados no armazenamento interno do navegador
  */
-const Database = {
-  async readData() {
-    const response = await fetch("./db.json");
-    const json = await response.json();
-    return json;
+const Storage = {
+  get() {
+    return JSON.parse(localStorage.getItem("tb_products")) ?? [];
+  },
+
+  set(tb_products) {
+    localStorage.setItem("tb_products", JSON.stringify(tb_products));
+  },
+
+  clear() {
+    localStorage.removeItem("tb_products");
   },
 };
 
-Database.readData().then((data) => {
-  // Agrupar itens por ordem alfabética e por categoria
-  data.sort((a, b) => (a.produto < b.produto ? -1 : true));
-  data.sort((a, b) => (a.categoria < b.categoria ? -1 : true));
+/* Database
+ * - receber os dados que serão adicionados na tabela
+ */
+const DB = {
+  all: Storage.get(),
 
-  // Mapear os dados para exibir na tabela
-  const products = data.map(({ id, produto, estoque }, index) => {
-    return `<tr id="item-${index}">
-        <td>${id}</td>
-        <td>${produto}</td>
-        <td>${estoque || ""}</td>
-        <td><button onclick="addEstoque(${index})">+</button></td>
-      </tr>`; //FIX estoque
-  });
+  async parseData() {
+    const response = await fetch("./db.json");
+    const json = response.json();
+    return json;
+  },
 
-  // Exibir os dados no browser
-  table.innerHTML = products.join("");
-});
+  initialize() {
+    this.parseData().then((data) => {
+      data.sort((a, b) => (a.produto < b.produto ? -1 : true));
+      data.sort((a, b) => (a.categoria < b.categoria ? -1 : true));
 
-function addEstoque(index) {
-  const line = document.querySelector(`#item-${index} td:nth-child(3n)`);
+      data.forEach(({ id, produto, estoque, categoria }) => {
+        this.all.push(new Product(id, produto, categoria, estoque));
+        Storage.set(this.all);
+        DOM.update();
+      });
+    });
+  },
+  reset() {
+    Storage.clear();
+    this.all = [];
+    DOM.update();
+  },
+};
 
-  const next = line.innerText || 0;
+const Stock = {
+  insert(index) {
+    const products = DB.all;
+    const currentItemStock = products[index].stock;
 
-  line.classList.add("d-flex");
-  line.innerHTML = `<input type="number" id=${index}><button class="save" onclick="increment(${index}, ${next})">Salvar</button>`;
-  document.getElementById(index).focus();
-}
+    const input = document.getElementById(index).value;
+    currentItemStock.push(Number.parseFloat(input));
 
-function increment(index, next) {
-  const line = document.querySelector(`#item-${index} td:nth-child(3n)`);
+    Storage.set(DB.all);
+    DOM.update();
+  },
+  getStock(index) {
+    const products = DB.all;
+    const currentItemStock = products[index].stock;
 
-  const current = document.getElementById(index).value || 0;
+    const total = currentItemStock.reduce((acc, next) => acc + next, 0);
+    return total ? total.toFixed(3) : 0;
+  },
+};
 
-  const total = Number.parseInt(next) + Number.parseInt(current);
+/* DOM
+ * - manipula os elementos visuais da aplicação
+ */
+const DOM = {
+  showInput(index) {
+    const line = document.querySelector(`#item-${index} td:nth-child(3n)`);
 
-  line.innerText = total;
-  line.classList.remove("d-flex");
-}
+    line.innerHTML = `
+    <div class="d-flex">
+      <input class="input" type="text" inputmode="numeric" id=${index} autocomplete="off">
+      <button class="save" onclick="Stock.insert(${index})">Salvar</button>
+    </div>`;
+
+    document.getElementById(index).focus();
+  },
+  clear() {
+    while (table.firstChild) {
+      table.removeChild(table.firstChild);
+    }
+  },
+  update() {
+    this.clear();
+
+    const products = Storage.get();
+    for (index in products) {
+      const { id, product } = products[index];
+
+      const tr = document.createElement("tr");
+      tr.id = `item-${index}`;
+      tr.innerHTML = `
+        <td align="center">${id}</td>
+        <td>${product.toUpperCase()}</td>
+        <td>${Stock.getStock(index)}</td>
+        <td class="no-print">
+          <div class="d-flex">
+            <button onclick="DOM.showInput(${index})">+</button>
+          </div>
+        </td>`;
+
+      table.appendChild(tr);
+    }
+  },
+};
+
+const Listeners = {
+  init() {
+    menu.addEventListener("click", (e) => {
+      e.preventDefault();
+      const option = e.target.hash;
+      switch (option) {
+        case "#update":
+          DB.reset();
+          DB.initialize();
+          break;
+        case "#save":
+          window.print();
+          break;
+        default:
+          break;
+      }
+    });
+  },
+};
+
+/* App
+ * - núcleo central, contendo as principais funções, essenciais
+ * para o funcionamento do sistema.
+ */
+const App = {
+  init() {
+    Listeners.init();
+    DOM.update();
+  },
+};
+
+App.init();

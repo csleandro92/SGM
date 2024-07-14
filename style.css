@@ -23,12 +23,16 @@ body {
   font-family: sans-serif;
   font-size: 1.6rem;
   padding: 0 20px;
-  max-width: 600px;
+  /* max-width: 600px; */
   margin: auto;
 }
 
 .d-flex {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  gap: 4px;
 }
 
 h1 {
@@ -40,7 +44,7 @@ h1 {
 }
 
 nav ul {
-  margin: 20px 0;
+  margin: 20px 0 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -63,9 +67,13 @@ nav ul {
 }
 
 table {
-  margin: 0 auto;
+  margin: 20px auto 0;
   padding: 20px;
   border-collapse: collapse;
+}
+
+thead th {
+  text-transform: uppercase;
 }
 
 table,
@@ -83,16 +91,10 @@ td button {
   padding: 4px 8px;
 }
 
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-input[type="number"] {
+.input {
   padding: 4px 0;
-  max-width: 6ch;
-  margin-right: 4px;
+  max-width: 12ch;
+  /* margin-right: 4px; */
 }
 
 button.save {
@@ -100,7 +102,8 @@ button.save {
 }
 
 #add-item {
-  position: absolute;
+  z-index: 9999;
+  position: fixed;
   right: 0;
   bottom: 0;
   margin: 20px;
@@ -115,4 +118,36 @@ button.save {
 .material-symbols-outlined:hover {
   transform: scale(1.1);
   color: #a0a2a3;
+}
+
+/* footer 75px de altura */
+div.footer {
+  margin: 95px;
+}
+
+footer {
+  width: 100vw;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  padding: 20px;
+  border-top: 2px solid #1f1d1d;
+  background-color: #fafafa;
+}
+
+footer p {
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+@media print {
+  /* @page {
+    margin: 0;
+  }
+  body {
+    margin: 1.6cm;
+  } */
+  .no-print {
+    display: none !important;
+  }
 }
