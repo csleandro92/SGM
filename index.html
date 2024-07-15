@@ -2,6 +2,10 @@
 <html lang="pt-br">
 
 <head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
   <meta charset="UTF-8">
@@ -12,7 +16,7 @@
 </head>
 
 <body>
-  <header>
+  <header class="container no-print">
     <h1>SGM</h1>
     <nav class=no-print>
       <ul id="menu">
@@ -21,34 +25,50 @@
       </ul>
     </nav>
   </header>
-  <main>
+  <main class="container">
     <table>
       <thead>
-        <tr><th colspan="4">açougue</th></tr>
         <tr>
           <th>cód</th>
-          <th width="60%">produto</th>
-          <th width="40%">estoque</th>
-          <th width="10%" class=no-print>#</th>
+          <th>produto</th>
+          <th>estoque</th>
+          <th class=no-print width="1%">#</th>
         </tr>
       </thead>
       <tbody>
       </tbody>
     </table>
-    <div id="add-item" class=no-print>
-      <span class="material-symbols-outlined">
-        add_circle
-      </span>
-    </div>
   </main>
-  <div class="footer"></div>
-  <footer class=no-print>
-    <p>
-      Feito com ❤ por
-      <br>
-      <a href="https://instagram.com/csleandro92" target="_blank">LSCONNECT</a> &copy; 2024
-    </p>
-  </footer>
+
+  <div class="modal-overlay">
+    <div class="modal">
+      <div class="modal-title">
+        <h2>Adicionar Item</h2>
+        <a href="#" onclick="DOM.closeInput()"><span class="modal-close">X</span></a>
+      </div>
+      <div class="modal-content">
+        <form>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="no-print">
+    <div class="footer"></div>
+    <footer class="no-print">
+      <div class="container">
+        <div></div>
+        <p>
+          Feito com ❤ por
+          <br>
+          <a href="https://instagram.com/csleandro92" target="_blank">LSCONNECT</a> &copy; 2024
+        </p>
+        <span class="material-symbols-outlined no-print">
+          add_circle
+        </span>
+      </div>
+    </footer>
+  </div>
 </body>
 
 </html>

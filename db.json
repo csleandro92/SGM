@@ -2,343 +2,286 @@
   {
     "id": 945,
     "produto": "carré",
-    "categoria": "suinos",
-    "estoque": []
+    "categoria": "suinos"
   },
   {
     "id": 185,
     "produto": "costelinha de porco",
-    "categoria": "suinos",
-    "estoque": []
+    "categoria": "suinos"
   },
   {
     "id": 481,
     "produto": "file mignon",
-    "categoria": "suinos",
-    "estoque": []
+    "categoria": "suinos"
   },
   {
     "id": 382,
     "produto": "figado suino",
-    "categoria": "suinos",
-    "estoque": []
+    "categoria": "suinos"
   },
   {
     "id": 653,
     "produto": "suan",
-    "categoria": "suinos",
-    "estoque": []
+    "categoria": "suinos"
   },
   {
     "id": 581,
     "produto": "costelinha c/ toucinho",
-    "categoria": "suinos",
-    "estoque": []
+    "categoria": "suinos"
   },
   {
     "id": 852,
     "produto": "joelho fresco (581)",
-    "categoria": "suinos",
-    "estoque": []
+    "categoria": "suinos"
   },
   {
     "id": 474,
     "produto": "barriguinha de porco (581)",
-    "categoria": "suinos",
-    "estoque": []
+    "categoria": "suinos"
   },
   {
     "id": 946,
     "produto": "banda (581)",
-    "categoria": "suinos",
-    "estoque": []
+    "categoria": "suinos"
   },
   {
     "id": 851,
     "produto": "pe porco fresco (581)",
-    "categoria": "suinos",
-    "estoque": []
+    "categoria": "suinos"
   },
   {
     "id": 854,
     "produto": "lombo porco",
-    "categoria": "suinos",
-    "estoque": []
+    "categoria": "suinos"
   },
   {
     "id": 178,
     "produto": "pernil porco",
-    "categoria": "suinos",
-    "estoque": []
+    "categoria": "suinos"
   },
   {
     "id": 690,
     "produto": "banha porco inatura",
-    "categoria": "suinos",
-    "estoque": []
+    "categoria": "suinos"
   },
   {
     "id": 855,
     "produto": "toucinho",
-    "categoria": "suinos",
-    "estoque": []
+    "categoria": "suinos"
   },
   {
     "id": 754,
     "produto": "acem",
-    "categoria": "bovinos",
-    "estoque": []
+    "categoria": "bovinos"
   },
   {
     "id": 418,
     "produto": "alcatra c/ maminha",
-    "categoria": "bovinos",
-    "estoque": []
+    "categoria": "bovinos"
   },
   {
     "id": 413,
     "produto": "alcatra cofril gorda",
-    "categoria": "bovinos",
-    "estoque": []
+    "categoria": "bovinos"
   },
   {
     "id": 931,
     "produto": "capa file",
-    "categoria": "bovinos",
-    "estoque": []
+    "categoria": "bovinos"
   },
   {
     "id": 590,
     "produto": "chã dentro",
-    "categoria": "bovinos",
-    "estoque": []
+    "categoria": "bovinos"
   },
   {
     "id": 86,
     "produto": "chã fora",
-    "categoria": "bovinos",
-    "estoque": []
+    "categoria": "bovinos"
   },
   {
     "id": 489,
     "produto": "contra filé",
-    "categoria": "bovinos",
-    "estoque": []
+    "categoria": "bovinos"
   },
   {
     "id": 1210,
     "produto": "contra file frisa grill",
-    "categoria": "bovinos",
-    "estoque": []
+    "categoria": "bovinos"
   },
   {
     "id": 435,
     "produto": "contra filé grill frifort",
-    "categoria": "bovinos",
-    "estoque": []
+    "categoria": "bovinos"
   },
   {
     "id": 587,
     "produto": "contra filé porcionado",
-    "categoria": "bovinos",
-    "estoque": []
+    "categoria": "bovinos"
   },
   {
     "id": 225,
     "produto": "contra filé grill pv",
-    "categoria": "bovinos",
-    "estoque": []
+    "categoria": "bovinos"
   },
   {
     "id": 65,
     "produto": "contra file grill",
-    "categoria": "bovinos",
-    "estoque": []
+    "categoria": "bovinos"
   },
   {
     "id": 1236,
     "produto": "contra filé marfrical",
-    "categoria": "bovinos",
-    "estoque": []
+    "categoria": "bovinos"
   },
   {
     "id": 288,
     "produto": "coração boi",
-    "categoria": "bovinos",
-    "estoque": []
+    "categoria": "bovinos"
   },
   {
     "id": 132,
     "produto": "costela gaúcha",
-    "categoria": "bovinos",
-    "estoque": []
+    "categoria": "bovinos"
   },
   {
     "id": 996,
     "produto": "costela ripa (fina)",
-    "categoria": "bovinos",
-    "estoque": []
+    "categoria": "bovinos"
   },
   {
     "id": 925,
     "produto": "cupim",
-    "categoria": "bovinos",
-    "estoque": []
+    "categoria": "bovinos"
   },
   {
     "id": 130,
     "produto": "dobradinha",
-    "categoria": "bovinos",
-    "estoque": []
+    "categoria": "bovinos"
   },
   {
     "id": 189,
     "produto": "figado boi",
-    "categoria": "bovinos",
-    "estoque": []
+    "categoria": "bovinos"
   },
   {
     "id": 845,
     "produto": "file mignon",
-    "categoria": "bovinos",
-    "estoque": []
+    "categoria": "bovinos"
   },
   {
     "id": 20,
     "produto": "fraldinha cofril",
-    "categoria": "bovinos",
-    "estoque": []
+    "categoria": "bovinos"
   },
   {
     "id": 758,
     "produto": "fraldinha minerva",
-    "categoria": "bovinos",
-    "estoque": []
+    "categoria": "bovinos"
   },
   {
     "id": 1000,
     "produto": "fraldinha frisa",
-    "categoria": "bovinos",
-    "estoque": []
+    "categoria": "bovinos"
   },
   {
     "id": 177,
     "produto": "lagarto",
-    "categoria": "bovinos",
-    "estoque": []
+    "categoria": "bovinos"
   },
   {
     "id": 770,
     "produto": "lingua boi",
-    "categoria": "bovinos",
-    "estoque": []
+    "categoria": "bovinos"
   },
   {
     "id": 429,
     "produto": "mocoto bovino",
-    "categoria": "bovinos",
-    "estoque": []
+    "categoria": "bovinos"
   },
   {
     "id": 682,
     "produto": "musculo dianteiro",
-    "categoria": "bovinos",
-    "estoque": []
+    "categoria": "bovinos"
   },
   {
     "id": 683,
     "produto": "musculo traseiro",
-    "categoria": "bovinos",
-    "estoque": []
+    "categoria": "bovinos"
   },
   {
     "id": 480,
     "produto": "paleta",
-    "categoria": "bovinos",
-    "estoque": []
+    "categoria": "bovinos"
   },
   {
     "id": 87,
     "produto": "patinho",
-    "categoria": "bovinos",
-    "estoque": []
+    "categoria": "bovinos"
   },
   {
     "id": 997,
     "produto": "peito boi",
-    "categoria": "bovinos",
-    "estoque": []
+    "categoria": "bovinos"
   },
   {
     "id": 1671,
     "produto": "picanha seleta",
-    "categoria": "bovinos",
-    "estoque": []
+    "categoria": "bovinos"
   },
   {
     "id": 865,
     "produto": "picanha marfrical",
-    "categoria": "bovinos",
-    "estoque": []
+    "categoria": "bovinos"
   },
   {
     "id": 1334,
     "produto": "picanha pul tradicional",
-    "categoria": "bovinos",
-    "estoque": []
+    "categoria": "bovinos"
   },
   {
     "id": 898,
     "produto": "picanha pul selection",
-    "categoria": "bovinos",
-    "estoque": []
+    "categoria": "bovinos"
   },
   {
     "id": 767,
     "produto": "ponta (recorte c. moi.)",
-    "categoria": "bovinos",
-    "estoque": []
+    "categoria": "bovinos"
   },
   {
     "id": 126,
     "produto": "linguica lucia frango",
-    "categoria": "embutidos",
-    "estoque": []
+    "categoria": "embutidos"
   },
   {
     "id": 260,
     "produto": "linguica lucia frescal",
-    "categoria": "embutidos",
-    "estoque": []
+    "categoria": "embutidos"
   },
   {
     "id": 624,
     "produto": "linguica lucia porco fina",
-    "categoria": "embutidos",
-    "estoque": []
+    "categoria": "embutidos"
   },
   {
     "id": 443,
     "produto": "linguica lucia porco grossa",
-    "categoria": "embutidos",
-    "estoque": []
+    "categoria": "embutidos"
   },
   {
     "id": 465,
     "produto": "linguica lorrayne",
-    "categoria": "embutidos",
-    "estoque": []
+    "categoria": "embutidos"
   },
   {
     "id": 264,
     "produto": "chourico",
-    "categoria": "embutidos",
-    "estoque": []
+    "categoria": "embutidos"
   },
   {
     "id": 765,
     "produto": "bucho de porco",
-    "categoria": "embutidos",
-    "estoque": []
+    "categoria": "embutidos"
   }
 ]

@@ -1,5 +1,5 @@
 class Product {
-  constructor(id, product, category, stock) {
+  constructor(id, product, category, stock = []) {
     this.id = id;
     this.product = product;
     this.category = category;
@@ -7,8 +7,10 @@ class Product {
   }
 }
 
-const table = document.querySelector("table tbody");
 const menu = document.getElementById("menu");
+const table = document.querySelector("table tbody");
+const modal = document.querySelector(".modal-overlay");
+const form = document.querySelector(".modal-content form");
 
 /* Storage
  * - salvar os dados no armazenamento interno do navegador
@@ -63,18 +65,20 @@ const Stock = {
     const products = DB.all;
     const currentItemStock = products[index].stock;
 
-    const input = document.getElementById(index).value;
-    currentItemStock.push(Number.parseFloat(input));
+    let input = document.getElementById(index).value;
+    input *= 100;
+    currentItemStock.push(Math.round(input));
 
     Storage.set(DB.all);
     DOM.update();
+    DOM.closeInput();
   },
   getStock(index) {
     const products = DB.all;
     const currentItemStock = products[index].stock;
 
     const total = currentItemStock.reduce((acc, next) => acc + next, 0);
-    return total ? total.toFixed(3) : 0;
+    return total / 100;
   },
 };
 
@@ -83,15 +87,15 @@ const Stock = {
  */
 const DOM = {
   showInput(index) {
-    const line = document.querySelector(`#item-${index} td:nth-child(3n)`);
-
-    line.innerHTML = `
-    <div class="d-flex">
-      <input class="input" type="text" inputmode="numeric" id=${index} autocomplete="off">
-      <button class="save" onclick="Stock.insert(${index})">Salvar</button>
-    </div>`;
+    modal.classList.add("active");
+    form.innerHTML = `
+      <input id="${index}" type="text" inputmode="numeric" autocomplete="off">
+      <button class="btn submit" onclick="Stock.insert(${index})">Salvar</button>`;
 
     document.getElementById(index).focus();
+  },
+  closeInput() {
+    modal.classList.toggle("active");
   },
   clear() {
     while (table.firstChild) {
@@ -109,12 +113,10 @@ const DOM = {
       tr.id = `item-${index}`;
       tr.innerHTML = `
         <td align="center">${id}</td>
-        <td>${product.toUpperCase()}</td>
+        <td>${product}</td>
         <td>${Stock.getStock(index)}</td>
         <td class="no-print">
-          <div class="d-flex">
-            <button onclick="DOM.showInput(${index})">+</button>
-          </div>
+          <button onclick="DOM.showInput(${index})">+</button>
         </td>`;
 
       table.appendChild(tr);
