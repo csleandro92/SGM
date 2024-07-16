@@ -13,12 +13,12 @@ const modal = document.querySelector(".modal-overlay");
 const modalTitle = document.querySelector(".modal-title h2");
 const form = document.querySelector(".modal-content form");
 
-const checkIfANumberWasTyped = (event) => {
-  const isNotANumber = isNaN(event.key);
-  if (isNotANumber) {
-    event.preventDefault();
-  }
-};
+// const checkIfANumberWasTyped = (event) => {
+//   const isNotANumber = isNaN(event.key);
+//   if (isNotANumber) {
+//     event.preventDefault();
+//   }
+// };
 
 /* Storage
  * - salvar os dados no armazenamento interno do navegador
@@ -75,8 +75,9 @@ const Stock = {
 
     let input = document.getElementById(index).value;
     input = Number(input.replace(",", "."));
-    input *= 100;
-    currentStockQuantity.push(Math.round(input));
+    // input *= 100;
+    // currentStockQuantity.push(Math.round(input));
+    currentStockQuantity.push(input);
 
     Storage.set(DB.all);
     DOM.update();
@@ -103,12 +104,19 @@ const Stock = {
     DOM.update();
     DOM.closeModal();
   },
-  getStock(index) {
+  getItemDetails(index) {
+    const products = DB.all;
+    const currentItemStock = products[index].stock;
+
+    return currentItemStock;
+  },
+  getStockTotal(index) {
     const products = DB.all;
     const currentItemStock = products[index].stock;
 
     const total = currentItemStock.reduce((acc, next) => acc + next, 0);
-    return total / 100;
+    // return total / 100;
+    return total;
   },
   getItemName(index) {
     const products = DB.all;
@@ -122,6 +130,11 @@ const Stock = {
  * - manipula os elementos visuais da aplicação
  */
 const DOM = {
+  showDetailsModal(index) {
+    modal.classList.add("active");
+    const list = Stock.getItemDetails(index);
+    form.innerHTML = list.join(', ');
+  },
   showCreateModal() {
     modal.classList.add("active");
     modalTitle.innerText = "Cadastrar Novo Item";
@@ -148,10 +161,10 @@ const DOM = {
         <button class="btn btn-2" onclick="Stock.insert(${index}, false)">Adicionar múltiplos</button>
         `;
     document.getElementById(index).focus();
-    
-    document
-      .querySelector(".only-numbers")
-      .addEventListener("keypress", checkIfANumberWasTyped);
+
+    // document
+    //   .querySelector(".only-numbers")
+    //   .addEventListener("keypress", checkIfANumberWasTyped);
   },
   closeModal() {
     modal.classList.remove("active");
@@ -172,8 +185,8 @@ const DOM = {
       tr.id = `item-${index}`;
       tr.innerHTML = `
         <td align="center">${id}</td>
-        <td>${product}</td>
-        <td>${Stock.getStock(index)}</td>
+        <td><a href="#" onclick="DOM.showDetailsModal(${index})">${product}</a></td>
+        <td>${Stock.getStockTotal(index)}</td>
         <td class="no-print">
           <button onclick="DOM.showModal(${index})">+</button>
         </td>`;
