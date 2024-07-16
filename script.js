@@ -133,7 +133,7 @@ const DOM = {
   showDetailsModal(index) {
     modal.classList.add("active");
     const list = Stock.getItemDetails(index);
-    form.innerHTML = list.join(', ');
+    form.innerHTML = list.join(", ");
   },
   showCreateModal() {
     modal.classList.add("active");
@@ -203,8 +203,14 @@ const Listeners = {
       const option = e.target.hash;
       switch (option) {
         case "#update":
-          DB.reset();
-          DB.initialize();
+          if (
+            confirm(
+              "Esta ação apagará todos os dados armazenados. Deseja continuar?"
+            )
+          ) {
+            DB.reset();
+            DB.initialize();
+          }
           break;
         case "#save":
           window.print();
