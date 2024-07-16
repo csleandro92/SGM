@@ -13,6 +13,13 @@ const modal = document.querySelector(".modal-overlay");
 const modalTitle = document.querySelector(".modal-title h2");
 const form = document.querySelector(".modal-content form");
 
+const checkIfANumberWasTyped = (event) => {
+  const isNotANumber = isNaN(event.key);
+  if (isNotANumber) {
+    event.preventDefault();
+  }
+};
+
 /* Storage
  * - salvar os dados no armazenamento interno do navegador
  */
@@ -67,6 +74,7 @@ const Stock = {
     const currentStockQuantity = products[index].stock;
 
     let input = document.getElementById(index).value;
+    input = Number(input.replace(",", "."));
     input *= 100;
     currentStockQuantity.push(Math.round(input));
 
@@ -135,11 +143,15 @@ const DOM = {
     modalTitle.innerText = Stock.getItemName(index);
 
     form.innerHTML = `
-        <input class="col-2" id="${index}" type="text" inputmode="numeric" autocomplete="off">
+        <input class="only-numbers col-2" id="${index}" type="text" inputmode="numeric" autocomplete="off">
         <button class="btn btn-1" onclick="Stock.insert(${index}, true)">Adicionar um item</button>
         <button class="btn btn-2" onclick="Stock.insert(${index}, false)">Adicionar múltiplos</button>
         `;
     document.getElementById(index).focus();
+    
+    document
+      .querySelector(".only-numbers")
+      .addEventListener("keypress", checkIfANumberWasTyped);
   },
   closeModal() {
     modal.classList.remove("active");
