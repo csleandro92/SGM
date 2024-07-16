@@ -71,8 +71,19 @@
   },
   {
     "id": 413,
-    "produto": "alcatra gorda",
+    "produto": "alcatra pedaço",
     "categoria": "bovinos"
+  },
+  {
+    "id": 461,
+    "produto": "alcatra grill peça",
+    "categoria": "bovinos"
+  },
+  {
+    "id": 2033,
+    "produto": "alcatra grill montana",
+    "categoria": "bovinos",
+    "estoque": [3063.0]
   },
   {
     "id": 931,
@@ -91,7 +102,7 @@
   },
   {
     "id": 489,
-    "produto": "contra filé",
+    "produto": "contra filé bife",
     "categoria": "bovinos"
   },
   {
@@ -111,7 +122,7 @@
   },
   {
     "id": 65,
-    "produto": "contra file grill (50)",
+    "produto": "contra file grill",
     "categoria": "bovinos"
   },
   {
@@ -131,7 +142,7 @@
   },
   {
     "id": 996,
-    "produto": "costela ripa (fina)",
+    "produto": "costela ripa",
     "categoria": "bovinos"
   },
   {
@@ -236,32 +247,32 @@
   },
   {
     "id": 126,
-    "produto": "linguica lucia frango",
+    "produto": "linguiça lucia frango",
     "categoria": "embutidos"
   },
   {
     "id": 260,
-    "produto": "linguica lucia frescal",
+    "produto": "linguiça lucia frescal",
     "categoria": "embutidos"
   },
   {
     "id": 624,
-    "produto": "linguica lucia porco fina",
+    "produto": "linguiça lucia porco fina",
     "categoria": "embutidos"
   },
   {
     "id": 443,
-    "produto": "linguica lucia porco grossa",
+    "produto": "linguiça lucia porco grossa",
     "categoria": "embutidos"
   },
   {
     "id": 465,
-    "produto": "linguica lorrayne",
+    "produto": "linguiça lorrayne",
     "categoria": "embutidos"
   },
   {
     "id": 264,
-    "produto": "chourico",
+    "produto": "chouriço",
     "categoria": "embutidos"
   },
   {
