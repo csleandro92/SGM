@@ -30,11 +30,6 @@
     "categoria": "suinos"
   },
   {
-    "id": 852,
-    "produto": "joelho fresco (581)",
-    "categoria": "suinos"
-  },
-  {
     "id": 474,
     "produto": "barriguinha de porco (581)",
     "categoria": "suinos"
@@ -56,12 +51,7 @@
   },
   {
     "id": 178,
-    "produto": "pernil porco",
-    "categoria": "suinos"
-  },
-  {
-    "id": 690,
-    "produto": "banha porco inatura",
+    "produto": "pernil suíno s/ osso",
     "categoria": "suinos"
   },
   {
@@ -81,7 +71,7 @@
   },
   {
     "id": 413,
-    "produto": "alcatra cofril gorda",
+    "produto": "alcatra gorda",
     "categoria": "bovinos"
   },
   {
@@ -115,18 +105,13 @@
     "categoria": "bovinos"
   },
   {
-    "id": 587,
-    "produto": "contra filé porcionado",
-    "categoria": "bovinos"
-  },
-  {
     "id": 225,
     "produto": "contra filé grill pv",
     "categoria": "bovinos"
   },
   {
     "id": 65,
-    "produto": "contra file grill",
+    "produto": "contra file grill (50)",
     "categoria": "bovinos"
   },
   {
@@ -171,12 +156,12 @@
   },
   {
     "id": 20,
-    "produto": "fraldinha cofril",
+    "produto": "fraldinha peça",
     "categoria": "bovinos"
   },
   {
     "id": 758,
-    "produto": "fraldinha minerva",
+    "produto": "fraldinha grill",
     "categoria": "bovinos"
   },
   {
@@ -196,7 +181,7 @@
   },
   {
     "id": 429,
-    "produto": "mocoto bovino",
+    "produto": "mocotó bovino",
     "categoria": "bovinos"
   },
   {
@@ -226,7 +211,7 @@
   },
   {
     "id": 1671,
-    "produto": "picanha seleta",
+    "produto": "picanha corella seleta",
     "categoria": "bovinos"
   },
   {
@@ -245,8 +230,8 @@
     "categoria": "bovinos"
   },
   {
-    "id": 767,
-    "produto": "ponta (recorte c. moi.)",
+    "id": 397,
+    "produto": "rabada",
     "categoria": "bovinos"
   },
   {

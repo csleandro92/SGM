@@ -43,8 +43,8 @@
   <div class="modal-overlay">
     <div class="modal">
       <div class="modal-title">
-        <h2>Adicionar Item</h2>
-        <a href="#" onclick="DOM.closeInput()"><span class="modal-close">X</span></a>
+        <h2></h2>
+        <a href="#" onclick="DOM.closeModal()"><span class="modal-close">X</span></a>
       </div>
       <div class="modal-content">
         <form>
@@ -63,9 +63,11 @@
           <br>
           <a href="https://instagram.com/csleandro92" target="_blank">LSCONNECT</a> &copy; 2024
         </p>
-        <span class="material-symbols-outlined no-print">
-          add_circle
-        </span>
+        <a href="#" onclick="DOM.showCreateModal()">
+          <span class="material-symbols-outlined no-print">
+            add_circle
+          </span>
+        </a>
       </div>
     </footer>
   </div>

@@ -10,6 +10,7 @@ class Product {
 const menu = document.getElementById("menu");
 const table = document.querySelector("table tbody");
 const modal = document.querySelector(".modal-overlay");
+const modalTitle = document.querySelector(".modal-title h2");
 const form = document.querySelector(".modal-content form");
 
 /* Storage
@@ -46,7 +47,7 @@ const DB = {
       data.sort((a, b) => (a.produto < b.produto ? -1 : true));
       data.sort((a, b) => (a.categoria < b.categoria ? -1 : true));
 
-      data.forEach(({ id, produto, estoque, categoria }) => {
+      data.forEach(({ id, produto, categoria, estoque }) => {
         this.all.push(new Product(id, produto, categoria, estoque));
         Storage.set(this.all);
         DOM.update();
@@ -61,17 +62,38 @@ const DB = {
 };
 
 const Stock = {
-  insert(index) {
+  insert(index, close) {
     const products = DB.all;
-    const currentItemStock = products[index].stock;
+    const currentStockQuantity = products[index].stock;
 
     let input = document.getElementById(index).value;
     input *= 100;
-    currentItemStock.push(Math.round(input));
+    currentStockQuantity.push(Math.round(input));
 
     Storage.set(DB.all);
     DOM.update();
-    DOM.closeInput();
+    if (!close) {
+      DOM.showModal(index);
+    } else {
+      DOM.closeModal();
+    }
+  },
+  newItem() {
+    const id = document.getElementById("id");
+    const produto = document.getElementById("product");
+    const categoria = document.getElementById("category");
+
+    const products = DB.all;
+    products.push(
+      new Product(id.value, produto.value.toLowerCase(), categoria.value)
+    );
+
+    products.sort((a, b) => (a.product < b.product ? -1 : true));
+    products.sort((a, b) => (a.category < b.category ? -1 : true));
+
+    Storage.set(DB.all);
+    DOM.update();
+    DOM.closeModal();
   },
   getStock(index) {
     const products = DB.all;
@@ -80,22 +102,47 @@ const Stock = {
     const total = currentItemStock.reduce((acc, next) => acc + next, 0);
     return total / 100;
   },
+  getItemName(index) {
+    const products = DB.all;
+    const { product, id } = products[index];
+
+    return `${id} → ${product}`;
+  },
 };
 
 /* DOM
  * - manipula os elementos visuais da aplicação
  */
 const DOM = {
-  showInput(index) {
+  showCreateModal() {
     modal.classList.add("active");
-    form.innerHTML = `
-      <input id="${index}" type="text" inputmode="numeric" autocomplete="off">
-      <button class="btn submit" onclick="Stock.insert(${index})">Salvar</button>`;
+    modalTitle.innerText = "Cadastrar Novo Item";
 
+    form.innerHTML = `
+      <input class="col-2" type="text" id="id" inputmode="numeric" placeholder="Código">
+      <input class="col-2" type="text" id="product" placeholder="Nome do Produto">
+      <select class="col-2" name="category" id="category">
+        <option value="" selected disabled>Categoria</option>
+        <option value="bovinos">Bovinos</option>
+        <option value="suinos">Suinos</option>
+        <option value="embutidos">Outros</option>
+      </select>
+      <button class="btn btn-1" onclick="Stock.newItem()">Cadastrar Produto</button>
+    `;
+  },
+  showModal(index) {
+    modal.classList.add("active");
+    modalTitle.innerText = Stock.getItemName(index);
+
+    form.innerHTML = `
+        <input class="col-2" id="${index}" type="text" inputmode="numeric" autocomplete="off">
+        <button class="btn btn-1" onclick="Stock.insert(${index}, true)">Adicionar um item</button>
+        <button class="btn btn-2" onclick="Stock.insert(${index}, false)">Adicionar múltiplos</button>
+        `;
     document.getElementById(index).focus();
   },
-  closeInput() {
-    modal.classList.toggle("active");
+  closeModal() {
+    modal.classList.remove("active");
   },
   clear() {
     while (table.firstChild) {
@@ -116,7 +163,7 @@ const DOM = {
         <td>${product}</td>
         <td>${Stock.getStock(index)}</td>
         <td class="no-print">
-          <button onclick="DOM.showInput(${index})">+</button>
+          <button onclick="DOM.showModal(${index})">+</button>
         </td>`;
 
       table.appendChild(tr);
