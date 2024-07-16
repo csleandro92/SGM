@@ -25,7 +25,6 @@ ul {
 }
 
 body {
-  font-family: sans-serif;
   width: 100vw;
   margin: 0 auto;
 }
@@ -36,6 +35,14 @@ body {
   padding-left: 20px;
   padding-right: 20px;
 }
+
+body,
+.modal-content form input[type="text"],
+.modal-content form select,
+.btn {
+  font-family: "Poppins", sans-serif;
+}
+
 
 header,
 main {
@@ -75,15 +82,13 @@ h1 {
   display: block;
   padding: 8px 16px;
   border-radius: 4px;
-  border: 1px solid transparent;
   color: var(--c1);
   background-color: var(--c4);
 }
 
 #menu a:hover {
-  border-color: var(--c4);
-  color: var(--c4);
-  background-color: var(--c1);
+  color: var(--c0);
+  background-color: var(--c3);
 }
 
 /* Main */
@@ -103,7 +108,6 @@ tbody tr {
 table,
 td,
 th {
-  font-family: "Poppins", sans-serif;
   border: 1px solid var(--c3);
   font-size: 14px;
 }
@@ -152,13 +156,13 @@ footer p {
   text-align: center;
 }
 
-.material-symbols-outlined {
-  font-size: 2.5rem;
-  cursor: pointer;
+#add-item-btn img {
+  display: block;
+  width: 48px;
   transition: all 200ms ease-in-out;
 }
 
-.material-symbols-outlined:hover {
+#add-item-btn img:hover {
   transform: scale(1.1);
   color: var(--c2);
 }
@@ -211,54 +215,71 @@ footer p {
 }
 
 .modal {
-  position: relative;
   background: var(--c0);
-  font-family: "Poppins", sans-serif;
+  color: var(--c5);
+
+  /* position: relative; */
   padding: 20px;
   width: 90vw;
   max-width: 600px;
   border-radius: 8px;
 }
 
-.modal-close {
-  position: absolute;
-  top: 0;
-  right: 0;
-  background: #770000;
-  color: var(--c0);
-  padding: 8px 16px;
-  margin: 20px 20px 0 0;
+.modal-header {
+display: flex;
+justify-content: space-between;
 }
 
-.modal-title h2 {
+#modal-title {
   text-transform: capitalize;
   font-size: 20px;
   font-weight: 500;
+  color: var(--c3);
+}
+
+.modal-close {
+  background: #770000;
+  color: var(--c0);
+  padding: 8px 16px;
+  border-radius: 8px;
 }
 
 .modal-content form {
   margin-top: 32px;
-  display: grid;
-  place-items: center;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
 }
 
 .modal-content form input[type="text"],
 .modal-content form select  {
-  font-family: "Poppins", sans-serif;
   font-size: 14px;
   color: var(--c3);
   width: 100%;
   padding: 8px 12px;
 }
 
+.modal-content form.default {
+  display: grid;
+  place-items: center;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.modal-content form.add-item {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 16px;
+}
+
+form.add-item .btn {
+  grid-column: 1/-1;
+  width: 50%;
+}
+
+
 .col-2 {
   grid-column: 1/-1;
 }
 
 .btn {
-  font-family: "Poppins", sans-serif;
   font-size: 14px;
   color: #ffffff;
   width: 100%;

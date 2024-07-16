@@ -9,16 +9,15 @@ class Product {
 
 const menu = document.getElementById("menu");
 const table = document.querySelector("table tbody");
+
 const modal = document.querySelector(".modal-overlay");
-const modalTitle = document.querySelector(".modal-title h2");
+
+const modalTitle = document.getElementById("modal-title");
+const modalCloseBtn = document.getElementById("modal-close-btn");
+
 const form = document.querySelector(".modal-content form");
 
-// const checkIfANumberWasTyped = (event) => {
-//   const isNotANumber = isNaN(event.key);
-//   if (isNotANumber) {
-//     event.preventDefault();
-//   }
-// };
+const addItemBtn = document.getElementById("add-item-btn");
 
 /* Storage
  * - salvar os dados no armazenamento interno do navegador
@@ -74,35 +73,41 @@ const Stock = {
     const currentStockQuantity = products[index].stock;
 
     let input = document.getElementById(index).value;
-    input = Number(input.replace(",", "."));
-    // input *= 100;
-    // currentStockQuantity.push(Math.round(input));
-    currentStockQuantity.push(input);
+    if (input && !isNaN(input)) {
+      input = Number(input.replace(",", "."));
+      currentStockQuantity.push(input);
 
-    Storage.set(DB.all);
-    DOM.update();
-    if (!close) {
-      DOM.showModal(index);
+      Storage.set(DB.all);
+      DOM.update();
+      if (!close) {
+        DOM.showModal(index);
+      } else {
+        DOM.closeModal();
+      }
     } else {
-      DOM.closeModal();
+      window.alert("Digite um valor válido");
     }
   },
   newItem() {
     const id = document.getElementById("id");
     const produto = document.getElementById("product");
     const categoria = document.getElementById("category");
+    if (id.value && produto.value && categoria.value) {
+      const products = DB.all;
+      products.push(
+        new Product(id.value, produto.value.toLowerCase(), categoria.value)
+      );
 
-    const products = DB.all;
-    products.push(
-      new Product(id.value, produto.value.toLowerCase(), categoria.value)
-    );
+      products.sort((a, b) => (a.product < b.product ? -1 : true));
+      products.sort((a, b) => (a.category < b.category ? -1 : true));
 
-    products.sort((a, b) => (a.product < b.product ? -1 : true));
-    products.sort((a, b) => (a.category < b.category ? -1 : true));
-
-    Storage.set(DB.all);
-    DOM.update();
-    DOM.closeModal();
+      Storage.set(DB.all);
+      DOM.update();
+      DOM.closeModal();
+      console.log(!!id.value);
+    } else {
+      window.alert("Preencha todos os campos");
+    }
   },
   getItemDetails(index) {
     const products = DB.all;
@@ -132,16 +137,21 @@ const Stock = {
 const DOM = {
   showDetailsModal(index) {
     modal.classList.add("active");
+    form.classList.add("simple");
+    modalTitle.innerText = "Listando itens";
+
     const list = Stock.getItemDetails(index);
     form.innerHTML = list.join(", ");
   },
   showCreateModal() {
     modal.classList.add("active");
+    form.classList.add("add-item");
+
     modalTitle.innerText = "Cadastrar Novo Item";
 
     form.innerHTML = `
-      <input class="col-2" type="text" id="id" inputmode="numeric" placeholder="Código">
-      <input class="col-2" type="text" id="product" placeholder="Nome do Produto">
+      <input type="text" id="id" inputmode="numeric" placeholder="Código">
+      <input type="text" id="product" placeholder="Nome do Produto">
       <select class="col-2" name="category" id="category">
         <option value="" selected disabled>Categoria</option>
         <option value="bovinos">Bovinos</option>
@@ -153,6 +163,8 @@ const DOM = {
   },
   showModal(index) {
     modal.classList.add("active");
+    form.classList.add("default");
+
     modalTitle.innerText = Stock.getItemName(index);
 
     form.innerHTML = `
@@ -161,13 +173,10 @@ const DOM = {
         <button class="btn btn-2" onclick="Stock.insert(${index}, false)">Adicionar múltiplos</button>
         `;
     document.getElementById(index).focus();
-
-    // document
-    //   .querySelector(".only-numbers")
-    //   .addEventListener("keypress", checkIfANumberWasTyped);
   },
   closeModal() {
     modal.classList.remove("active");
+    form.classList = "";
   },
   clear() {
     while (table.firstChild) {
@@ -219,6 +228,8 @@ const Listeners = {
           break;
       }
     });
+    modalCloseBtn.addEventListener("click", DOM.closeModal);
+    addItemBtn.addEventListener("click", DOM.showCreateModal);
   },
 };
 

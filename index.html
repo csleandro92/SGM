@@ -12,7 +12,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SGM 1.0.0</title>
   <link rel="stylesheet" href="style.css">
-  <script src="./script.js" defer></script>
 </head>
 
 <body>
@@ -42,9 +41,11 @@
 
   <div class="modal-overlay">
     <div class="modal">
-      <div class="modal-title">
-        <h2></h2>
-        <a href="#" onclick="DOM.closeModal()"><span class="modal-close">X</span></a>
+      <div class="modal-header">
+        <h2 id="modal-title"></h2>
+        <a href="#" id="modal-close-btn">
+          <span class="modal-close">X</span>
+        </a>
       </div>
       <div class="modal-content">
         <form>
@@ -63,14 +64,14 @@
           <br>
           <a href="https://instagram.com/csleandro92" target="_blank">LSCONNECT</a> &copy; 2024
         </p>
-        <a href="#" onclick="DOM.showCreateModal()">
-          <span class="material-symbols-outlined no-print">
-            add_circle
-          </span>
+        <a href="#" id="add-item-btn" class="no-print">
+          <img src="./assets/plus.svg">
         </a>
       </div>
     </footer>
   </div>
+
+  <script src="./script.js"></script>
 </body>
 
 </html>
