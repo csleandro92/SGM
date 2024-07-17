@@ -269,6 +269,23 @@ justify-content: space-between;
   gap: 16px;
 }
 
+.modal-content form.list-item{
+  /* border: 1px solid var(--c5); */
+  text-align: center;  
+  list-style: none;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.modal-content form.list-item a{
+  display: block;
+  background:#000077;
+  color: #ffffff;
+  border-radius: 4px;
+  padding: 4px 8px;
+}
+
 form.add-item .btn {
   grid-column: 1/-1;
   width: 50%;

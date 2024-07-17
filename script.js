@@ -129,6 +129,13 @@ const Stock = {
 
     return `${id} → ${product}`;
   },
+  removeItem(index, i) {
+    const product = DB.all[index].stock;
+    product.splice(i, 1)
+    Storage.set(DB.all);
+    DOM.update();
+    DOM.showDetailsModal(index)
+  }
 };
 
 /* DOM
@@ -137,11 +144,18 @@ const Stock = {
 const DOM = {
   showDetailsModal(index) {
     modal.classList.add("active");
-    form.classList.add("simple");
+    form.classList.add("list-item");
     modalTitle.innerText = "Listando itens";
 
-    const list = Stock.getItemDetails(index);
-    form.innerHTML = list.join(", ");
+    const stock = Stock.getItemDetails(index);
+    if(stock.length) {
+      const products = stock.map((product, i) => `<a href="#" onclick="Stock.removeItem(${index}, ${i})">${product}</a>`)
+      form.innerHTML = products.join('')
+    }
+    else {
+      form.innerHTML = '<span class="col-2">Não há nenhum item cadastrado para este produto</span>'
+    }
+    
   },
   showCreateModal() {
     modal.classList.add("active");
