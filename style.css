@@ -275,7 +275,7 @@ justify-content: space-between;
   list-style: none;
   display: grid;
   gap: 12px;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(5, 1fr);
 }
 
 .modal-content form.list-item a{
