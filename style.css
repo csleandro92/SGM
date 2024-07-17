@@ -43,7 +43,6 @@ body,
   font-family: "Poppins", sans-serif;
 }
 
-
 header,
 main {
   padding-top: 20px;
@@ -226,8 +225,8 @@ footer p {
 }
 
 .modal-header {
-display: flex;
-justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 #modal-title {
@@ -249,7 +248,7 @@ justify-content: space-between;
 }
 
 .modal-content form input[type="text"],
-.modal-content form select  {
+.modal-content form select {
   font-size: 14px;
   color: var(--c3);
   width: 100%;
@@ -269,18 +268,18 @@ justify-content: space-between;
   gap: 16px;
 }
 
-.modal-content form.list-item{
+.modal-content form.list-item {
   /* border: 1px solid var(--c5); */
-  text-align: center;  
+  text-align: center;
   list-style: none;
   display: grid;
   gap: 12px;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 }
 
-.modal-content form.list-item a{
+.modal-content form.list-item a {
   display: block;
-  background:#000077;
+  background: #000077;
   color: #ffffff;
   border-radius: 4px;
   padding: 4px 8px;
@@ -290,7 +289,6 @@ form.add-item .btn {
   grid-column: 1/-1;
   width: 50%;
 }
-
 
 .col-2 {
   grid-column: 1/-1;
