@@ -121,7 +121,7 @@ const Stock = {
 
     const total = currentItemStock.reduce((acc, next) => acc + next, 0);
     // return total / 100;
-    return total;
+    return total !== 0 ? total.toFixed(3) : total;
   },
   getItemName(index) {
     const products = DB.all;
@@ -131,11 +131,11 @@ const Stock = {
   },
   removeItem(index, i) {
     const product = DB.all[index].stock;
-    product.splice(i, 1)
+    product.splice(i, 1);
     Storage.set(DB.all);
     DOM.update();
-    DOM.showDetailsModal(index)
-  }
+    DOM.showDetailsModal(index);
+  },
 };
 
 /* DOM
@@ -148,14 +148,16 @@ const DOM = {
     modalTitle.innerText = "Listando itens";
 
     const stock = Stock.getItemDetails(index);
-    if(stock.length) {
-      const products = stock.map((product, i) => `<a href="#" onclick="Stock.removeItem(${index}, ${i})">${product}</a>`)
-      form.innerHTML = products.join('')
+    if (stock.length) {
+      const products = stock.map(
+        (product, i) =>
+          `<a href="#" onclick="Stock.removeItem(${index}, ${i})">${product}</a>`
+      );
+      form.innerHTML = products.join("");
+    } else {
+      form.innerHTML =
+        '<span class="col-2">Não há nenhum item cadastrado para este produto</span>';
     }
-    else {
-      form.innerHTML = '<span class="col-2">Não há nenhum item cadastrado para este produto</span>'
-    }
-    
   },
   showCreateModal() {
     modal.classList.add("active");
