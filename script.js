@@ -73,8 +73,8 @@ const Stock = {
     const currentStockQuantity = products[index].stock;
 
     let input = document.getElementById(index).value;
+    input = Number(input.replace(",", "."));
     if (input && !isNaN(input)) {
-      input = Number(input.replace(",", "."));
       currentStockQuantity.push(input);
 
       Storage.set(DB.all);
@@ -164,8 +164,8 @@ const DOM = {
     modalTitle.innerText = "Cadastrar Novo Item";
 
     form.innerHTML = `
-      <input type="text" id="id" inputmode="numeric" placeholder="Código">
-      <input type="text" id="product" placeholder="Nome do Produto">
+      <input type="text" id="id" inputmode="numeric" placeholder="Código" autocomplete="off">
+      <input type="text" id="product" placeholder="Nome do Produto" autocomplete="off">
       <select class="col-2" name="category" id="category">
         <option value="" selected disabled>Categoria</option>
         <option value="bovinos">Bovinos</option>
