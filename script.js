@@ -151,7 +151,7 @@ const DOM = {
     if (stock.length) {
       const products = stock.map(
         (product, i) =>
-          `<a href="#" onclick="Stock.removeItem(${index}, ${i})">${product}</a>`
+          `<a class="${product > 0 ? "btn-2" : "btn-3"}" href="#" onclick="Stock.removeItem(${index}, ${i})">${product}</a>`
       );
       form.innerHTML = products.join("");
     } else {
@@ -163,7 +163,7 @@ const DOM = {
     modal.classList.add("active");
     form.classList.add("add-item");
 
-    modalTitle.innerText = "Cadastrar Novo Item";
+    modalTitle.innerText = "Cadastrar Novo Produto";
 
     form.innerHTML = `
       <input type="text" id="id" inputmode="numeric" placeholder="Código" autocomplete="off">
@@ -174,7 +174,7 @@ const DOM = {
         <option value="suinos">Suinos</option>
         <option value="embutidos">Outros</option>
       </select>
-      <button class="btn btn-1" onclick="Stock.newItem()">Cadastrar Produto</button>
+      <button class="btn btn-4" onclick="Stock.newItem()">Cadastrar Produto</button>
     `;
   },
   showModal(index) {

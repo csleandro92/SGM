@@ -279,7 +279,7 @@ footer p {
 
 .modal-content form.list-item a {
   display: block;
-  background: #000077;
+  /* background: #000077; */
   color: #ffffff;
   border-radius: 4px;
   padding: 4px 8px;
@@ -308,4 +308,12 @@ form.add-item .btn {
 
 .btn-2 {
   background: #000077;
+}
+
+.btn-3 {
+  background: #770000;
+}
+
+.btn-4 {
+  background: #cc7700;
 }
