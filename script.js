@@ -36,10 +36,10 @@ const Storage = {
   },
 };
 
-/* Database
+/* Products
  * - receber os dados que serão adicionados na tabela
  */
-const DB = {
+const Products = {
   all: Storage.get(),
 
   async parseData() {
@@ -56,44 +56,39 @@ const DB = {
       data.forEach(({ id, produto, categoria, estoque }) => {
         this.all.push(new Product(id, produto, categoria, estoque));
         Storage.set(this.all);
-        DOM.update();
+        DOM.updateList();
       });
     });
   },
   reset() {
     Storage.clear();
     this.all = [];
-    DOM.update();
+    DOM.updateList();
   },
 };
 
 const Stock = {
-  insert(index, close) {
-    const products = DB.all;
-    const currentStockQuantity = products[index].stock;
-
-    let input = document.getElementById(index).value;
-    input = Number(input.replace(",", "."));
-    if (input && !isNaN(input)) {
-      currentStockQuantity.push(input);
-
-      Storage.set(DB.all);
-      DOM.update();
-      if (!close) {
-        DOM.showModal(index);
-      } else {
-        DOM.closeModal();
-      }
-    } else {
-      window.alert("Digite um valor válido");
-    }
+  getProductStock(index) {
+    return Products.all[index].stock;
   },
-  newItem() {
+  getTotalStock(index) {
+    const total = this.getProductStock(index).reduce((acc, next) => acc + next, 0);
+    return total !== 0 ? total.toFixed(3) : total;
+  },
+  getItemDetails(index) {
+    const { id, product } = Products.all[index];
+    return { id, product };
+  },
+
+  newProduct() {
     const id = document.getElementById("id");
     const produto = document.getElementById("product");
     const categoria = document.getElementById("category");
-    if (id.value && produto.value && categoria.value) {
-      const products = DB.all;
+
+    if (!id.value || !produto.value || !categoria.value) {
+      window.alert("Preencha todos os campos");
+    } else {
+      const products = Products.all;
       products.push(
         new Product(id.value, produto.value.toLowerCase(), categoria.value)
       );
@@ -101,71 +96,73 @@ const Stock = {
       products.sort((a, b) => (a.product < b.product ? -1 : true));
       products.sort((a, b) => (a.category < b.category ? -1 : true));
 
-      Storage.set(DB.all);
-      DOM.update();
-      DOM.closeModal();
-      console.log(!!id.value);
-    } else {
-      window.alert("Preencha todos os campos");
+      Storage.set(products);
+      DOM.updateList();
+      Modal.close();
     }
   },
-  getItemDetails(index) {
-    const products = DB.all;
-    const currentItemStock = products[index].stock;
-
-    return currentItemStock;
-  },
-  getStockTotal(index) {
-    const products = DB.all;
-    const currentItemStock = products[index].stock;
-
-    const total = currentItemStock.reduce((acc, next) => acc + next, 0);
-    // return total / 100;
-    return total !== 0 ? total.toFixed(3) : total;
-  },
-  getItemName(index) {
-    const products = DB.all;
-    const { product, id } = products[index];
-
-    return `${id} → ${product}`;
+  insertItem(index, close) {
+    let input = document.getElementById(index).value;
+    input = Number(input.replace(",", "."));
+    if (input && !isNaN(input)) {
+      this.getProductStock(index).push(input);
+      if (!close) {
+        DOM.showInsertWindow(index);
+      } else {
+        Modal.close();
+      }
+    } else {
+      window.alert("Digite um valor válido");
+    }
+    Storage.set(Products.all);
+    DOM.updateList();
   },
   removeItem(index, i) {
-    const product = DB.all[index].stock;
+    const product = Products.all[index].stock;
     product.splice(i, 1);
-    Storage.set(DB.all);
-    DOM.update();
-    DOM.showDetailsModal(index);
+    Storage.set(Products.all);
+    DOM.updateList();
+    DOM.showRegisteredItens(index);
   },
 };
 
+const Modal = {
+  open(modalType, title, func) {
+    modal.classList.add("active");
+    form.classList.add(modalType);
+    modalTitle.innerText = title;
+
+    func();
+  },
+  close() {
+    modal.classList.remove("active");
+    form.classList = "";
+  },
+};
 /* DOM
  * - manipula os elementos visuais da aplicação
  */
 const DOM = {
-  showDetailsModal(index) {
-    modal.classList.add("active");
-    form.classList.add("list-item");
-    modalTitle.innerText = "Listando itens";
-
-    const stock = Stock.getItemDetails(index);
-    if (stock.length) {
-      const products = stock.map(
-        (product, i) =>
-          `<a class="${product > 0 ? "btn-2" : "btn-3"}" href="#" onclick="Stock.removeItem(${index}, ${i})">${product}</a>`
-      );
-      form.innerHTML = products.join("");
-    } else {
-      form.innerHTML =
-        '<span class="col-2">Não há nenhum item cadastrado para este produto</span>';
-    }
+  showRegisteredItens(index) {
+    Modal.open("list-item", "Listando itens", () => {
+      const stock = Stock.getProductStock(index);
+      if (stock.length) {
+        const products = stock.map(
+          (product, i) =>
+            `<a class="${
+              product > 0 ? "btn-2" : "btn-3"
+            }" href="#" onclick="Stock.removeItem(${index}, ${i})">${product}</a>`
+        );
+        form.innerHTML = products.join("");
+      } else {
+        form.innerHTML =
+          '<span class="col-2">Não há nenhum item cadastrado para este produto</span>';
+      }
+    });
   },
-  showCreateModal() {
-    modal.classList.add("active");
-    form.classList.add("add-item");
-
-    modalTitle.innerText = "Cadastrar Novo Produto";
-
-    form.innerHTML = `
+  showCreateWindow() {
+    Modal.open("add-item", "Cadastrar Produto", () => {
+      form.innerHTML = `
       <input type="text" id="id" inputmode="numeric" placeholder="Código" autocomplete="off">
       <input type="text" id="product" placeholder="Nome do Produto" autocomplete="off">
       <select class="col-2" name="category" id="category">
@@ -174,35 +171,30 @@ const DOM = {
         <option value="suinos">Suinos</option>
         <option value="embutidos">Outros</option>
       </select>
-      <button class="btn btn-4" onclick="Stock.newItem()">Cadastrar Produto</button>
+      <button class="btn btn-4" onclick="Stock.newProduct()">Cadastrar Produto</button>
     `;
+    });
   },
-  showModal(index) {
-    modal.classList.add("active");
-    form.classList.add("default");
-
-    modalTitle.innerText = Stock.getItemName(index);
-
-    form.innerHTML = `
-        <input class="only-numbers col-2" id="${index}" type="text" inputmode="numeric" autocomplete="off">
-        <button class="btn btn-1" onclick="Stock.insert(${index}, true)">Adicionar um item</button>
-        <button class="btn btn-2" onclick="Stock.insert(${index}, false)">Adicionar múltiplos</button>
-        `;
-    document.getElementById(index).focus();
+  showInsertWindow(index) {
+    const { id, product } = Stock.getItemDetails(index)
+    Modal.open("default", `${id} → ${product}`, () => {
+      form.innerHTML = `
+      <input class="only-numbers col-2" id="${index}" type="text" inputmode="numeric" autocomplete="off">
+      <button class="btn btn-1" onclick="Stock.insertItem(${index}, true)">Adicionar um item</button>
+      <button class="btn btn-2" onclick="Stock.insertItem(${index}, false)">Adicionar múltiplos</button>
+      `;
+      document.getElementById(index).focus();
+    });
   },
-  closeModal() {
-    modal.classList.remove("active");
-    form.classList = "";
-  },
-  clear() {
+  clearList() {
     while (table.firstChild) {
       table.removeChild(table.firstChild);
     }
   },
-  update() {
-    this.clear();
+  updateList() {
+    this.clearList();
 
-    const products = Storage.get();
+    const products = Products.all;
     for (index in products) {
       const { id, product } = products[index];
 
@@ -210,10 +202,10 @@ const DOM = {
       tr.id = `item-${index}`;
       tr.innerHTML = `
         <td align="center">${id}</td>
-        <td><a href="#" onclick="DOM.showDetailsModal(${index})">${product}</a></td>
-        <td>${Stock.getStockTotal(index)}</td>
+        <td><a href="#" onclick="DOM.showRegisteredItens(${index})">${product}</a></td>
+        <td>${Stock.getTotalStock(index)}</td>
         <td class="no-print">
-          <button onclick="DOM.showModal(${index})">+</button>
+          <button onclick="DOM.showInsertWindow(${index})">+</button>
         </td>`;
 
       table.appendChild(tr);
@@ -233,8 +225,8 @@ const Listeners = {
               "Esta ação apagará todos os dados armazenados. Deseja continuar?"
             )
           ) {
-            DB.reset();
-            DB.initialize();
+            Products.reset();
+            Products.initialize();
           }
           break;
         case "#save":
@@ -244,8 +236,8 @@ const Listeners = {
           break;
       }
     });
-    modalCloseBtn.addEventListener("click", DOM.closeModal);
-    addItemBtn.addEventListener("click", DOM.showCreateModal);
+    modalCloseBtn.addEventListener("click", Modal.close);
+    addItemBtn.addEventListener("click", DOM.showCreateWindow);
   },
 };
 
@@ -256,7 +248,7 @@ const Listeners = {
 const App = {
   init() {
     Listeners.init();
-    DOM.update();
+    DOM.updateList();
   },
 };
 
