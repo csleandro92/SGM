@@ -49,15 +49,16 @@ const Products = {
   },
 
   initialize() {
-    this.parseData().then((data) => {
-      data.sort((a, b) => (a.produto < b.produto ? -1 : true));
-      data.sort((a, b) => (a.categoria < b.categoria ? -1 : true));
-
-      data.forEach(({ id, produto, categoria, estoque }) => {
-        this.all.push(new Product(id, produto, categoria, estoque));
+    this.parseData().then((categorias) => {
+      categorias.sort((a, b) => (a.categoria < b.categoria ? -1 : true));
+      categorias.forEach(({categoria, produtos}) => {
+        produtos.sort((a, b) => (a.produto < b.produto ? -1 : true));
+        produtos.forEach(({id, produto}) => {
+        this.all.push(new Product(id, produto, categoria, estoque = []));
         Storage.set(this.all);
         DOM.updateList();
-      });
+        })
+      })
     });
   },
   reset() {
@@ -72,7 +73,10 @@ const Stock = {
     return Products.all[index].stock;
   },
   getTotalStock(index) {
-    const total = this.getProductStock(index).reduce((acc, next) => acc + next, 0);
+    const total = this.getProductStock(index).reduce(
+      (acc, next) => acc + next,
+      0
+    );
     return total !== 0 ? total.toFixed(3) : total;
   },
   getItemDetails(index) {
@@ -176,7 +180,7 @@ const DOM = {
     });
   },
   showInsertWindow(index) {
-    const { id, product } = Stock.getItemDetails(index)
+    const { id, product } = Stock.getItemDetails(index);
     Modal.open("default", `${id} → ${product}`, () => {
       form.innerHTML = `
       <input class="only-numbers col-2" id="${index}" type="text" inputmode="numeric" autocomplete="off">

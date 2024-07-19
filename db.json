@@ -1,283 +1,242 @@
 [
   {
-    "id": 945,
-    "produto": "carré",
-    "categoria": "suinos"
+    "categoria": "suinos",
+    "produtos": [
+      {
+        "id": 945,
+        "produto": "carré"
+      },
+      {
+        "id": 185,
+        "produto": "costelinha de porco"
+      },
+      {
+        "id": 481,
+        "produto": "file mignon"
+      },
+      {
+        "id": 382,
+        "produto": "figado suino"
+      },
+      {
+        "id": 653,
+        "produto": "suan"
+      },
+      {
+        "id": 581,
+        "produto": "costelinha c/ toucinho"
+      },
+      {
+        "id": 474,
+        "produto": "barriguinha de porco (581)"
+      },
+      {
+        "id": 946,
+        "produto": "banda (581)"
+      },
+      {
+        "id": 851,
+        "produto": "pe porco fresco (581)"
+      },
+      {
+        "id": 854,
+        "produto": "lombo porco"
+      },
+      {
+        "id": 178,
+        "produto": "pernil suíno s/ osso"
+      },
+      {
+        "id": 855,
+        "produto": "toucinho"
+      }
+    ]
   },
   {
-    "id": 185,
-    "produto": "costelinha de porco",
-    "categoria": "suinos"
-  },
-  {
-    "id": 481,
-    "produto": "file mignon",
-    "categoria": "suinos"
-  },
-  {
-    "id": 382,
-    "produto": "figado suino",
-    "categoria": "suinos"
-  },
-  {
-    "id": 653,
-    "produto": "suan",
-    "categoria": "suinos"
-  },
-  {
-    "id": 581,
-    "produto": "costelinha c/ toucinho",
-    "categoria": "suinos"
-  },
-  {
-    "id": 474,
-    "produto": "barriguinha de porco (581)",
-    "categoria": "suinos"
-  },
-  {
-    "id": 946,
-    "produto": "banda (581)",
-    "categoria": "suinos"
-  },
-  {
-    "id": 851,
-    "produto": "pe porco fresco (581)",
-    "categoria": "suinos"
-  },
-  {
-    "id": 854,
-    "produto": "lombo porco",
-    "categoria": "suinos"
-  },
-  {
-    "id": 178,
-    "produto": "pernil suíno s/ osso",
-    "categoria": "suinos"
-  },
-  {
-    "id": 855,
-    "produto": "toucinho",
-    "categoria": "suinos"
-  },
-  {
-    "id": 754,
-    "produto": "acem",
-    "categoria": "bovinos"
-  },
-  {
-    "id": 418,
-    "produto": "alcatra c/ maminha",
-    "categoria": "bovinos"
-  },
-  {
-    "id": 413,
-    "produto": "alcatra pedaço",
-    "categoria": "bovinos"
-  },
-  {
-    "id": 461,
-    "produto": "alcatra grill peça",
-    "categoria": "bovinos"
-  },
-  {
-    "id": 2033,
-    "produto": "alcatra grill montana",
     "categoria": "bovinos",
-    "estoque": [30.63]
+    "produtos": [
+      {
+        "id": 754,
+        "produto": "acem"
+      },
+      {
+        "id": 418,
+        "produto": "alcatra c/ maminha"
+      },
+      {
+        "id": 413,
+        "produto": "alcatra pedaço"
+      },
+      {
+        "id": 461,
+        "produto": "alcatra grill peça"
+      },
+      {
+        "id": 2033,
+        "produto": "alcatra grill montana",
+        "estoque": [30.63]
+      },
+      {
+        "id": 931,
+        "produto": "capa file"
+      },
+      {
+        "id": 590,
+        "produto": "chã dentro"
+      },
+      {
+        "id": 86,
+        "produto": "chã fora"
+      },
+      {
+        "id": 489,
+        "produto": "contra filé bife"
+      },
+      {
+        "id": 1210,
+        "produto": "contra file frisa grill"
+      },
+      {
+        "id": 435,
+        "produto": "contra filé grill frifort"
+      },
+      {
+        "id": 225,
+        "produto": "contra filé grill pv"
+      },
+      {
+        "id": 65,
+        "produto": "contra file grill"
+      },
+      {
+        "id": 1236,
+        "produto": "contra filé marfrical"
+      },
+      {
+        "id": 288,
+        "produto": "coração boi"
+      },
+      {
+        "id": 132,
+        "produto": "costela gaúcha"
+      },
+      {
+        "id": 996,
+        "produto": "costela ripa"
+      },
+      {
+        "id": 925,
+        "produto": "cupim"
+      },
+      {
+        "id": 130,
+        "produto": "dobradinha"
+      },
+      {
+        "id": 189,
+        "produto": "figado boi"
+      },
+      {
+        "id": 845,
+        "produto": "file mignon"
+      },
+      {
+        "id": 20,
+        "produto": "fraldinha peça"
+      },
+      {
+        "id": 758,
+        "produto": "fraldinha grill"
+      },
+      {
+        "id": 1000,
+        "produto": "fraldinha frisa"
+      },
+      {
+        "id": 177,
+        "produto": "lagarto"
+      },
+      {
+        "id": 770,
+        "produto": "lingua boi"
+      },
+      {
+        "id": 429,
+        "produto": "mocotó bovino"
+      },
+      {
+        "id": 682,
+        "produto": "musculo dianteiro"
+      },
+      {
+        "id": 683,
+        "produto": "musculo traseiro"
+      },
+      {
+        "id": 480,
+        "produto": "paleta"
+      },
+      {
+        "id": 87,
+        "produto": "patinho"
+      },
+      {
+        "id": 997,
+        "produto": "peito boi"
+      },
+      {
+        "id": 1671,
+        "produto": "picanha corella seleta"
+      },
+      {
+        "id": 865,
+        "produto": "picanha marfrical"
+      },
+      {
+        "id": 1334,
+        "produto": "picanha pul tradicional"
+      },
+      {
+        "id": 898,
+        "produto": "picanha pul selection"
+      },
+      {
+        "id": 397,
+        "produto": "rabada"
+      }
+    ]
   },
   {
-    "id": 931,
-    "produto": "capa file",
-    "categoria": "bovinos"
-  },
-  {
-    "id": 590,
-    "produto": "chã dentro",
-    "categoria": "bovinos"
-  },
-  {
-    "id": 86,
-    "produto": "chã fora",
-    "categoria": "bovinos"
-  },
-  {
-    "id": 489,
-    "produto": "contra filé bife",
-    "categoria": "bovinos"
-  },
-  {
-    "id": 1210,
-    "produto": "contra file frisa grill",
-    "categoria": "bovinos"
-  },
-  {
-    "id": 435,
-    "produto": "contra filé grill frifort",
-    "categoria": "bovinos"
-  },
-  {
-    "id": 225,
-    "produto": "contra filé grill pv",
-    "categoria": "bovinos"
-  },
-  {
-    "id": 65,
-    "produto": "contra file grill",
-    "categoria": "bovinos"
-  },
-  {
-    "id": 1236,
-    "produto": "contra filé marfrical",
-    "categoria": "bovinos"
-  },
-  {
-    "id": 288,
-    "produto": "coração boi",
-    "categoria": "bovinos"
-  },
-  {
-    "id": 132,
-    "produto": "costela gaúcha",
-    "categoria": "bovinos"
-  },
-  {
-    "id": 996,
-    "produto": "costela ripa",
-    "categoria": "bovinos"
-  },
-  {
-    "id": 925,
-    "produto": "cupim",
-    "categoria": "bovinos"
-  },
-  {
-    "id": 130,
-    "produto": "dobradinha",
-    "categoria": "bovinos"
-  },
-  {
-    "id": 189,
-    "produto": "figado boi",
-    "categoria": "bovinos"
-  },
-  {
-    "id": 845,
-    "produto": "file mignon",
-    "categoria": "bovinos"
-  },
-  {
-    "id": 20,
-    "produto": "fraldinha peça",
-    "categoria": "bovinos"
-  },
-  {
-    "id": 758,
-    "produto": "fraldinha grill",
-    "categoria": "bovinos"
-  },
-  {
-    "id": 1000,
-    "produto": "fraldinha frisa",
-    "categoria": "bovinos"
-  },
-  {
-    "id": 177,
-    "produto": "lagarto",
-    "categoria": "bovinos"
-  },
-  {
-    "id": 770,
-    "produto": "lingua boi",
-    "categoria": "bovinos"
-  },
-  {
-    "id": 429,
-    "produto": "mocotó bovino",
-    "categoria": "bovinos"
-  },
-  {
-    "id": 682,
-    "produto": "musculo dianteiro",
-    "categoria": "bovinos"
-  },
-  {
-    "id": 683,
-    "produto": "musculo traseiro",
-    "categoria": "bovinos"
-  },
-  {
-    "id": 480,
-    "produto": "paleta",
-    "categoria": "bovinos"
-  },
-  {
-    "id": 87,
-    "produto": "patinho",
-    "categoria": "bovinos"
-  },
-  {
-    "id": 997,
-    "produto": "peito boi",
-    "categoria": "bovinos"
-  },
-  {
-    "id": 1671,
-    "produto": "picanha corella seleta",
-    "categoria": "bovinos"
-  },
-  {
-    "id": 865,
-    "produto": "picanha marfrical",
-    "categoria": "bovinos"
-  },
-  {
-    "id": 1334,
-    "produto": "picanha pul tradicional",
-    "categoria": "bovinos"
-  },
-  {
-    "id": 898,
-    "produto": "picanha pul selection",
-    "categoria": "bovinos"
-  },
-  {
-    "id": 397,
-    "produto": "rabada",
-    "categoria": "bovinos"
-  },
-  {
-    "id": 126,
-    "produto": "linguiça lucia frango",
-    "categoria": "embutidos"
-  },
-  {
-    "id": 260,
-    "produto": "linguiça lucia frescal",
-    "categoria": "embutidos"
-  },
-  {
-    "id": 624,
-    "produto": "linguiça lucia porco fina",
-    "categoria": "embutidos"
-  },
-  {
-    "id": 443,
-    "produto": "linguiça lucia porco grossa",
-    "categoria": "embutidos"
-  },
-  {
-    "id": 465,
-    "produto": "linguiça lorrayne",
-    "categoria": "embutidos"
-  },
-  {
-    "id": 264,
-    "produto": "chouriço",
-    "categoria": "embutidos"
-  },
-  {
-    "id": 765,
-    "produto": "bucho de porco",
-    "categoria": "embutidos"
+    "categoria": "embutidos",
+    "produtos": [
+      {
+        "id": 126,
+        "produto": "linguiça lucia frango"
+      },
+      {
+        "id": 260,
+        "produto": "linguiça lucia frescal"
+      },
+      {
+        "id": 624,
+        "produto": "linguiça lucia porco fina"
+      },
+      {
+        "id": 443,
+        "produto": "linguiça lucia porco grossa"
+      },
+      {
+        "id": 465,
+        "produto": "linguiça lorrayne"
+      },
+      {
+        "id": 264,
+        "produto": "chouriço"
+      },
+      {
+        "id": 765,
+        "produto": "bucho de porco"
+      }
+    ]
   }
 ]
