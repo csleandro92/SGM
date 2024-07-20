@@ -207,10 +207,10 @@ const DOM = {
       tr.id = `item-${index}`;
       tr.innerHTML = `
         <td align="center">${id}</td>
-        <td><a href="#" onclick="DOM.showRegisteredItens(${index})">${name}</a></td>
+        <td><span class="link" onclick="DOM.showRegisteredItens(${index})">${name}</span></td>
         <td>${Stock.getTotalStock(index)}</td>
         <td class="no-print">
-          <button onclick="DOM.showInsertWindow(${index})">+</button>
+          <button class="btn btn-table btn-1" onclick="DOM.showInsertWindow(${index})">+</button>
         </td>`;
 
       table.appendChild(tr);

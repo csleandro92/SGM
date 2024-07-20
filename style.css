@@ -107,7 +107,7 @@ tbody tr {
 table,
 td,
 th {
-  border: 1px solid var(--c3);
+  border: 1px solid var(--c1);
   font-size: 14px;
 }
 
@@ -128,6 +128,14 @@ table td button {
   display: block;
   margin: auto;
   padding: 4px 8px;
+}
+
+table tr:nth-child(2n) {
+  background: #f0f0f0;
+}
+
+table tr:hover {
+  background: var(--c1);
 }
 
 /* Footer */
@@ -155,9 +163,6 @@ footer p {
   text-align: center;
 }
 
-#add-item-btn {
-  cursor: pointer;
-}
 
 #add-item-btn img {
   display: block;
@@ -241,10 +246,15 @@ footer p {
 }
 
 .modal-close {
-  background: #770000;
+  background: #aa0000;
   color: var(--c0);
   padding: 8px 16px;
   border-radius: 8px;
+  transition: all ease-in-out 200ms;
+}
+
+.modal-close:hover {
+  background: #cc0000;
 }
 
 .modal-content form {
@@ -299,6 +309,7 @@ form.add-item .btn {
 }
 
 .btn {
+  border-radius: 4px;
   font-size: 14px;
   color: #ffffff;
   width: 100%;
@@ -306,6 +317,18 @@ form.add-item .btn {
   border: none;
 }
 
+.btn:hover {
+  opacity: .8;
+  transition: all ease-in-out 200ms;
+}
+
+.btn-table {
+  border-radius: 0;
+  font-size: 1.125rem;
+  padding: 4px 12px;
+  width: initial;
+  height: initial;
+}
 .btn-1 {
   background: #007700;
 }
@@ -320,4 +343,8 @@ form.add-item .btn {
 
 .btn-4 {
   background: #cc7700;
+}
+
+.link {
+  cursor: pointer;
 }
