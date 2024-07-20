@@ -1,241 +1,241 @@
 [
   {
-    "categoria": "suinos",
-    "produtos": [
+    "category": "suinos",
+    "products": [
       {
         "id": 945,
-        "produto": "carré"
+        "name": "carré"
       },
       {
         "id": 185,
-        "produto": "costelinha de porco"
+        "name": "costelinha de porco"
       },
       {
         "id": 481,
-        "produto": "file mignon"
+        "name": "file mignon"
       },
       {
         "id": 382,
-        "produto": "figado suino"
+        "name": "figado suino"
       },
       {
         "id": 653,
-        "produto": "suan"
+        "name": "suan"
       },
       {
         "id": 581,
-        "produto": "costelinha c/ toucinho"
+        "name": "costelinha c/ toucinho"
       },
       {
         "id": 474,
-        "produto": "barriguinha de porco (581)"
+        "name": "barriguinha de porco (581)"
       },
       {
         "id": 946,
-        "produto": "banda (581)"
+        "name": "banda (581)"
       },
       {
         "id": 851,
-        "produto": "pe porco fresco (581)"
+        "name": "pe porco fresco (581)"
       },
       {
         "id": 854,
-        "produto": "lombo porco"
+        "name": "lombo porco"
       },
       {
         "id": 178,
-        "produto": "pernil suíno s/ osso"
+        "name": "pernil suíno s/ osso"
       },
       {
         "id": 855,
-        "produto": "toucinho"
+        "name": "toucinho"
       }
     ]
   },
   {
-    "categoria": "bovinos",
-    "produtos": [
+    "category": "bovinos",
+    "products": [
       {
         "id": 754,
-        "produto": "acem"
+        "name": "acem"
       },
       {
         "id": 418,
-        "produto": "alcatra c/ maminha"
+        "name": "alcatra c/ maminha"
       },
       {
         "id": 413,
-        "produto": "alcatra pedaço"
+        "name": "alcatra pedaço"
       },
       {
         "id": 461,
-        "produto": "alcatra grill peça"
+        "name": "alcatra grill peça"
       },
       {
         "id": 2033,
-        "produto": "alcatra grill montana",
-        "estoque": [30.63]
+        "name": "alcatra grill montana",
+        "stock": [30.63]
       },
       {
         "id": 931,
-        "produto": "capa file"
+        "name": "capa file"
       },
       {
         "id": 590,
-        "produto": "chã dentro"
+        "name": "chã dentro"
       },
       {
         "id": 86,
-        "produto": "chã fora"
+        "name": "chã fora"
       },
       {
         "id": 489,
-        "produto": "contra filé bife"
+        "name": "contra filé bife"
       },
       {
         "id": 1210,
-        "produto": "contra file frisa grill"
+        "name": "contra file frisa grill"
       },
       {
         "id": 435,
-        "produto": "contra filé grill frifort"
+        "name": "contra filé grill frifort"
       },
       {
         "id": 225,
-        "produto": "contra filé grill pv"
+        "name": "contra filé grill pv"
       },
       {
         "id": 65,
-        "produto": "contra file grill"
+        "name": "contra file grill"
       },
       {
         "id": 1236,
-        "produto": "contra filé marfrical"
+        "name": "contra filé marfrical"
       },
       {
         "id": 288,
-        "produto": "coração boi"
+        "name": "coração boi"
       },
       {
         "id": 132,
-        "produto": "costela gaúcha"
+        "name": "costela gaúcha"
       },
       {
         "id": 996,
-        "produto": "costela ripa"
+        "name": "costela ripa"
       },
       {
         "id": 925,
-        "produto": "cupim"
+        "name": "cupim"
       },
       {
         "id": 130,
-        "produto": "dobradinha"
+        "name": "dobradinha"
       },
       {
         "id": 189,
-        "produto": "figado boi"
+        "name": "figado boi"
       },
       {
         "id": 845,
-        "produto": "file mignon"
+        "name": "file mignon"
       },
       {
         "id": 20,
-        "produto": "fraldinha peça"
+        "name": "fraldinha peça"
       },
       {
         "id": 758,
-        "produto": "fraldinha grill"
+        "name": "fraldinha grill"
       },
       {
         "id": 1000,
-        "produto": "fraldinha frisa"
+        "name": "fraldinha frisa"
       },
       {
         "id": 177,
-        "produto": "lagarto"
+        "name": "lagarto"
       },
       {
         "id": 770,
-        "produto": "lingua boi"
+        "name": "lingua boi"
       },
       {
         "id": 429,
-        "produto": "mocotó bovino"
+        "name": "mocotó bovino"
       },
       {
         "id": 682,
-        "produto": "musculo dianteiro"
+        "name": "musculo dianteiro"
       },
       {
         "id": 683,
-        "produto": "musculo traseiro"
+        "name": "musculo traseiro"
       },
       {
         "id": 480,
-        "produto": "paleta"
+        "name": "paleta"
       },
       {
         "id": 87,
-        "produto": "patinho"
+        "name": "patinho"
       },
       {
         "id": 997,
-        "produto": "peito boi"
+        "name": "peito boi"
       },
       {
         "id": 1671,
-        "produto": "picanha corella seleta"
+        "name": "picanha corella seleta"
       },
       {
         "id": 865,
-        "produto": "picanha marfrical"
+        "name": "picanha marfrical"
       },
       {
         "id": 1334,
-        "produto": "picanha pul tradicional"
+        "name": "picanha pul tradicional"
       },
       {
         "id": 898,
-        "produto": "picanha pul selection"
+        "name": "picanha pul selection"
       },
       {
         "id": 397,
-        "produto": "rabada"
+        "name": "rabada"
       }
     ]
   },
   {
-    "categoria": "embutidos",
-    "produtos": [
+    "category": "embutidos",
+    "products": [
       {
         "id": 126,
-        "produto": "linguiça lucia frango"
+        "name": "linguiça lucia frango"
       },
       {
         "id": 260,
-        "produto": "linguiça lucia frescal"
+        "name": "linguiça lucia frescal"
       },
       {
         "id": 624,
-        "produto": "linguiça lucia porco fina"
+        "name": "linguiça lucia porco fina"
       },
       {
         "id": 443,
-        "produto": "linguiça lucia porco grossa"
+        "name": "linguiça lucia porco grossa"
       },
       {
         "id": 465,
-        "produto": "linguiça lorrayne"
+        "name": "linguiça lorrayne"
       },
       {
         "id": 264,
-        "produto": "chouriço"
+        "name": "chouriço"
       },
       {
         "id": 765,
-        "produto": "bucho de porco"
+        "name": "bucho de porco"
       }
     ]
   }

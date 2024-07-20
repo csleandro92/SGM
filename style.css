@@ -155,6 +155,10 @@ footer p {
   text-align: center;
 }
 
+#add-item-btn {
+  cursor: pointer;
+}
+
 #add-item-btn img {
   display: block;
   width: 48px;
