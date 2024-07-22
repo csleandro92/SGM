@@ -1,0 +1,26 @@
+footer {
+  padding: 20px 0;
+  position: fixed;
+  width: 100vw;
+  left: 0;
+  bottom: 0;
+
+  background: var(--c0);
+  border-top: 2px solid var(--c2);
+}
+
+footer .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer p {
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+footer img {
+  display: block;
+  width: 48px;
+}

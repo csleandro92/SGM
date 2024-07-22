@@ -1,0 +1,58 @@
+@import url("./header.css");
+@import url("./button.css");
+@import url("./table.css");
+@import url("./footer.css");
+@import url("./modal.css");
+
+:root {
+  --c0: #fafafa;
+  --c1: #f0f0f0;
+  --c2: #c1c5c7;
+  --c3: #a0a2a3;
+  --c4: #454545;
+  --c5: #1f1d1d;
+  --c6: #111111;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  width: 100vw;
+  margin: auto;
+}
+
+body,
+input[type="text"],
+select {
+  font-family: "Poppins", sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.link {
+  cursor: pointer;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}

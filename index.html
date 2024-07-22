@@ -9,12 +9,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SGM 1.0.0</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./styles/style.css">
 </head>
 
 <body>
   <header class="container no-print">
-    <h1>SGM</h1>
+    <h1 id="title">SGM</h1>
     <nav class=no-print>
       <ul id="menu">
         <li><a href="#update">Atualizar Lista</a></li>
@@ -37,6 +37,20 @@
     </table>
   </main>
 
+  <footer class="no-print">
+    <div class="container">
+      <div></div>
+      <p>
+        Feito com ❤ por
+        <br>
+        <a href="https://instagram.com/csleandro92" target="_blank">LSCONNECT</a> &copy; 2024
+      </p>
+      <span id="add-item-btn" class="link no-print">
+        <img src="./assets/plus.svg" alt="">
+      </span>
+    </div>
+  </footer>
+
   <div class="modal-overlay">
     <div class="modal">
       <div class="modal-header">
@@ -51,24 +65,6 @@
       </div>
     </div>
   </div>
-
-  <div class="no-print">
-    <div class="footer"></div>
-    <footer class="no-print">
-      <div class="container">
-        <div></div>
-        <p>
-          Feito com ❤ por
-          <br>
-          <a href="https://instagram.com/csleandro92" target="_blank">LSCONNECT</a> &copy; 2024
-        </p>
-        <span id="add-item-btn" class="link no-print">
-          <img src="./assets/plus.svg">
-        </span>
-      </div>
-    </footer>
-  </div>
-
   <script src="./script.js"></script>
 </body>
 

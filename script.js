@@ -210,7 +210,7 @@ const DOM = {
         <td><span class="link" onclick="DOM.showRegisteredItens(${index})">${name}</span></td>
         <td>${Stock.getTotalStock(index)}</td>
         <td class="no-print">
-          <button class="btn btn-table btn-1" onclick="DOM.showInsertWindow(${index})">+</button>
+          <button class="btn btn-table btn-1 link" onclick="DOM.showInsertWindow(${index})">+</button>
         </td>`;
 
       table.appendChild(tr);

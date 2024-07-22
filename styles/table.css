@@ -1,0 +1,35 @@
+main {
+  font-size: 14px;
+  padding: 20px 0;
+  margin-bottom: 90px;
+}
+
+table,
+th,
+td {
+  border: 1px solid var(--c2);
+  border-collapse: collapse;
+  padding: 4px 8px;
+}
+
+thead {
+  text-transform: uppercase;
+}
+
+tbody {
+  text-transform: capitalize;
+}
+
+tbody tr:nth-child(2n) {
+  background: var(--c1);
+}
+
+tbody tr:hover {
+  background: var(--c2);
+}
+
+@media print {
+  table {
+    font-family: Arial, sans-serif;
+  }
+}
