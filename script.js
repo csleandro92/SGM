@@ -11,7 +11,8 @@ const table = document.querySelector("table tbody");
 
 const modal = document.querySelector(".modal-overlay");
 const modalTitle = document.getElementById("modal-title");
-const form = document.querySelector(".modal-content form");
+
+const form = document.querySelector("form");
 
 /* Storage
  * - salvar os dados no armazenamento interno do navegador
@@ -85,7 +86,7 @@ const Stock = {
   },
 
   newProduct() {
-    const id = +document.getElementById("id").value;
+    const id = Number(document.getElementById("id").value);
     const name = document.getElementById("name").value.toLowerCase();
     const category = document.getElementById("category").value;
 
@@ -107,11 +108,11 @@ const Stock = {
     DOM.updateList();
     Modal.close();
   },
-  insertItem(index, close) {
-    const input = +document.getElementById(index).value.replace(",", ".");
+  insertItem(index, closeWindow) {
+    const input = Number(document.getElementById(index).value.replace(",", "."));
     if (input && !isNaN(input)) {
       this.getProductStock(index).push(input);
-      if (!close) {
+      if (!closeWindow) {
         DOM.showInsertWindow(index);
       } else {
         Modal.close();
@@ -132,16 +133,22 @@ const Stock = {
 };
 
 const Modal = {
-  open(modalType, title, func) {
+  open(template) {
+    const { id, title, func } = template;
+
     modal.classList.add("active");
-    form.classList.add(modalType);
-    modalTitle.innerText = title;
+
+    modalTitle.textContent = title;
+    form.setAttribute("id", id);
 
     func();
   },
   close() {
     modal.classList.remove("active");
-    form.classList = "";
+
+    modalTitle.textContent = "";
+    form.removeAttribute("id");
+    form.innerHTML = "";
   },
 };
 /* DOM
@@ -149,46 +156,54 @@ const Modal = {
  */
 const DOM = {
   showRegisteredItens(index) {
-    Modal.open("list-item", "Listando itens", () => {
-      const stock = Stock.getProductStock(index);
-      if (stock.length) {
-        const products = stock.map(
-          (product, i) =>
-            `<a class="${
-              product > 0 ? "btn-2" : "btn-3"
-            }" href="#" onclick="Stock.removeItem(${index}, ${i})">${product}</a>`
-        );
-        form.innerHTML = products.join("");
-      } else {
-        form.innerHTML =
-          '<span class="col-2">Não há nenhum item cadastrado para este produto.</span>';
-      }
+    Modal.open({
+      id: "list-item",
+      title: "Listando itens",
+      func: () => {
+        const stock = Stock.getProductStock(index);
+        if (stock.length) {
+          const items = stock.map((product, i) => {
+            const btnColor = product > 0 ? "plus" : "minus";
+            return `<a href="javascript:void(0);" class="${btnColor}" onclick="Stock.removeItem(${index}, ${i})">${product}</a>`;
+          });
+          form.innerHTML = items.join("");
+        } else {
+          form.innerHTML =
+            '<span class="col-2">Não há nenhum item cadastrado para este produto.</span>';
+        }
+      },
     });
   },
   showCreateWindow() {
-    Modal.open("add-item", "Cadastrar Produto", () => {
-      form.innerHTML = `
-      <input type="text" id="id" inputmode="numeric" placeholder="Código" autocomplete="off">
-      <input type="text" id="name" placeholder="Nome do Produto" autocomplete="off">
-      <select class="col-2" name="category" id="category">
-        <option value="" selected disabled>Categoria</option>
-        <option value="bovinos">Bovinos</option>
-        <option value="suinos">Suinos</option>
-        <option value="embutidos">Outros</option>
-      </select>
-      <button class="btn btn-4" onclick="Stock.newProduct()">Cadastrar Produto</button>
-    `;
+    Modal.open({
+      id: "add-item",
+      title: "Cadastrar Produto",
+      func: () => {
+        form.innerHTML = `
+          <input type="text" id="id" inputmode="numeric" placeholder="Código" autocomplete="off">
+          <input type="text" id="name" placeholder="Nome do Produto" autocomplete="off">
+          <select class="col-2" name="category" id="category">
+            <option value="" selected disabled>Categoria</option>
+            <option value="bovinos">Bovinos</option>
+            <option value="suinos">Suinos</option>
+            <option value="embutidos">Outros</option>
+          </select>
+          <button class="btn btn-4" onclick="Stock.newProduct()">Cadastrar Produto</button>`;
+      },
     });
   },
   showInsertWindow(index) {
     const { id, name } = Stock.getItemDetails(index);
-    Modal.open("default", `${id} → ${name}`, () => {
-      form.innerHTML = `
-      <input class="only-numbers col-2" id="${index}" type="text" inputmode="numeric" autocomplete="off">
-      <button class="btn btn-1" onclick="Stock.insertItem(${index}, true)">Adicionar um item</button>
-      <button class="btn btn-2" onclick="Stock.insertItem(${index}, false)">Adicionar múltiplos</button>
-      `;
-      document.getElementById(index).focus();
+    Modal.open({
+      id: "default",
+      title: `${id} → ${name}`,
+      func: () => {
+        form.innerHTML = `
+          <input class="only-numbers col-2" id="${index}" type="text" inputmode="numeric" autocomplete="off">
+          <button class="btn btn-1" onclick="Stock.insertItem(${index}, true)">Adicionar um item</button>
+          <button class="btn btn-2" onclick="Stock.insertItem(${index}, false)">Adicionar múltiplos</button>`;
+        document.getElementById(index).focus();
+      },
     });
   },
   clearList() {
@@ -207,10 +222,10 @@ const DOM = {
       tr.id = `item-${index}`;
       tr.innerHTML = `
         <td align="center">${id}</td>
-        <td><span class="link" onclick="DOM.showRegisteredItens(${index})">${name}</span></td>
+        <td><a href="javascript:void(0);" class="link" onclick="DOM.showRegisteredItens(${index})">${name}</a></td>
         <td>${Stock.getTotalStock(index)}</td>
         <td class="no-print">
-          <button class="btn btn-table btn-1 link" onclick="DOM.showInsertWindow(${index})">+</button>
+          <a href="javascript:void(0);" class="btn btn-table btn-1" onclick="DOM.showInsertWindow(${index})">+</a>
         </td>`;
 
       table.appendChild(tr);

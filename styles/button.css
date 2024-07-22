@@ -21,17 +21,25 @@
 }
 
 .btn-1 {
-  background: #007700;
+  background: var(--green);
 }
 
 .btn-2 {
-  background: #000077;
+  background: var(--dark-blue);
 }
 
 .btn-3 {
-  background: #770000;
+  background: var(--red);
 }
 
 .btn-4 {
-  background: #cc7700;
+  background: var(--purple);
+}
+
+.plus {
+  background: var(--plus);
+}
+
+.minus {
+  background: var(--minus);
 }

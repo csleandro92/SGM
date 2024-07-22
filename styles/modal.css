@@ -27,10 +27,11 @@
   background: var(--c0);
   color: var(--c5);
 
-  /* position: relative; */
   padding: 20px;
   width: 90vw;
   max-width: 600px;
+  max-height: 60vh;
+  overflow-y: auto;
   border-radius: 8px;
 }
 
@@ -47,7 +48,7 @@
 }
 
 .modal-close {
-  background: #aa0000;
+  background: var(--close);
   color: var(--c0);
   padding: 8px 16px;
   border-radius: 8px;
@@ -55,7 +56,7 @@
 }
 
 .modal-close:hover {
-  background: #cc0000;
+  background: var(--close-hover);
 }
 
 .modal-content form {
@@ -70,21 +71,25 @@
   padding: 8px 12px;
 }
 
-.modal-content form.default {
+#default {
   display: grid;
   place-items: center;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
 }
 
-.modal-content form.add-item {
+#add-item {
   display: grid;
   grid-template-columns: 90px 1fr;
   gap: 16px;
 }
 
-.modal-content form.list-item {
-  /* border: 1px solid var(--c5); */
+#add-item .btn {
+  grid-column: 1/-1;
+  width: 50%;
+}
+
+#list-item {
   text-align: center;
   list-style: none;
   display: grid;
@@ -92,17 +97,11 @@
   grid-template-columns: repeat(4, 1fr);
 }
 
-.modal-content form.list-item a {
+#list-item a {
   display: block;
-  /* background: #000077; */
   color: #ffffff;
   border-radius: 4px;
   padding: 4px 8px;
-}
-
-form.add-item .btn {
-  grid-column: 1/-1;
-  width: 50%;
 }
 
 .col-2 {

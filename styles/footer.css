@@ -23,4 +23,10 @@ footer p {
 footer img {
   display: block;
   width: 48px;
+  transition: all 200ms ease-in-out;
+}
+
+footer img:hover {
+  transform: scale(1.1);
+  color: var(--c2);
 }
