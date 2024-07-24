@@ -1,35 +1,35 @@
 class Product {
   constructor(id, name, category, stock = []) {
-    this.id = id
-    this.name = name
-    this.category = category
-    this.stock = stock
+    this.id = id;
+    this.name = name;
+    this.category = category;
+    this.stock = stock;
   }
 }
 
-const table = document.querySelector("table tbody")
+const table = document.querySelector("table tbody");
 
-const modal = document.querySelector(".modal-overlay")
-const modalTitle = document.getElementById("modal-title")
+const modal = document.querySelector(".modal-overlay");
+const modalTitle = document.getElementById("modal-title");
 
-const form = document.querySelector("form")
+const form = document.querySelector("form");
 
 /* Storage
  * - salvar os dados no armazenamento interno do navegador
  */
 const Storage = {
   get() {
-    return JSON.parse(localStorage.getItem("tb_products")) ?? []
+    return JSON.parse(localStorage.getItem("tb_products")) ?? [];
   },
 
   set(tb_products) {
-    localStorage.setItem("tb_products", JSON.stringify(tb_products))
+    localStorage.setItem("tb_products", JSON.stringify(tb_products));
   },
 
   clear() {
-    localStorage.removeItem("tb_products")
+    localStorage.removeItem("tb_products");
   },
-}
+};
 
 /* Products
  * - receber os dados que serão adicionados na tabela
@@ -38,119 +38,119 @@ const Products = {
   all: Storage.get(),
 
   async parseData() {
-    const response = await fetch("./db.json")
-    const json = response.json()
-    return json
+    const response = await fetch("./db.json");
+    const json = response.json();
+    return json;
   },
 
   initialize() {
     this.parseData().then((data) => {
-      data.sort((a, b) => (a.category < b.category ? -1 : true))
+      data.sort((a, b) => (a.category < b.category ? -1 : true));
       data.forEach(({ category, products }) => {
-        products.sort((a, b) => (a.name < b.name ? -1 : true))
+        products.sort((a, b) => (a.name < b.name ? -1 : true));
         products.forEach(({ id, name, stock }) => {
-          this.all.push(new Product(id, name, category, stock))
-        })
-      })
-      Storage.set(this.all)
-      DOM.updateList()
-    })
+          this.all.push(new Product(id, name, category, stock));
+        });
+      });
+      Storage.set(this.all);
+      DOM.updateList();
+    });
   },
 
   reset() {
-    Storage.clear()
-    this.all = []
-    DOM.updateList()
+    Storage.clear();
+    this.all = [];
+    DOM.updateList();
   },
 
   restart() {
-    this.reset()
-    this.initialize()
+    this.reset();
+    this.initialize();
   },
-}
+};
 
 const Stock = {
   getProductStock(index) {
-    return Products.all[index].stock
+    return Products.all[index].stock;
   },
   getTotalStock(index) {
     const total = this.getProductStock(index).reduce(
       (acc, next) => acc + next,
       0
-    )
-    return total !== 0 ? total.toFixed(3) : total
+    );
+    return total !== 0 ? total.toFixed(3) : total;
   },
   getItemDetails(index) {
-    const { id, name } = Products.all[index]
-    return { id, name }
+    const { id, name } = Products.all[index];
+    return { id, name };
   },
 
   newProduct() {
-    const id = Number(document.getElementById("id").value)
-    const name = document.getElementById("name").value.toLowerCase()
-    const category = document.getElementById("category").value
+    const id = Number(document.getElementById("id").value);
+    const name = document.getElementById("name").value.toLowerCase();
+    const category = document.getElementById("category").value;
 
-    const products = Products.all
-    const idExists = products.find((product) => product.id === id)
-    const nameExists = products.find((product) => product.name === name)
+    const products = Products.all;
+    const idExists = products.find((product) => product.id === id);
+    const nameExists = products.find((product) => product.name === name);
     if (idExists || nameExists) {
-      alert("Este produto já foi cadastrado!")
-      return
+      alert("Este produto já foi cadastrado!");
+      return;
     } else if (!id || !name || !category) {
-      alert("Preencha todos os campos corretamente!")
-      return
+      alert("Preencha todos os campos corretamente!");
+      return;
     } else {
-      products.push(new Product(id, name, category))
-      products.sort((a, b) => (a.name < b.name ? -1 : true))
-      products.sort((a, b) => (a.category < b.category ? -1 : true))
+      products.push(new Product(id, name, category));
+      products.sort((a, b) => (a.name < b.name ? -1 : true));
+      products.sort((a, b) => (a.category < b.category ? -1 : true));
     }
-    Storage.set(products)
-    DOM.updateList()
-    Modal.close()
+    Storage.set(products);
+    DOM.updateList();
+    Modal.close();
   },
   insertItem(index, closeWindow) {
-    const input = Number(document.getElementById(index).value.replace(",", "."))
+    const input = Number(document.getElementById(index).value.replace(",", "."));
     if (input && !isNaN(input)) {
-      this.getProductStock(index).push(input)
+      this.getProductStock(index).push(input);
       if (!closeWindow) {
-        DOM.showInsertWindow(index)
+        DOM.showInsertWindow(index);
       } else {
-        Modal.close()
+        Modal.close();
       }
     } else {
-      alert("Digite um valor válido!")
+      alert("Digite um valor válido!");
     }
-    Storage.set(Products.all)
-    DOM.updateList()
+    Storage.set(Products.all);
+    DOM.updateList();
   },
   removeItem(index, i) {
-    const product = Products.all[index].stock
-    product.splice(i, 1)
-    Storage.set(Products.all)
-    DOM.updateList()
-    DOM.showRegisteredItens(index)
+    const product = Products.all[index].stock;
+    product.splice(i, 1);
+    Storage.set(Products.all);
+    DOM.updateList();
+    DOM.showRegisteredItens(index);
   },
-}
+};
 
 const Modal = {
   open(template) {
-    const { id, title, func } = template
+    const { id, title, func } = template;
 
-    modal.classList.add("active")
+    modal.classList.add("active");
 
-    modalTitle.textContent = title
-    form.setAttribute("id", id)
+    modalTitle.textContent = title;
+    form.setAttribute("id", id);
 
-    func()
+    func();
   },
   close() {
-    modal.classList.remove("active")
+    modal.classList.remove("active");
 
-    modalTitle.textContent = ""
-    form.removeAttribute("id")
-    form.innerHTML = ""
+    modalTitle.textContent = "";
+    form.removeAttribute("id");
+    form.innerHTML = "";
   },
-}
+};
 /* DOM
  * - manipula os elementos visuais da aplicação
  */
@@ -160,19 +160,19 @@ const DOM = {
       id: "list-item",
       title: "Listando itens",
       func: () => {
-        const stock = Stock.getProductStock(index)
+        const stock = Stock.getProductStock(index);
         if (stock.length) {
           const items = stock.map((product, i) => {
-            const btnColor = product > 0 ? "plus" : "minus"
-            return `<a href="javascript:void(0);" class="${btnColor}" onclick="Stock.removeItem(${index}, ${i})">${product}</a>`
-          })
-          form.innerHTML = items.join("")
+            const btnColor = product > 0 ? "plus" : "minus";
+            return `<a href="javascript:void(0);" class="${btnColor}" onclick="Stock.removeItem(${index}, ${i})">${product}</a>`;
+          });
+          form.innerHTML = items.join("");
         } else {
           form.innerHTML =
-            '<span class="col-2">Não há nenhum item cadastrado para este produto.</span>'
+            '<span class="col-2">Não há nenhum item cadastrado para este produto.</span>';
         }
       },
-    })
+    });
   },
   showCreateWindow() {
     Modal.open({
@@ -188,12 +188,12 @@ const DOM = {
             <option value="suinos">Suinos</option>
             <option value="embutidos">Outros</option>
           </select>
-          <button class="btn btn-4" onclick="Stock.newProduct()">Cadastrar Produto</button>`
+          <button class="btn btn-4" onclick="Stock.newProduct()">Cadastrar Produto</button>`;
       },
-    })
+    });
   },
   showInsertWindow(index) {
-    const { id, name } = Stock.getItemDetails(index)
+    const { id, name } = Stock.getItemDetails(index);
     Modal.open({
       id: "default",
       title: `${id} → ${name}`,
@@ -201,52 +201,37 @@ const DOM = {
         form.innerHTML = `
           <input class="only-numbers col-2" id="${index}" type="text" inputmode="numeric" autocomplete="off">
           <button class="btn btn-1" onclick="Stock.insertItem(${index}, true)">Adicionar um item</button>
-          <button class="btn btn-2" onclick="Stock.insertItem(${index}, false)">Adicionar múltiplos</button>`
-        document.getElementById(index).focus()
+          <button class="btn btn-2" onclick="Stock.insertItem(${index}, false)">Adicionar múltiplos</button>`;
+        document.getElementById(index).focus();
       },
-    })
+    });
   },
   clearList() {
     while (table.firstChild) {
-      table.removeChild(table.firstChild)
+      table.removeChild(table.firstChild);
     }
   },
   updateList() {
-    this.clearList()
+    this.clearList();
 
-    const products = Products.all.reduce((acc, item) => {
-      const { category } = item
-      if (!acc[category]) {
-        acc[category] = []
-      }
+    const products = Products.all;
+    for (index in products) {
+      const { id, name } = products[index];
 
-      acc[category].push(item)
-      return acc
-    }, {})
+      const tr = document.createElement("tr");
+      tr.id = `item-${index}`;
+      tr.innerHTML = `
+        <td align="center">${id}</td>
+        <td><a href="javascript:void(0);" class="link" onclick="DOM.showRegisteredItens(${index})">${name}</a></td>
+        <td>${Stock.getTotalStock(index)}</td>
+        <td class="no-print">
+          <a href="javascript:void(0);" class="btn btn-table btn-1" onclick="DOM.showInsertWindow(${index})">+</a>
+        </td>`;
 
-    for (const category in products) {
-      const header = document.createElement("tr")
-      header.innerHTML = `<th class='header' colspan='4'>${category}</th>`
-      table.append(header)
-
-      products[category].forEach((product, index) => {
-        const { id, name } = product
-
-        const tr = document.createElement("tr")
-        tr.setAttribute("id", `item-${index}`)
-        tr.innerHTML = `
-            <td align="center">${id}</td>
-            <td><a href="javascript:void(0);" class="link" onclick="DOM.showRegisteredItens(${index})">${name}</a></td>
-            <td>${Stock.getTotalStock(index)}</td>
-            <td class="no-print">
-              <a href="javascript:void(0);" class="btn btn-table btn-1" onclick="DOM.showInsertWindow(${index})">+</a>
-            </td>`
-
-        table.append(tr)
-      })
+      table.appendChild(tr);
     }
   },
-}
+};
 
 const Listeners = {
   modalCloseBtn: document.getElementById("modal-close-btn"),
@@ -254,29 +239,29 @@ const Listeners = {
 
   init() {
     menu.addEventListener("click", (e) => {
-      e.preventDefault()
-      const option = e.target.hash
+      e.preventDefault();
+      const option = e.target.hash;
       switch (option) {
         case "#update":
           const message =
-            "Esta ação apagará todos os dados armazenados. Deseja continuar?"
+            "Esta ação apagará todos os dados armazenados. Deseja continuar?";
           if (confirm(message)) {
-            Products.restart()
+            Products.restart();
           }
-          break
+          break;
         case "#save":
-          print()
-          break
+          print();
+          break;
         default:
-          alert("Função desativada no momento.")
-          break
+          alert("Função desativada no momento.");
+          break;
       }
-    })
-    form.addEventListener("submit", (e) => e.preventDefault())
-    this.modalCloseBtn.addEventListener("click", Modal.close)
-    this.addItemBtn.addEventListener("click", DOM.showCreateWindow)
+    });
+    form.addEventListener("submit", (e) => e.preventDefault());
+    this.modalCloseBtn.addEventListener("click", Modal.close);
+    this.addItemBtn.addEventListener("click", DOM.showCreateWindow);
   },
-}
+};
 
 /* App
  * - núcleo central, contendo as principais funções, essenciais
@@ -284,9 +269,9 @@ const Listeners = {
  */
 const App = {
   init() {
-    Listeners.init()
-    DOM.updateList()
+    Listeners.init();
+    DOM.updateList();
   },
-}
+};
 
-App.init()
+App.init();
