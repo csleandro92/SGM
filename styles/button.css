@@ -1,4 +1,5 @@
 .btn {
+  display: block;
   font-family: "Poppins", sans-serif;
   border-radius: 4px;
   font-size: 14px;
