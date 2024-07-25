@@ -260,6 +260,9 @@ const Listeners = {
     form.addEventListener("submit", (e) => e.preventDefault());
     this.modalCloseBtn.addEventListener("click", Modal.close);
     this.addItemBtn.addEventListener("click", DOM.showCreateWindow);
+    title.addEventListener("click", () =>
+      document.documentElement.classList.toggle("light")
+    );
   },
 };
 

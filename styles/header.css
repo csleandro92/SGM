@@ -15,6 +15,7 @@ h1#title {
   letter-spacing: .2rem;
   line-height: 1;
   color: var(--blue);
+  cursor: default;
 }
 
 nav > ul#menu {

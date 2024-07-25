@@ -1,12 +1,12 @@
-@import url("./header.css");
-@import url("./button.css");
-@import url("./table.css");
-@import url("./footer.css");
-@import url("./modal.css");
+@import url("./styles/header.css");
+@import url("./styles/button.css");
+@import url("./styles/main.css");
+@import url("./styles/footer.css");
+@import url("./styles/modal.css");
 
 :root {
   --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  
+
   --c0: #fafafa;
   --c1: #f0f0f0;
   --c2: #c1c5c7;
@@ -28,6 +28,16 @@
   --purple: #9c88ff;
 }
 
+.light {
+  --c0: #111111;
+  --c1: #1f1d1d;
+  --c2: #454545;
+  --c3: #a0a2a3;
+  --c4: #c1c5c7;
+  --c5: #f0f0f0;
+  --c6: #fafafa;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -45,7 +55,8 @@ a {
 
 body {
   width: 100vw;
-  margin: auto;
+  background: var(--c0);
+  color: var(--c6);
 }
 
 body,
@@ -57,8 +68,11 @@ select {
 .container {
   max-width: 1200px;
   margin-inline: auto;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-inline: 24px;
+}
+
+.container + .container {
+  margin-top: 26px;
 }
 
 .link {

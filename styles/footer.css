@@ -20,13 +20,13 @@ footer p {
   text-align: center;
 }
 
-footer img {
+footer svg {
   display: block;
   width: 48px;
   transition: all 200ms ease-in-out;
 }
 
-footer img:hover {
+footer svg:hover {
   transform: scale(1.1);
   color: var(--c2);
 }
