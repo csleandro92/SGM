@@ -1,7 +1,7 @@
 footer {
   padding: 20px 0;
   position: fixed;
-  width: 100vw;
+  width: 100%;
   left: 0;
   bottom: 0;
 
@@ -33,13 +33,19 @@ footer .container {
   visibility: hidden;
 }
 
+.button-wrapper,
+.button-wrapper svg,
+.button-wrapper .label {
+  cursor: pointer;
+}
+
 .button-wrapper {
+  width: 100%;
   border: 2px solid var(--c4);
   border-radius: 4px;
   padding: 6px 12px;
   display: flex;
   align-items: center;
-  cursor: pointer;
 }
 
 .button-wrapper svg {
@@ -55,8 +61,8 @@ footer .container {
   background: var(--c2);
 }
 
-.button-wrapper:hover svg  {
-  transform: scale(1.1);
+.button-wrapper:hover svg {
+  transform: scale(1.16);
   color: var(--c2);
 }
 
@@ -65,24 +71,35 @@ footer p {
   text-align: center;
 }
 
-#add-item-btn svg {
-  display: block;
-  width: 48px;
+#add-item-btn {
+  width: 50px;
+  height: 50px;
   transition: all 200ms ease-in-out;
 }
 
-#add-item-btn svg:hover {
+#add-item-btn:hover {
   transform: scale(1.1);
   color: var(--c2);
 }
 
+#add-item-btn svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 @media (max-width: 600px) {
+  footer {
+    padding: 10px 0;
+  }
   #input-wrapper {
+    flex-direction: column;
     gap: 4px;
   }
 
   .button-wrapper {
-    font-size: .875rem;
+    font-size: 0.875rem;
+    padding: 4px 8px;
   }
 
   .button-wrapper svg {
@@ -93,9 +110,9 @@ footer p {
   .button-wrapper .label {
     margin-left: 24px;
   }
-  footer p {
+  /* footer p {
     display: none;
-  }
+  } */
 
   #add-item-btn svg {
     width: 40px;

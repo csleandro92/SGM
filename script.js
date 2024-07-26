@@ -79,12 +79,10 @@ const Products = {
 
   initialize() {
     FileManager.parseData("./db.json").then((data) => {
+      data.sort((a, b) => (a.name < b.name ? -1 : true));
       data.sort((a, b) => (a.category < b.category ? -1 : true));
-      data.forEach(({ category, products }) => {
-        products.sort((a, b) => (a.name < b.name ? -1 : true));
-        products.forEach(({ id, name, stock }) => {
-          Products.all.push(new Product(id, name, category, stock));
-        });
+      data.forEach(({ id, name, category, stock }) => {
+        Products.all.push(new Product(id, name, category, stock));
       });
 
       App.reload();

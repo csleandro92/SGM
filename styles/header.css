@@ -34,6 +34,12 @@ nav > ul#menu {
   border-radius: 4px;
 }
 
+#menu a:hover {
+  background: var(--c2);
+  color: var(--c5);
+  outline: 1px solid var(--c5);
+}
+
 @media (max-width: 600px) {
   header {
     gap: 10px;

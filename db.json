@@ -1,285 +1,337 @@
 [
   {
-    "category": "suinos",
-    "products": [
-      {
-        "id": 945,
-        "name": "carre"
-      },
-      {
-        "id": 185,
-        "name": "costelinha de porco"
-      },
-      {
-        "id": 481,
-        "name": "file mignon"
-      },
-      {
-        "id": 382,
-        "name": "figado de porco"
-      },
-      {
-        "id": 653,
-        "name": "suan"
-      },
-      {
-        "id": 581,
-        "name": "costelinha c/ toucinho"
-      },
-      {
-        "id": 474,
-        "name": "barriguinha de porco (581)"
-      },
-      {
-        "id": 946,
-        "name": "dianteiro c/ osso"
-      },
-      {
-        "id": 946,
-        "name": "banda (581)"
-      },
-      {
-        "id": 851,
-        "name": "pé porco fresco (581)"
-      },
-      {
-        "id": 854,
-        "name": "lombo porco"
-      },
-      {
-        "id": 178,
-        "name": "pernil suino s/ osso"
-      },
-      {
-        "id": 855,
-        "name": "toucinho"
-      }
-    ]
+    "id": 945,
+    "name": "carre",
+    "category": "suinos"
   },
   {
-    "category": "bovinos",
-    "products": [
-      {
-        "id": 754,
-        "name": "acem"
-      },
-      {
-        "id": 418,
-        "name": "alcatra c/ maminha"
-      },
-      {
-        "id": 413,
-        "name": "alcatra cofril gorda"
-      },
-      {
-        "id": 461,
-        "name": "alcatra grill peça"
-      },
-      {
-        "id": 931,
-        "name": "capa file"
-      },
-      {
-        "id": 590,
-        "name": "chã dentro"
-      },
-      {
-        "id": 86,
-        "name": "chã fora"
-      },
-      {
-        "id": 489,
-        "name": "contra file bife"
-      },
-      {
-        "id": 1210,
-        "name": "contra file frisa grill"
-      },
-      {
-        "id": 435,
-        "name": "contra file grill frifort"
-      },
-      {
-        "id": 587,
-        "name": "bife chorizo bassi"
-      },
-      {
-        "id": 225,
-        "name": "contra file grill pv"
-      },
-      {
-        "id": 65,
-        "name": "contra file grill"
-      },
-      {
-        "id": 1236,
-        "name": "contra file marfrical"
-      },
-      {
-        "id": 288,
-        "name": "coração boi"
-      },
-      {
-        "id": 132,
-        "name": "costela gaúcha"
-      },
-      {
-        "id": 996,
-        "name": "costela ripa"
-      },
-      {
-        "id": 925,
-        "name": "cupim"
-      },
-      {
-        "id": 130,
-        "name": "dobradinha"
-      },
-      {
-        "id": 189,
-        "name": "figado boi"
-      },
-      {
-        "id": 845,
-        "name": "file mignon"
-      },
-      {
-        "id": 20,
-        "name": "fraldinha"
-      },
-      {
-        "id": 1333,
-        "name": "fraldinha pul tradicional"
-      },
-      {
-        "id": 1301,
-        "name": "fraldinha pul seleção"
-      },
-      {
-        "id": 758,
-        "name": "fraldinha grill"
-      },
-      {
-        "id": 1000,
-        "name": "fraldinha frisa"
-      },
-      {
-        "id": 2036,
-        "name": "fraldinha mafrical seleção"
-      },
-      {
-        "id": 177,
-        "name": "lagarto"
-      },
-      {
-        "id": 770,
-        "name": "lingua boi"
-      },
-      {
-        "id": 429,
-        "name": "mocotó bovino"
-      },
-      {
-        "id": 682,
-        "name": "musculo dianteiro"
-      },
-      {
-        "id": 683,
-        "name": "musculo traseiro"
-      },
-      {
-        "id": 480,
-        "name": "paleta"
-      },
-      {
-        "id": 87,
-        "name": "patinho"
-      },
-      {
-        "id": 997,
-        "name": "peito boi"
-      },
-      {
-        "id": 84,
-        "name": "picanha fatiada"
-      },
-      {
-        "id": 894,
-        "name": "picanha frisa grill"
-      },
-      {
-        "id": 865,
-        "name": "picanha marfrical seleção"
-      },
-      {
-        "id": 1334,
-        "name": "picanha pul tradicional"
-      },
-      {
-        "id": 2034,
-        "name": "picanha forte boi"
-      },
-      {
-        "id": 718,
-        "name": "picanha frisa comum"
-      },
-      {
-        "id": 898,
-        "name": "picanha pul seleção"
-      },
-      {
-        "id": 1671,
-        "name": "picanha corella"
-      },
-      {
-        "id": 1010,
-        "name": "picanha montana"
-      },
-      {
-        "id": 397,
-        "name": "rabada"
-      }
-    ]
+    "id": 185,
+    "name": "costelinha de porco",
+    "category": "suinos"
   },
   {
-    "category": "embutidos",
-    "products": [
-      {
-        "id": 126,
-        "name": "linguiça lucia frango"
-      },
-      {
-        "id": 260,
-        "name": "linguiça lucia frescal"
-      },
-      {
-        "id": 624,
-        "name": "linguiça lucia porco fina"
-      },
-      {
-        "id": 443,
-        "name": "linguiça lucia porco grossa"
-      },
-      {
-        "id": 465,
-        "name": "linguiça lorrayne"
-      },
-      {
-        "id": 2029,
-        "name": "linguiça nicole caseira grossa"
-      },
-      {
-        "id": 2028,
-        "name": "linguiça nicole caseira fina"
-      },
-      {
-        "id": 2145,
-        "name": "linguiça nicole frango fina"
-      },
-      {
-        "id": 2133,
-        "name": "linguiça nicole frescal fina"
-      }
-    ]
+    "id": 481,
+    "name": "file mignon",
+    "category": "suinos"
+  },
+  {
+    "id": 382,
+    "name": "figado de porco",
+    "category": "suinos"
+  },
+  {
+    "id": 653,
+    "name": "suan",
+    "category": "suinos"
+  },
+  {
+    "id": 581,
+    "name": "costelinha c/ toucinho",
+    "category": "suinos"
+  },
+  {
+    "id": 474,
+    "name": "barriguinha de porco (581)",
+    "category": "suinos"
+  },
+  {
+    "id": 946,
+    "name": "dianteiro c/ osso",
+    "category": "suinos"
+  },
+  {
+    "id": 946,
+    "name": "banda (581)",
+    "category": "suinos"
+  },
+  {
+    "id": 851,
+    "name": "pé porco fresco (581)",
+    "category": "suinos"
+  },
+  {
+    "id": 854,
+    "name": "lombo porco",
+    "category": "suinos"
+  },
+  {
+    "id": 178,
+    "name": "pernil suino s/ osso",
+    "category": "suinos"
+  },
+  {
+    "id": 855,
+    "name": "toucinho",
+    "category": "suinos"
+  },
+  {
+    "id": 754,
+    "name": "acem",
+    "category": "bovinos"
+  },
+  {
+    "id": 418,
+    "name": "alcatra c/ maminha",
+    "category": "bovinos"
+  },
+  {
+    "id": 413,
+    "name": "alcatra cofril gorda",
+    "category": "bovinos"
+  },
+  {
+    "id": 461,
+    "name": "alcatra grill peça",
+    "category": "bovinos"
+  },
+  {
+    "id": 931,
+    "name": "capa file",
+    "category": "bovinos"
+  },
+  {
+    "id": 590,
+    "name": "chã dentro",
+    "category": "bovinos"
+  },
+  {
+    "id": 86,
+    "name": "chã fora",
+    "category": "bovinos"
+  },
+  {
+    "id": 489,
+    "name": "contra file bife",
+    "category": "bovinos"
+  },
+  {
+    "id": 1210,
+    "name": "contra file frisa grill",
+    "category": "bovinos"
+  },
+  {
+    "id": 435,
+    "name": "contra file grill frifort",
+    "category": "bovinos"
+  },
+  {
+    "id": 587,
+    "name": "bife chorizo bassi",
+    "category": "bovinos"
+  },
+  {
+    "id": 225,
+    "name": "contra file grill pv",
+    "category": "bovinos"
+  },
+  {
+    "id": 65,
+    "name": "contra file grill",
+    "category": "bovinos"
+  },
+  {
+    "id": 1236,
+    "name": "contra file marfrical",
+    "category": "bovinos"
+  },
+  {
+    "id": 288,
+    "name": "coração boi",
+    "category": "bovinos"
+  },
+  {
+    "id": 132,
+    "name": "costela gaúcha",
+    "category": "bovinos"
+  },
+  {
+    "id": 996,
+    "name": "costela ripa",
+    "category": "bovinos"
+  },
+  {
+    "id": 925,
+    "name": "cupim",
+    "category": "bovinos"
+  },
+  {
+    "id": 130,
+    "name": "dobradinha",
+    "category": "bovinos"
+  },
+  {
+    "id": 189,
+    "name": "figado boi",
+    "category": "bovinos"
+  },
+  {
+    "id": 845,
+    "name": "file mignon",
+    "category": "bovinos"
+  },
+  {
+    "id": 20,
+    "name": "fraldinha",
+    "category": "bovinos"
+  },
+  {
+    "id": 1333,
+    "name": "fraldinha pul tradicional",
+    "category": "bovinos"
+  },
+  {
+    "id": 1301,
+    "name": "fraldinha pul seleção",
+    "category": "bovinos"
+  },
+  {
+    "id": 758,
+    "name": "fraldinha grill",
+    "category": "bovinos"
+  },
+  {
+    "id": 1000,
+    "name": "fraldinha frisa",
+    "category": "bovinos"
+  },
+  {
+    "id": 2036,
+    "name": "fraldinha mafrical seleção",
+    "category": "bovinos"
+  },
+  {
+    "id": 177,
+    "name": "lagarto",
+    "category": "bovinos"
+  },
+  {
+    "id": 770,
+    "name": "lingua boi",
+    "category": "bovinos"
+  },
+  {
+    "id": 429,
+    "name": "mocotó bovino",
+    "category": "bovinos"
+  },
+  {
+    "id": 682,
+    "name": "musculo dianteiro",
+    "category": "bovinos"
+  },
+  {
+    "id": 683,
+    "name": "musculo traseiro",
+    "category": "bovinos"
+  },
+  {
+    "id": 480,
+    "name": "paleta",
+    "category": "bovinos"
+  },
+  {
+    "id": 87,
+    "name": "patinho",
+    "category": "bovinos"
+  },
+  {
+    "id": 997,
+    "name": "peito boi",
+    "category": "bovinos"
+  },
+  {
+    "id": 84,
+    "name": "picanha fatiada",
+    "category": "bovinos"
+  },
+  {
+    "id": 894,
+    "name": "picanha frisa grill",
+    "category": "bovinos"
+  },
+  {
+    "id": 865,
+    "name": "picanha marfrical seleção",
+    "category": "bovinos"
+  },
+  {
+    "id": 1334,
+    "name": "picanha pul tradicional",
+    "category": "bovinos"
+  },
+  {
+    "id": 2034,
+    "name": "picanha forte boi",
+    "category": "bovinos"
+  },
+  {
+    "id": 718,
+    "name": "picanha frisa comum",
+    "category": "bovinos"
+  },
+  {
+    "id": 898,
+    "name": "picanha pul seleção",
+    "category": "bovinos"
+  },
+  {
+    "id": 1671,
+    "name": "picanha corella",
+    "category": "bovinos"
+  },
+  {
+    "id": 1010,
+    "name": "picanha montana",
+    "category": "bovinos"
+  },
+  {
+    "id": 397,
+    "name": "rabada",
+    "category": "bovinos"
+  },
+  {
+    "id": 126,
+    "name": "linguiça lucia frango",
+    "category": "embutidos"
+  },
+  {
+    "id": 260,
+    "name": "linguiça lucia frescal",
+    "category": "embutidos"
+  },
+  {
+    "id": 624,
+    "name": "linguiça lucia porco fina",
+    "category": "embutidos"
+  },
+  {
+    "id": 443,
+    "name": "linguiça lucia porco grossa",
+    "category": "embutidos"
+  },
+  {
+    "id": 465,
+    "name": "linguiça lorrayne",
+    "category": "embutidos"
+  },
+  {
+    "id": 2029,
+    "name": "linguiça nicole caseira grossa",
+    "category": "embutidos"
+  },
+  {
+    "id": 2028,
+    "name": "linguiça nicole caseira fina",
+    "category": "embutidos"
+  },
+  {
+    "id": 2145,
+    "name": "linguiça nicole frango fina",
+    "category": "embutidos"
+  },
+  {
+    "id": 2133,
+    "name": "linguiça nicole frescal fina",
+    "category": "embutidos"
   }
 ]

@@ -20,11 +20,12 @@
 
   --close: #e74c3c;
   --close-hover: #cc0000;
+  --close-color: #eeeeee;
 
   --red: #770000;
-  --green: #007700;
-  --blue: #2e75cc;
-  --dark-blue: #000077;
+  --green: #179917;
+  --blue: #3f82d4;
+  --dark-blue: #2121b1;
   --purple: #9c88ff;
 }
 
@@ -54,7 +55,6 @@ a {
 }
 
 body {
-  width: 100vw;
   background: var(--c0);
   color: var(--c6);
 }

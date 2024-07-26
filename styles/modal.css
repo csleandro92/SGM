@@ -24,6 +24,7 @@
 }
 
 .modal {
+  position: relative;
   background: var(--c0);
   color: var(--c5);
 
@@ -38,6 +39,8 @@
 .modal-header {
   display: flex;
   justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--c6);
 }
 
 #modal-title {
@@ -48,10 +51,13 @@
 }
 
 .modal-close {
+  position: absolute;
+  top: 0;
+  right: 0;
   background: var(--close);
-  color: var(--c0);
-  padding: 8px 16px;
-  border-radius: 8px;
+  color: var(--close-color);
+  padding: 4px 12px;
+  border-radius: 0 8px 0 8px;
   transition: all ease-in-out 200ms;
 }
 

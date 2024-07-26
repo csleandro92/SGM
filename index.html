@@ -15,9 +15,6 @@
 <body>
   <header class="container no-print">
     <h1 id="title">SGM</h1>
-    <!-- <div id="logo">
-      <img src="./assets/logo.jpg" alt="">
-     </div> -->
     <nav>
       <ul id="menu">
         <li><a href="#update">Resetar</a></li>
@@ -42,30 +39,38 @@
 
   <footer class="no-print">
     <div class="container">
-      <ul id="input-wrapper">
-        <li class="button-wrapper">
-          <input type="file" name="upload" id="upload" accept=".json, application/json">
-          <label for="upload">
-            <span>
-              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="var(--c4)"><path d="M440-200h80v-167l64 64 56-57-160-160-160 160 57 56 63-63v167ZM240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h320l240 240v480q0 33-23.5 56.5T720-80H240Zm280-520v-200H240v640h480v-440H520ZM240-800v200-200 640-640Z"/></svg>
-            </span>
-            <span class="label">Importar</span>
-          </label>
-        </li>
-        <li class="button-wrapper"><a id="exportBtn" href="javascript:void(0);" onclick="FileManager.download(event)">
-          <span>
-            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="var(--c4)"><path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/></svg>
-          </span>
-          <span class="label">Exportar</span>
-        </a></li>
-      </ul>
+      <div>
+        <ul id="input-wrapper">
+          <li class="button-wrapper">
+            <input type="file" name="upload" id="upload" accept=".json, application/json">
+            <label for="upload">
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="var(--c4)">
+                  <path d="M440-200h80v-167l64 64 56-57-160-160-160 160 57 56 63-63v167ZM240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h320l240 240v480q0 33-23.5 56.5T720-80H240Zm280-520v-200H240v640h480v-440H520ZM240-800v200-200 640-640Z"/>
+                </svg>
+              </span>
+              <span class="label">Importar</span>
+            </label>
+          </li>
+          <li class="button-wrapper">
+            <a id="exportBtn" href="javascript:void(0);" onclick="FileManager.download(event)">
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="var(--c4)">
+                  <path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/>
+                </svg>
+              </span>
+              <span class="label">Exportar</span>
+            </a>
+          </li>
+        </ul>
+      </div>
       <p>
         Feito com ❤ por
         <br>
         <a href="https://instagram.com/csleandro92" target="_blank">LSCONNECT</a> &copy; 2024
       </p>
       <a href="javascript:void(0);" id="add-item-btn" class="link">
-        <svg width="48" height="48" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M95 50C95 74.8528 74.8528 95 50 95C25.1472 95 5 74.8528 5 50C5 25.1472 25.1472 5 50 5C74.8528 5 95 25.1472 95 50Z" stroke="var(--c4)" stroke-width="8" />
           <path d="M46 24C46 21.7909 47.7909 20 50 20C52.2091 20 54 21.7909 54 24V76C54 78.2091 52.2091 80 50 80C47.7909 80 46 78.2091 46 76V24Z" fill="var(--c6)" />
           <path d="M76 46C78.2091 46 80 47.7909 80 50C80 52.2091 78.2091 54 76 54L24 54C21.7909 54 20 52.2091 20 50C20 47.7909 21.7909 46 24 46L76 46Z" fill="var(--c6)" />
@@ -87,6 +92,7 @@
       </div>
     </div>
   </div>
+  
   <script src="./script.js"></script>
 </body>
 
