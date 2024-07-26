@@ -19,15 +19,55 @@ const form = document.querySelector("form");
  */
 const Storage = {
   get() {
-    return JSON.parse(localStorage.getItem("tb_products")) ?? [];
+    return JSON.parse(localStorage.getItem("tb_products")) || [];
   },
-
   set(tb_products) {
     localStorage.setItem("tb_products", JSON.stringify(tb_products));
   },
+};
 
-  clear() {
-    localStorage.removeItem("tb_products");
+const FileManager = {
+  async parseData(filename) {
+    const response = await fetch(filename);
+    const json = response.json();
+    return json;
+  },
+
+  upload(event) {
+    const file = event.target.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        try {
+          const data = JSON.parse(reader.result);
+          Products.all.splice(0, Products.all.length, ...data);
+          App.reload();
+        } catch (e) {
+          console.log(e);
+        }
+      };
+      reader.readAsText(file);
+    }
+  },
+  download(e) {
+    e.preventDefault();
+
+    const data = JSON.stringify(Products.all, null, 2);
+    const blob = new Blob([data], { type: "application/json" });
+    const url = window.URL.createObjectURL(blob);
+
+    const date = new Date();
+    const today = `${date.getDate()}-${
+      date.getMonth() < 10 ? "0" + date.getMonth() : date.getMonth()
+    }-${date.getFullYear()}`;
+    const link = document.createElement("a");
+    link.download = `sgm-${today}.json`;
+    link.href = url;
+    link.click();
+    link.remove();
+
+    window.URL.revokeObjectURL(url);
   },
 };
 
@@ -37,35 +77,28 @@ const Storage = {
 const Products = {
   all: Storage.get(),
 
-  async parseData() {
-    const response = await fetch("./db.json");
-    const json = response.json();
-    return json;
-  },
-
   initialize() {
-    this.parseData().then((data) => {
+    FileManager.parseData("./db.json").then((data) => {
       data.sort((a, b) => (a.category < b.category ? -1 : true));
       data.forEach(({ category, products }) => {
         products.sort((a, b) => (a.name < b.name ? -1 : true));
         products.forEach(({ id, name, stock }) => {
-          this.all.push(new Product(id, name, category, stock));
+          Products.all.push(new Product(id, name, category, stock));
         });
       });
-      Storage.set(this.all);
-      DOM.updateList();
+
+      App.reload();
     });
   },
 
   reset() {
-    Storage.clear();
-    this.all = [];
-    DOM.updateList();
+    Products.all.splice(0, Products.all.length);
+    // App.reload();
   },
 
   restart() {
-    this.reset();
-    this.initialize();
+    Products.reset();
+    Products.initialize();
   },
 };
 
@@ -104,12 +137,13 @@ const Stock = {
       products.sort((a, b) => (a.name < b.name ? -1 : true));
       products.sort((a, b) => (a.category < b.category ? -1 : true));
     }
-    Storage.set(products);
-    DOM.updateList();
+    App.reload();
     Modal.close();
   },
   insertItem(index, closeWindow) {
-    const input = Number(document.getElementById(index).value.replace(",", "."));
+    const input = Number(
+      document.getElementById(index).value.replace(",", ".")
+    );
     if (input && !isNaN(input)) {
       this.getProductStock(index).push(input);
       if (!closeWindow) {
@@ -120,14 +154,12 @@ const Stock = {
     } else {
       alert("Digite um valor válido!");
     }
-    Storage.set(Products.all);
-    DOM.updateList();
+    App.reload();
   },
   removeItem(index, i) {
     const product = Products.all[index].stock;
     product.splice(i, 1);
-    Storage.set(Products.all);
-    DOM.updateList();
+    App.reload();
     DOM.showRegisteredItens(index);
   },
 };
@@ -212,7 +244,44 @@ const DOM = {
     }
   },
   updateList() {
-    this.clearList();
+    // const products = Products.all.reduce((acc, item) => {
+    //   const { category } = item;
+    //   if (!acc[category]) {
+    //     acc[category] = [];
+    //   }
+
+    //   acc[category].push(item);
+    //   return acc;
+    // }, {});
+
+    // for (const category in products) {
+    //   const header = document.createElement("tr");
+    //   header.innerHTML = `<th class='header' colspan='4'>${category}</th>`;
+    //   table.append(header);
+
+    //   products[category].forEach((product, index) => {
+    //     const { id, name } = product;
+
+    //     //
+    //     const getProductStock = Products.all.find(
+    //       (item) => item.id === id
+    //     ).stock;
+    //     let total = getProductStock.reduce((acc, next) => acc + next, 0);
+    //     //
+
+    //     const tr = document.createElement("tr");
+    //     tr.setAttribute("id", `item-${index}`);
+    //     tr.innerHTML = `
+    //         <td align="center">${id}</td>
+    //         <td><a href="javascript:void(0);" class="link" onclick="DOM.showRegisteredItens(${index})">${name}</a></td>
+    //         <td>${total !== 0 ? total.toFixed(3) : total}</td>
+    //         <td class="no-print">
+    //           <a href="javascript:void(0);" class="btn btn-table btn-1" onclick="DOM.showInsertWindow(${index})">+</a>
+    //         </td>`;
+
+    //     table.append(tr);
+    //   });
+    // }
 
     const products = Products.all;
     for (index in products) {
@@ -234,35 +303,43 @@ const DOM = {
 };
 
 const Listeners = {
-  modalCloseBtn: document.getElementById("modal-close-btn"),
-  addItemBtn: document.getElementById("add-item-btn"),
+  toggleDarkMode: () => document.documentElement.classList.toggle("light"),
+  handleMenu(event) {
+    event.preventDefault();
+    const option = event.target.hash;
+    switch (option) {
+      case "#update":
+        const message =
+          "Esta ação apagará todos os dados armazenados. Deseja continuar?";
+        if (confirm(message)) {
+          Products.restart();
+        }
+        break;
+      case "#save":
+        print();
+        break;
+      default:
+        alert("Função desativada no momento.");
+        break;
+    }
+  },
 
   init() {
-    menu.addEventListener("click", (e) => {
-      e.preventDefault();
-      const option = e.target.hash;
-      switch (option) {
-        case "#update":
-          const message =
-            "Esta ação apagará todos os dados armazenados. Deseja continuar?";
-          if (confirm(message)) {
-            Products.restart();
-          }
-          break;
-        case "#save":
-          print();
-          break;
-        default:
-          alert("Função desativada no momento.");
-          break;
-      }
-    });
-    form.addEventListener("submit", (e) => e.preventDefault());
-    this.modalCloseBtn.addEventListener("click", Modal.close);
-    this.addItemBtn.addEventListener("click", DOM.showCreateWindow);
-    title.addEventListener("click", () =>
-      document.documentElement.classList.toggle("light")
-    );
+    title.addEventListener("click", this.toggleDarkMode);
+
+    menu.addEventListener("click", this.handleMenu);
+    document
+      .getElementById("upload")
+      .addEventListener("change", FileManager.upload);
+    // exportBtn.addEventListener("click", FileManager.export);
+
+    form.addEventListener("submit", (event) => event.preventDefault());
+
+    const modalCloseBtn = document.getElementById("modal-close-btn");
+    modalCloseBtn.addEventListener("click", Modal.close);
+
+    const addItemBtn = document.getElementById("add-item-btn");
+    addItemBtn.addEventListener("click", DOM.showCreateWindow);
   },
 };
 
@@ -274,6 +351,13 @@ const App = {
   init() {
     Listeners.init();
     DOM.updateList();
+    Storage.set(Products.all);
+  },
+
+  reload() {
+    DOM.clearList();
+
+    App.init();
   },
 };
 

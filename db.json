@@ -4,7 +4,7 @@
     "products": [
       {
         "id": 945,
-        "name": "carré"
+        "name": "carre"
       },
       {
         "id": 185,
@@ -16,7 +16,7 @@
       },
       {
         "id": 382,
-        "name": "figado suino"
+        "name": "figado de porco"
       },
       {
         "id": 653,
@@ -32,11 +32,15 @@
       },
       {
         "id": 946,
+        "name": "dianteiro c/ osso"
+      },
+      {
+        "id": 946,
         "name": "banda (581)"
       },
       {
         "id": 851,
-        "name": "pe porco fresco (581)"
+        "name": "pé porco fresco (581)"
       },
       {
         "id": 854,
@@ -44,7 +48,7 @@
       },
       {
         "id": 178,
-        "name": "pernil suíno s/ osso"
+        "name": "pernil suino s/ osso"
       },
       {
         "id": 855,
@@ -65,16 +69,11 @@
       },
       {
         "id": 413,
-        "name": "alcatra pedaço"
+        "name": "alcatra cofril gorda"
       },
       {
         "id": 461,
         "name": "alcatra grill peça"
-      },
-      {
-        "id": 2033,
-        "name": "alcatra grill montana",
-        "stock": [30.63]
       },
       {
         "id": 931,
@@ -90,7 +89,7 @@
       },
       {
         "id": 489,
-        "name": "contra filé bife"
+        "name": "contra file bife"
       },
       {
         "id": 1210,
@@ -98,11 +97,15 @@
       },
       {
         "id": 435,
-        "name": "contra filé grill frifort"
+        "name": "contra file grill frifort"
+      },
+      {
+        "id": 587,
+        "name": "bife chorizo bassi"
       },
       {
         "id": 225,
-        "name": "contra filé grill pv"
+        "name": "contra file grill pv"
       },
       {
         "id": 65,
@@ -110,7 +113,7 @@
       },
       {
         "id": 1236,
-        "name": "contra filé marfrical"
+        "name": "contra file marfrical"
       },
       {
         "id": 288,
@@ -142,7 +145,15 @@
       },
       {
         "id": 20,
-        "name": "fraldinha peça"
+        "name": "fraldinha"
+      },
+      {
+        "id": 1333,
+        "name": "fraldinha pul tradicional"
+      },
+      {
+        "id": 1301,
+        "name": "fraldinha pul seleção"
       },
       {
         "id": 758,
@@ -151,6 +162,10 @@
       {
         "id": 1000,
         "name": "fraldinha frisa"
+      },
+      {
+        "id": 2036,
+        "name": "fraldinha mafrical seleção"
       },
       {
         "id": 177,
@@ -185,20 +200,40 @@
         "name": "peito boi"
       },
       {
-        "id": 1671,
-        "name": "picanha corella seleta"
+        "id": 84,
+        "name": "picanha fatiada"
+      },
+      {
+        "id": 894,
+        "name": "picanha frisa grill"
       },
       {
         "id": 865,
-        "name": "picanha marfrical"
+        "name": "picanha marfrical seleção"
       },
       {
         "id": 1334,
         "name": "picanha pul tradicional"
       },
       {
+        "id": 2034,
+        "name": "picanha forte boi"
+      },
+      {
+        "id": 718,
+        "name": "picanha frisa comum"
+      },
+      {
         "id": 898,
-        "name": "picanha pul selection"
+        "name": "picanha pul seleção"
+      },
+      {
+        "id": 1671,
+        "name": "picanha corella"
+      },
+      {
+        "id": 1010,
+        "name": "picanha montana"
       },
       {
         "id": 397,
@@ -230,12 +265,20 @@
         "name": "linguiça lorrayne"
       },
       {
-        "id": 264,
-        "name": "chouriço"
+        "id": 2029,
+        "name": "linguiça nicole caseira grossa"
       },
       {
-        "id": 765,
-        "name": "bucho de porco"
+        "id": 2028,
+        "name": "linguiça nicole caseira fina"
+      },
+      {
+        "id": 2145,
+        "name": "linguiça nicole frango fina"
+      },
+      {
+        "id": 2133,
+        "name": "linguiça nicole frescal fina"
       }
     ]
   }

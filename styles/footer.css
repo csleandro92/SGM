@@ -15,18 +15,89 @@ footer .container {
   align-items: center;
 }
 
+#input-wrapper {
+  position: relative;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+#input-wrapper input[type="file"] {
+  z-index: -1;
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  visibility: hidden;
+}
+
+.button-wrapper {
+  border: 2px solid var(--c4);
+  border-radius: 4px;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.button-wrapper svg {
+  position: absolute;
+  transition: all 200ms ease-in-out;
+}
+
+.button-wrapper .label {
+  margin-left: 32px;
+}
+
+.button-wrapper:hover {
+  background: var(--c2);
+}
+
+.button-wrapper:hover svg  {
+  transform: scale(1.1);
+  color: var(--c2);
+}
+
 footer p {
   font-size: 0.875rem;
   text-align: center;
 }
 
-footer svg {
+#add-item-btn svg {
   display: block;
   width: 48px;
   transition: all 200ms ease-in-out;
 }
 
-footer svg:hover {
+#add-item-btn svg:hover {
   transform: scale(1.1);
   color: var(--c2);
+}
+
+@media (max-width: 600px) {
+  #input-wrapper {
+    gap: 4px;
+  }
+
+  .button-wrapper {
+    font-size: .875rem;
+  }
+
+  .button-wrapper svg {
+    margin-top: -2px;
+    width: 20px;
+  }
+
+  .button-wrapper .label {
+    margin-left: 24px;
+  }
+  footer p {
+    display: none;
+  }
+
+  #add-item-btn svg {
+    width: 40px;
+  }
 }
