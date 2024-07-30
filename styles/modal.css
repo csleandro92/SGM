@@ -39,8 +39,8 @@
 .modal-header {
   display: flex;
   justify-content: space-between;
-  padding-bottom: 12px;
-  border-bottom: 2px solid var(--c6);
+  /* padding-bottom: 12px; */
+  /* border-bottom: 2px solid var(--c6); */
 }
 
 #modal-title {

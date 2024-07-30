@@ -35,17 +35,21 @@ const FileManager = {
 
   formatFileName() {
     const date = new Date();
-    const fullNumericDate = date
+    const inversedNumericDate = date
       .toISOString()
       .split("T")[0]
-      .split("-")
-      .join("");
-    const hours = `${date.getHours()}${
-      date.getMinutes() < 10 ? 0 + date.getMinutes() : date.getMinutes()
+      .replaceAll('-', '');
+    const hours = `${
+      date.getHours() < 10
+      ? '0' + date.getHours()
+      : date.getHours()
+    }${
+      date.getMinutes() < 10
+        ? '0' + date.getMinutes()
+        : date.getMinutes()
     }`;
-    const today = `${fullNumericDate}-${hours}`;
 
-    return today;
+    return `${inversedNumericDate}-${hours}`;
   },
 
   upload(event) {
@@ -72,7 +76,7 @@ const FileManager = {
 
     const data = JSON.stringify(Products.all, null, 2);
     const blob = new Blob([data], { type: "application/json" });
-    const url = window.URL.createObjectURL(blob);
+    const url = URL.createObjectURL(blob);
 
     const link = document.createElement("a");
     link.download = `sgm-${filename}.json`;
@@ -80,7 +84,7 @@ const FileManager = {
     link.click();
     link.remove();
 
-    window.URL.revokeObjectURL(url);
+    URL.revokeObjectURL(url);
   },
 };
 
@@ -168,8 +172,10 @@ const Stock = {
     App.reload();
   },
   removeItem(index, i) {
-    const product = Products.all[index].stock;
-    product.splice(i, 1);
+    if(confirm('Deseja remover o item selecionado?')) {
+      const product = Products.all[index].stock;
+      product.splice(i, 1);
+    }
     App.reload();
     DOM.showRegisteredItens(index);
   },
@@ -199,9 +205,10 @@ const Modal = {
  */
 const DOM = {
   showRegisteredItens(index) {
+    const { id, name } = Stock.getItemDetails(index);
     Modal.open({
       id: "list-item",
-      title: "Listando itens",
+      title: `${id} → ${name}`,
       func: () => {
         const stock = Stock.getProductStock(index);
         if (stock.length) {
@@ -306,7 +313,8 @@ const DOM = {
         <td>${Stock.getTotalStock(index)}</td>
         <td class="no-print">
           <a href="javascript:void(0);" class="btn btn-table btn-1" onclick="DOM.showInsertWindow(${index})">+</a>
-        </td>`;
+        </td>
+        `;
 
       table.appendChild(tr);
     }
