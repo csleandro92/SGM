@@ -33,6 +33,21 @@ const FileManager = {
     return json;
   },
 
+  formatFileName() {
+    const date = new Date();
+    const fullNumericDate = date
+      .toISOString()
+      .split("T")[0]
+      .split("-")
+      .join("");
+    const hours = `${date.getHours()}${
+      date.getMinutes() < 10 ? 0 + date.getMinutes() : date.getMinutes()
+    }`;
+    const today = `${fullNumericDate}-${hours}`;
+
+    return today;
+  },
+
   upload(event) {
     const file = event.target.files[0];
 
@@ -53,16 +68,14 @@ const FileManager = {
   download(e) {
     e.preventDefault();
 
+    const filename = this.formatFileName();
+
     const data = JSON.stringify(Products.all, null, 2);
     const blob = new Blob([data], { type: "application/json" });
     const url = window.URL.createObjectURL(blob);
 
-    const date = new Date();
-    const today = `${date.getDate()}-${
-      date.getMonth() < 10 ? "0" + date.getMonth() : date.getMonth()
-    }-${date.getFullYear()}`;
     const link = document.createElement("a");
-    link.download = `sgm-${today}.json`;
+    link.download = `sgm-${filename}.json`;
     link.href = url;
     link.click();
     link.remove();
