@@ -28,28 +28,17 @@ const Storage = {
 
 const FileManager = {
   async parseData(filename) {
-    const response = await fetch(filename);
-    const json = response.json();
-    return json;
+    const res = await fetch(filename);
+    return res.json();
   },
 
   formatFileName() {
     const date = new Date();
-    const inversedNumericDate = date
-      .toISOString()
-      .split("T")[0]
-      .replaceAll('-', '');
-    const hours = `${
-      date.getHours() < 10
-      ? '0' + date.getHours()
-      : date.getHours()
-    }${
-      date.getMinutes() < 10
-        ? '0' + date.getMinutes()
-        : date.getMinutes()
-    }`;
+    const invertedDate = date.toISOString().split("T")[0].replaceAll("-", "");
+    const hours = `${date.getHours().toString().padStart(2, "0")}`;
+    const minutes = `${date.getMinutes().toString().padStart(2, "0")}`;
 
-    return `${inversedNumericDate}-${hours}`;
+    return `${invertedDate}-${hours}${minutes}`;
   },
 
   upload(event) {
@@ -74,7 +63,7 @@ const FileManager = {
 
     const filename = this.formatFileName();
 
-    const data = JSON.stringify(Products.all, null, 2);
+    const data = JSON.stringify(Products.all);
     const blob = new Blob([data], { type: "application/json" });
     const url = URL.createObjectURL(blob);
 
@@ -96,8 +85,10 @@ const Products = {
 
   initialize() {
     FileManager.parseData("./db.json").then((data) => {
-      data.sort((a, b) => (a.name < b.name ? -1 : true));
-      data.sort((a, b) => (a.category < b.category ? -1 : true));
+      data.sort(
+        (a, b) =>
+          a.category.localeCompare(b.category) || a.name.localeCompare(b.name)
+      );
       data.forEach(({ id, name, category, stock }) => {
         Products.all.push(new Product(id, name, category, stock));
       });
@@ -107,13 +98,12 @@ const Products = {
   },
 
   reset() {
-    Products.all.splice(0, Products.all.length);
-    // App.reload();
+    this.all = [];
   },
 
   restart() {
-    Products.reset();
-    Products.initialize();
+    this.reset();
+    this.initialize();
   },
 };
 
@@ -134,32 +124,34 @@ const Stock = {
   },
 
   newProduct() {
-    const id = Number(document.getElementById("id").value);
+    const id = Number.parseInt(document.getElementById("id").value);
     const name = document.getElementById("name").value.toLowerCase();
     const category = document.getElementById("category").value;
 
-    const products = Products.all;
-    const idExists = products.find((product) => product.id === id);
-    const nameExists = products.find((product) => product.name === name);
-    if (idExists || nameExists) {
+    const product = Products.all.some(
+      (product) => product.id === id || product.name === name
+    );
+    if (product) {
       alert("Este produto já foi cadastrado!");
       return;
     } else if (!id || !name || !category) {
       alert("Preencha todos os campos corretamente!");
       return;
     } else {
-      products.push(new Product(id, name, category));
-      products.sort((a, b) => (a.name < b.name ? -1 : true));
-      products.sort((a, b) => (a.category < b.category ? -1 : true));
+      Products.all.push(new Product(id, name, category));
+      Products.all.sort(
+        (a, b) =>
+          a.category.localeCompare(b.category) || a.name.localeCompare(b.name)
+      );
     }
     App.reload();
     Modal.close();
   },
   insertItem(index, closeWindow) {
-    const input = Number(
+    const input = Number.parseFloat(
       document.getElementById(index).value.replace(",", ".")
     );
-    if (input && !isNaN(input)) {
+    if (!isNaN(input)) {
       this.getProductStock(index).push(input);
       if (!closeWindow) {
         DOM.showInsertWindow(index);
@@ -168,22 +160,23 @@ const Stock = {
       }
     } else {
       alert("Digite um valor válido!");
+      document.getElementById(index).value = "";
+      document.getElementById(index).focus();
     }
     App.reload();
   },
   removeItem(index, i) {
-    if(confirm('Deseja remover o item selecionado?')) {
+    if (confirm("Deseja remover o item selecionado?")) {
       const product = Products.all[index].stock;
       product.splice(i, 1);
+      App.reload();
+      DOM.showRegisteredItens(index);
     }
-    App.reload();
-    DOM.showRegisteredItens(index);
   },
 };
 
 const Modal = {
-  open(template) {
-    const { id, title, func } = template;
+  open({ id, title, func }) {
 
     modal.classList.add("active");
 
@@ -302,8 +295,10 @@ const DOM = {
     // }
 
     const products = Products.all;
-    for (index in products) {
-      const { id, name } = products[index];
+    const fragment = document.createDocumentFragment();
+
+    products.forEach((product, index) => {
+      const { id, name } = product;
 
       const tr = document.createElement("tr");
       tr.id = `item-${index}`;
@@ -315,9 +310,9 @@ const DOM = {
           <a href="javascript:void(0);" class="btn btn-table btn-1" onclick="DOM.showInsertWindow(${index})">+</a>
         </td>
         `;
-
-      table.appendChild(tr);
-    }
+      fragment.appendChild(tr);
+    });
+    table.append(fragment);
   },
 };
 
