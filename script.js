@@ -177,7 +177,6 @@ const Stock = {
 
 const Modal = {
   open({ id, title, func }) {
-
     modal.classList.add("active");
 
     modalTitle.textContent = title;
@@ -317,7 +316,7 @@ const DOM = {
 };
 
 const Listeners = {
-  toggleDarkMode: () => document.documentElement.classList.toggle("light"),
+  toggleDarkMode: () => document.documentElement.classList.toggle("dark"),
   handleMenu(event) {
     event.preventDefault();
     const option = event.target.hash;
@@ -354,6 +353,13 @@ const Listeners = {
 
     const addItemBtn = document.getElementById("add-item-btn");
     addItemBtn.addEventListener("click", DOM.showCreateWindow);
+
+    const theme = window.matchMedia("(prefers-color-scheme: dark)");
+    const listenTheme = () => {
+      document.documentElement.classList.toggle("dark", theme.matches);
+    }
+    window.addEventListener("load", listenTheme);
+    theme.addEventListener("change", listenTheme);
   },
 };
 
