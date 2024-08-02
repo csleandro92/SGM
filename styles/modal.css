@@ -60,15 +60,48 @@
   color: var(--c4);
 }
 
-.modal-close {
+#modal-toolbar {
   position: absolute;
   top: 0;
   right: 0;
-  background: var(--close);
+  display: flex;
+  justify-content: space-evenly;
+  gap: 4px;
+}
+
+.modal-edit, .modal-delete, .modal-close {
+  display: block;
   color: var(--close-color);
   padding: 4px 12px;
-  border-radius: 0 8px 0 8px;
   transition: all ease-in-out 200ms;
+}
+
+.modal-edit {
+  display: none;
+  background: var(--blue);
+}
+
+.modal-delete {
+  display: none;
+  background:  #ffaa00;
+}
+
+.modal-delete.active {
+  background: var(--close-hover);
+}
+
+.modal-edit.active {
+  background: var(--close-hover);
+}
+
+.modal-edit,
+.modal-delete {
+  border-radius: 0 0 8px 8px;
+}
+
+.modal-close {
+  background: var(--close);
+  border-radius: 0 8px 0 8px;
 }
 
 .modal-close:hover {

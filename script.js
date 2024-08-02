@@ -7,12 +7,31 @@ class Product {
   }
 }
 
-const table = document.querySelector("table tbody");
+let deleteMode = false;
+const getDeleteMode = () => deleteMode;
+const setDeleteMode = (state) => {
+  deleteMode = state;
+  deleteMode
+    ? deleteBtn.classList.add("active")
+    : deleteBtn.classList.remove("active");
+};
 
-const modal = document.querySelector(".modal-overlay");
-const modalTitle = document.getElementById("modal-title");
+const editBtn = document.querySelector(".modal-edit");
+const setEditButton = (value) => editBtn.style.display === value;
 
-const form = document.querySelector("form");
+let editMode = false;
+const getEditMode = () => editMode;
+const setEditMode = (state) => {
+  editMode = state;
+  editMode
+    ? editBtn.classList.add("active")
+    : editBtn.classList.remove("active");
+};
+
+const deleteBtn = document.querySelector(".modal-delete");
+const setDeleteButton = (value) => deleteBtn.style.display === value;
+
+const form = document.getElementById("form");
 
 /* Storage
  * - salvar os dados no armazenamento interno do navegador
@@ -174,7 +193,7 @@ const Stock = {
     App.reload();
   },
   removeItem(index, i) {
-    if (confirm("Deseja remover o item selecionado?")) {
+    if (getDeleteMode() === true) {
       const product = Products.all[index].stock;
       product.splice(i, 1);
       App.reload();
@@ -184,20 +203,29 @@ const Stock = {
 };
 
 const Modal = {
-  open({ id, title, func }) {
-    modal.classList.add("active");
+  overlay: document.querySelector(".modal-overlay"),
+  title: document.getElementById("modal-title"),
 
-    modalTitle.textContent = title;
+  open({ id, title, func }) {
+    Modal.overlay.classList.add("active");
+
+    Modal.title.textContent = title;
     form.setAttribute("id", id);
 
     func();
   },
   close() {
-    modal.classList.remove("active");
+    Modal.overlay.classList.remove("active");
 
-    modalTitle.textContent = "";
+    Modal.title.textContent = "";
     form.removeAttribute("id");
     form.innerHTML = "";
+
+    setDeleteMode(false);
+    deleteBtn.style.display = "none";
+
+    setEditMode(false);
+    editBtn.style.display = "none";
   },
 };
 /* DOM
@@ -212,12 +240,15 @@ const DOM = {
       func: () => {
         const stock = Stock.getProductStock(index);
         if (stock.length) {
+          deleteBtn.style.display = "block";
+
           const items = stock.map((product, i) => {
             const btnColor = product > 0 ? "plus" : "minus";
             return `<a href="javascript:void(0);" class="${btnColor}" onclick="Stock.removeItem(${index}, ${i})">${product}</a>`;
           });
           form.innerHTML = items.join("");
         } else {
+          deleteBtn.style.display = "none";
           form.innerHTML =
             '<span class="col-2">Não há nenhum item cadastrado para este produto.</span>';
         }
@@ -229,18 +260,26 @@ const DOM = {
       id: "add-item",
       title: "Cadastrar Produto",
       func: () => {
+        editBtn.style.display = "block";
+
         const categories = Stock.getCategories();
         const categoryList = categories.map((category) => {
           return `<option value="${category}">${category}</option>`;
         });
 
+        const edit = getEditMode()
+          ? `<input type="text" name="category" id="category" class="col-2" placeholder="Categoria">`
+          : `
+                <select class="col-2" name="category" id="category">
+                <option value="" selected disabled>Categoria</option>
+                ${categoryList.join("")}
+                </select>
+              `;
+
         form.innerHTML = `
           <input type="text" id="id" inputmode="numeric" placeholder="Código" autocomplete="off">
           <input type="text" id="name" placeholder="Nome do Produto" autocomplete="off">
-          <select class="col-2" name="category" id="category">
-            <option value="" selected disabled>Categoria</option>
-            ${categoryList.join("")}
-          </select>
+          ${edit}
           <button class="btn btn-4" onclick="Stock.newProduct()">Cadastrar Produto</button>`;
       },
     });
@@ -252,17 +291,16 @@ const DOM = {
       title: `${id} → ${name}`,
       func: () => {
         form.innerHTML = `
-          <input class="only-numbers col-2" id="${index}" type="text" inputmode="numeric" autocomplete="off">
+          <input class="col-2" id="${index}" type="text" inputmode="numeric" autocomplete="off">
           <button class="btn btn-1" onclick="Stock.insertItem(${index}, true)">Adicionar um item</button>
           <button class="btn btn-2" onclick="Stock.insertItem(${index}, false)">Adicionar múltiplos</button>`;
         document.getElementById(index).focus();
       },
     });
   },
-  clearList() {
-    table.innerHTML = "";
-  },
   updateList() {
+    table.innerHTML = "";
+
     const fragment = document.createDocumentFragment();
     const products = Products.all;
 
@@ -327,26 +365,33 @@ const Listeners = {
   init() {
     title.addEventListener("click", this.toggleDarkMode);
 
-    menu.addEventListener("click", this.handleMenu);
-    document
-      .getElementById("upload")
-      .addEventListener("change", FileManager.upload);
-    // exportBtn.addEventListener("click", FileManager.export);
-
-    form.addEventListener("submit", (event) => event.preventDefault());
-
-    const modalCloseBtn = document.getElementById("modal-close-btn");
-    modalCloseBtn.addEventListener("click", Modal.close);
-
-    const addItemBtn = document.getElementById("add-item-btn");
-    addItemBtn.addEventListener("click", DOM.showCreateWindow);
-
     const theme = window.matchMedia("(prefers-color-scheme: dark)");
     const listenTheme = () => {
       document.documentElement.classList.toggle("dark", theme.matches);
     };
     window.addEventListener("load", listenTheme);
     theme.addEventListener("change", listenTheme);
+
+    menu.addEventListener("click", this.handleMenu);
+    form.addEventListener("submit", (event) => event.preventDefault());
+
+    const modalCloseBtn = document.getElementById("modal-close-btn");
+    modalCloseBtn.addEventListener("click", Modal.close);
+
+    deleteBtn.addEventListener("click", (event) => {
+      event.preventDefault();
+      setDeleteMode(!getDeleteMode());
+    });
+
+    editBtn.addEventListener("click", (event) => {
+      event.preventDefault();
+      setEditMode(!getEditMode());
+      DOM.showCreateWindow()
+    });
+
+    upload.addEventListener("change", FileManager.upload);
+    const addItemBtn = document.getElementById("add-item-btn");
+    addItemBtn.addEventListener("click", DOM.showCreateWindow);
   },
 };
 
@@ -358,15 +403,13 @@ const App = {
   init() {
     Listeners.init();
     DOM.updateList();
-
-    Storage.set(Products.all);
   },
 
   reload() {
-    DOM.clearList();
-
     Products.sortProducts(Products.all);
-    App.init();
+    Storage.set(Products.all);
+
+    DOM.updateList();
   },
 };
 
