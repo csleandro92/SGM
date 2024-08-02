@@ -45,6 +45,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 ul {
   list-style: none;
 }
@@ -80,6 +84,10 @@ select {
 }
 
 @media print {
+  :root {
+    --c0: #ffffff;
+  }
+  
   .no-print {
     display: none !important;
   }

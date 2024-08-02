@@ -28,7 +28,7 @@
   background: var(--c0);
   color: var(--c5);
 
-  padding: 20px;
+  /* padding: 20px; */
   width: 90vw;
   max-width: 600px;
   max-height: 60vh;
@@ -36,7 +36,17 @@
   border-radius: 8px;
 }
 
+.modal::-webkit-scrollbar {
+  display: none;
+}
+
 .modal-header {
+  position: sticky;
+  top: 0;
+  background: var(--c2);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.35);
+  padding: 20px;
+
   display: flex;
   justify-content: space-between;
   /* padding-bottom: 12px; */
@@ -66,7 +76,8 @@
 }
 
 .modal-content form {
-  margin-top: 32px;
+  margin-top: 12px;
+  padding: 20px;
 }
 
 .modal-content form input[type="text"],
@@ -93,6 +104,10 @@
 #add-item .btn {
   grid-column: 1/-1;
   width: 50%;
+}
+
+#add-item select {
+  text-transform: capitalize;
 }
 
 #list-item {

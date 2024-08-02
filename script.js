@@ -34,7 +34,7 @@ const FileManager = {
 
   formatFileName() {
     const date = new Date();
-    const invertedDate = date.toISOString().split("T")[0].replaceAll("-", "");
+    const invertedDate = date.toISOString().slice(0, 10).replace(/-/g, "");
     const hours = `${date.getHours().toString().padStart(2, "0")}`;
     const minutes = `${date.getMinutes().toString().padStart(2, "0")}`;
 
@@ -83,27 +83,26 @@ const FileManager = {
 const Products = {
   all: Storage.get(),
 
-  initialize() {
-    FileManager.parseData("./db.json").then((data) => {
-      data.sort(
-        (a, b) =>
-          a.category.localeCompare(b.category) || a.name.localeCompare(b.name)
-      );
+  async initialize() {
+    await FileManager.parseData("./db.json").then((data) => {
       data.forEach(({ id, name, category, stock }) => {
         Products.all.push(new Product(id, name, category, stock));
       });
+    });
+  },
 
+  restart() {
+    this.all = [];
+    this.initialize().then(() => {
       App.reload();
     });
   },
 
-  reset() {
-    this.all = [];
-  },
-
-  restart() {
-    this.reset();
-    this.initialize();
+  sortProducts(data) {
+    return data.sort(
+      (a, b) =>
+        a.category.localeCompare(b.category) || a.name.localeCompare(b.name)
+    );
   },
 };
 
@@ -122,6 +121,19 @@ const Stock = {
     const { id, name } = Products.all[index];
     return { id, name };
   },
+  getCategories() {
+    const products = Products.all;
+    const categories = products.reduce((acc, { category }) => {
+      if (!acc) {
+        acc = [];
+      }
+      const check = acc.find((cat) => cat === category);
+      if (!check) acc.push(category);
+      return acc;
+    }, []);
+
+    return categories;
+  },
 
   newProduct() {
     const id = Number.parseInt(document.getElementById("id").value);
@@ -139,10 +151,6 @@ const Stock = {
       return;
     } else {
       Products.all.push(new Product(id, name, category));
-      Products.all.sort(
-        (a, b) =>
-          a.category.localeCompare(b.category) || a.name.localeCompare(b.name)
-      );
     }
     App.reload();
     Modal.close();
@@ -221,14 +229,17 @@ const DOM = {
       id: "add-item",
       title: "Cadastrar Produto",
       func: () => {
+        const categories = Stock.getCategories();
+        const categoryList = categories.map((category) => {
+          return `<option value="${category}">${category}</option>`;
+        });
+
         form.innerHTML = `
           <input type="text" id="id" inputmode="numeric" placeholder="Código" autocomplete="off">
           <input type="text" id="name" placeholder="Nome do Produto" autocomplete="off">
           <select class="col-2" name="category" id="category">
             <option value="" selected disabled>Categoria</option>
-            <option value="bovinos">Bovinos</option>
-            <option value="suinos">Suinos</option>
-            <option value="embutidos">Outros</option>
+            ${categoryList.join("")}
           </select>
           <button class="btn btn-4" onclick="Stock.newProduct()">Cadastrar Produto</button>`;
       },
@@ -249,68 +260,44 @@ const DOM = {
     });
   },
   clearList() {
-    while (table.firstChild) {
-      table.removeChild(table.firstChild);
-    }
+    table.innerHTML = "";
   },
   updateList() {
-    // const products = Products.all.reduce((acc, item) => {
-    //   const { category } = item;
-    //   if (!acc[category]) {
-    //     acc[category] = [];
-    //   }
-
-    //   acc[category].push(item);
-    //   return acc;
-    // }, {});
-
-    // for (const category in products) {
-    //   const header = document.createElement("tr");
-    //   header.innerHTML = `<th class='header' colspan='4'>${category}</th>`;
-    //   table.append(header);
-
-    //   products[category].forEach((product, index) => {
-    //     const { id, name } = product;
-
-    //     //
-    //     const getProductStock = Products.all.find(
-    //       (item) => item.id === id
-    //     ).stock;
-    //     let total = getProductStock.reduce((acc, next) => acc + next, 0);
-    //     //
-
-    //     const tr = document.createElement("tr");
-    //     tr.setAttribute("id", `item-${index}`);
-    //     tr.innerHTML = `
-    //         <td align="center">${id}</td>
-    //         <td><a href="javascript:void(0);" class="link" onclick="DOM.showRegisteredItens(${index})">${name}</a></td>
-    //         <td>${total !== 0 ? total.toFixed(3) : total}</td>
-    //         <td class="no-print">
-    //           <a href="javascript:void(0);" class="btn btn-table btn-1" onclick="DOM.showInsertWindow(${index})">+</a>
-    //         </td>`;
-
-    //     table.append(tr);
-    //   });
-    // }
-
-    const products = Products.all;
     const fragment = document.createDocumentFragment();
+    const products = Products.all;
 
-    products.forEach((product, index) => {
-      const { id, name } = product;
+    const categories = Stock.getCategories();
+    categories.forEach((category) => {
+      const header = document.createElement("tr");
+      header.innerHTML = `<th colspan="4">${category}</th>`;
+      fragment.appendChild(header);
 
-      const tr = document.createElement("tr");
-      tr.id = `item-${index}`;
-      tr.innerHTML = `
-        <td align="center">${id}</td>
-        <td><a href="javascript:void(0);" class="link" onclick="DOM.showRegisteredItens(${index})">${name}</a></td>
-        <td>${Stock.getTotalStock(index)}</td>
-        <td class="no-print">
-          <a href="javascript:void(0);" class="btn btn-table btn-1" onclick="DOM.showInsertWindow(${index})">+</a>
-        </td>
-        `;
-      fragment.appendChild(tr);
+      const categoryLength = products.filter(
+        (product) => product.category === category
+      ).length;
+      if (categoryLength > 12) {
+        header.classList.add("page-break");
+      }
+
+      products.forEach((product, index) => {
+        if (product.category === category) {
+          const line = document.createElement("tr");
+          line.id = `item-${index}`;
+          line.innerHTML = `
+            <td align="center">${product.id}</td>
+            <td><a href="javascript:void(0);" class="link" onclick="DOM.showRegisteredItens(${index})">${
+            product.name
+          }</a></td>
+            <td>${Stock.getTotalStock(index)}</td>
+            <td class="no-print">
+              <a href="javascript:void(0);" class="btn btn-table btn-1" onclick="DOM.showInsertWindow(${index})">+</a>
+            </td>
+         `;
+          fragment.appendChild(line);
+        }
+      });
     });
+
     table.append(fragment);
   },
 };
@@ -357,7 +344,7 @@ const Listeners = {
     const theme = window.matchMedia("(prefers-color-scheme: dark)");
     const listenTheme = () => {
       document.documentElement.classList.toggle("dark", theme.matches);
-    }
+    };
     window.addEventListener("load", listenTheme);
     theme.addEventListener("change", listenTheme);
   },
@@ -371,12 +358,14 @@ const App = {
   init() {
     Listeners.init();
     DOM.updateList();
+
     Storage.set(Products.all);
   },
 
   reload() {
     DOM.clearList();
 
+    Products.sortProducts(Products.all);
     App.init();
   },
 };
