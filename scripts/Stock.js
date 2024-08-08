@@ -1,6 +1,6 @@
 import { Product, Products } from "./Product.js";
-import { DOM, Modal } from './DOM.js'
-import { App } from './App.js'
+import { ButtonController, DOM, Modal } from "./DOM.js";
+import { App } from "./App.js";
 
 export const Stock = {
   getProductStock(index) {
@@ -70,7 +70,7 @@ export const Stock = {
     App.reload();
   },
   removeItem(index, i) {
-    if (isDeleteModeEnabled) {
+    if (ButtonController.isDeleteModeEnabled()) {
       const product = Products.all[index].stock;
       product.splice(i, 1);
       App.reload();
