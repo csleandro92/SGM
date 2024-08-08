@@ -57,11 +57,9 @@ export const Modal = {
 
     ButtonController.setDeleteMode(false);
     ButtonController.toggleButtonVisibility(deleteBtn, false);
-    // deleteBtn.style.display = "none";
 
     ButtonController.setEditMode(false);
     ButtonController.toggleButtonVisibility(editBtn, false);
-    // editBtn.style.display = "none";
   },
 };
 
@@ -79,10 +77,7 @@ export const DOM = {
       link.className = product > 0 ? "plus" : "minus";
       link.href = "#";
       link.textContent = product;
-      link.addEventListener("click", (event) => {
-        event.preventDefault();
-        Stock.removeItem(index, i);
-      });
+      link.addEventListener("click", () => Stock.removeItem(index, i));
 
       fragment.appendChild(link);
     });
@@ -92,7 +87,6 @@ export const DOM = {
         deleteBtn,
         stock.length
       );
-      // deleteBtn.style.display = stock.length ? "block" : "none";
       form.innerHTML = "";
 
       if (stock.length) {
@@ -216,17 +210,17 @@ export const DOM = {
       const line = document.createElement("tr");
       const stock = Stock.getTotalStock(index);
       line.id = `item-${index}`;
-      if (!stock) {
-        line.className = "no-print";
-      }
+      // if (!stock) {
+      //   line.className = "no-print";
+      // }
       line.innerHTML = `
         <td align="center">${product.id}</td>
         <td>
-        <a href="javascript:void(0);" class="link">${product.name}</a>
+        <a href="#" class="link">${product.name}</a>
       </td>
         <td>${stock}</td>
         <td class="no-print">
-          <a href="javascript:void(0);" class="btn btn-table btn-1">+</a>
+          <a href="#" class="btn btn-table btn-1">+</a>
         </td>`;
 
       const item = line.querySelector(".link");

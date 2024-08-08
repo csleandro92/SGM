@@ -5,7 +5,6 @@ import { Products } from './Product.js';
 export const Listeners = {
   toggleDarkMode: () => document.documentElement.classList.toggle("dark"),
   handleMenu(event) {
-    event.preventDefault();
     const option = event.target.hash;
     switch (option) {
       case "#update":
@@ -19,12 +18,18 @@ export const Listeners = {
         print();
         break;
       default:
-        alert("Função desativada no momento.");
         break;
     }
   },
 
   init() {
+    document.addEventListener('DOMContentLoaded', () => {    
+      const links = document.querySelectorAll("a[href^='#']")
+      links.forEach(link => {
+        link.addEventListener('click', e => e.preventDefault())
+      })
+    })
+    
     title.addEventListener("click", this.toggleDarkMode);
 
     const theme = window.matchMedia("(prefers-color-scheme: dark)");
@@ -41,14 +46,12 @@ export const Listeners = {
     modalCloseBtn.addEventListener("click", Modal.close);
 
     const deleteBtn = document.querySelector(".modal-delete");
-    deleteBtn.addEventListener("click", (event) => {
-      event.preventDefault();
+    deleteBtn.addEventListener("click", () => {
       ButtonController.setDeleteMode(!ButtonController.isDeleteModeEnabled());
     });
     
     const editBtn = document.querySelector(".modal-edit");
-    editBtn.addEventListener("click", (event) => {
-      event.preventDefault();
+    editBtn.addEventListener("click", () => {
       ButtonController.setEditMode(!ButtonController.isEditModeEnabled());
       DOM.showCreateWindow();
     });

@@ -39,9 +39,7 @@ export const FileManager = {
       alert("Por favor, selecione um arquivo JSON válido.");
     }
   },
-  download(e) {
-    e.preventDefault();
-
+  download() {
     const filename = FileManager.formatFileName();
 
     const data = JSON.stringify(Products.all);
