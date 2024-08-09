@@ -1,8 +1,8 @@
-import { Storage } from './Storage.js'
-import { FileManager } from './FileManager.js';
-import { App } from './App.js';
+import { Storage } from "./Storage.js";
+import { FileManager } from "./FileManager.js";
+import { App } from "./App.js";
 
-export class Product {
+class Product {
   constructor(id, name, category, stock = []) {
     this.id = id;
     this.name = name;
@@ -13,6 +13,15 @@ export class Product {
 
 export const Products = {
   all: Storage.get(),
+
+  insert(product) {
+    const { id, name, category, stock } = product;
+    Products.all.push(new Product(id, name, category, stock));
+  },
+  edit(index, product) {
+    const { id, name, category, stock } = product;
+    Products.all.splice(index, 1, new Product(id, name, category, stock));
+  },
 
   async initialize() {
     await FileManager.parseData("./db.json").then((data) => {
