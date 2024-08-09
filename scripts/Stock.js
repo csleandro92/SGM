@@ -51,6 +51,18 @@ export const Stock = {
     App.reload();
     Modal.close();
   },
+  editProductDetails(index) {
+    const id = Number.parseInt(document.getElementById("id").value);
+    const name = document.getElementById("name").value.toLowerCase();
+    const category = document.getElementById("category").value;
+    
+    const product = new Product(id, name, category)
+    Products.all.splice(index, 1, product)
+
+    App.reload()
+    Modal.close()
+    
+  },
   insertItem(index, closeWindow) {
     const input = Number.parseFloat(
       document.getElementById(index).value.replace(",", ".")

@@ -67,6 +67,54 @@ export const Modal = {
  * - manipula os elementos visuais da aplicação
  */
 export const DOM = {
+  showEditProduct(index) {
+    const { id, name } = Stock.getItemDetails(index)
+    
+    const renderCategoryOptions = () => {
+      const categories = Stock.getCategories();
+      return categories
+        .map((category) => `<option value="${category}">${category}</option>`)
+        .join("");
+    };
+
+    const renderCategoryField = () => {
+      return ButtonController.isEditModeEnabled()
+        ? `<input type="text" name="category" id="category" class="col-2" placeholder="Categoria">`
+        : `<select class="col-2" name="category" id="category">
+            <option value="" selected disabled>Categoria</option>
+            ${renderCategoryOptions()}
+          </select>`;
+    };
+
+    const renderForm = () => {
+      return `
+        <input type="text" id="id" inputmode="numeric" value="${id}" placeholder="Código" autocomplete="off">
+        <input type="text" id="name" value="${name}" placeholder="Nome do Produto" autocomplete="off">
+        ${renderCategoryField()}
+        <button id="btn-edit" class="btn btn-4">Editar Produto</button>
+      `;
+    };
+
+    const attachListeners = () => {
+      document
+        .getElementById("btn-edit")
+        .addEventListener("click", () => Stock.editProductDetails(index));
+    };
+
+    const handleModal = () => {
+      ButtonController.toggleButtonVisibility(editBtn, true);
+
+      form.innerHTML = renderForm();
+      attachListeners();
+    };
+
+    const options = {
+      id: "add-item",
+      title: "Cadastrar Produto",
+    };
+
+    Modal.open(options, handleModal);
+  },
   showRegisteredItens(index) {
     const { id, name } = Stock.getItemDetails(index);
     const fragment = document.createDocumentFragment();
@@ -206,7 +254,7 @@ export const DOM = {
       return header;
     };
 
-    const createProductRow = (product, index) => {
+    const createProductRow = ({id, name}, index) => {
       const line = document.createElement("tr");
       const stock = Stock.getTotalStock(index);
       line.id = `item-${index}`;
@@ -214,18 +262,22 @@ export const DOM = {
       //   line.className = "no-print";
       // }
       line.innerHTML = `
-        <td align="center">${product.id}</td>
+        <td align="center">${id}</td>
         <td>
-        <a href="#" class="link">${product.name}</a>
+        <a href="#" class="link edit-product">${name}</a>
       </td>
-        <td>${stock}</td>
+        <td>
+          <a href="#" class="link stock">${stock}</a>
+        </td>
         <td class="no-print">
           <a href="#" class="btn btn-table btn-1">+</a>
         </td>`;
 
-      const item = line.querySelector(".link");
+      const product = line.querySelector(".link.edit-product");
+      const item = line.querySelector(".link.stock");
       const btn = line.querySelector(".btn-table");
 
+      product.addEventListener('click', () => DOM.showEditProduct(index))
       item.addEventListener("click", () => DOM.showRegisteredItens(index));
       btn.addEventListener("click", () => DOM.showInsertWindow(index));
       return line;
