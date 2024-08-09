@@ -104,11 +104,12 @@ export const DOM = {
 
     const options = {
       id: "add-item",
-      title: "Cadastrar Produto",
+      title: `${id} → ${name}`,
     };
 
     Modal.open(options, handleModal);
   },
+  
   showRegisteredItens(index) {
     const { id, name } = Stock.getItemDetails(index);
     const fragment = document.createDocumentFragment();
@@ -149,6 +150,7 @@ export const DOM = {
 
     Modal.open(options, handleModal);
   },
+
   showCreateWindow() {
     const renderCategoryOptions = () => {
       const categories = Stock.getCategories();
@@ -195,6 +197,7 @@ export const DOM = {
 
     Modal.open(options, handleModal);
   },
+
   showInsertWindow(index) {
     const { id, name } = Stock.getItemDetails(index);
 
@@ -228,6 +231,7 @@ export const DOM = {
 
     Modal.open(options, handleModal);
   },
+  
   updateList() {
     table.innerHTML = "";
 
