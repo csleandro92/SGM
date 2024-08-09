@@ -1,10 +1,10 @@
 import { Products } from "./Product.js";
 import { Stock } from "./Stock.js";
 
-let isDeleteModeEnabled = false
-let isEditModeEnabled = false
-const deleteBtn = document.querySelector(".modal-delete")
-const editBtn = document.querySelector(".modal-edit")
+let isDeleteModeEnabled = false;
+let isEditModeEnabled = false;
+const deleteBtn = document.querySelector(".modal-delete");
+const editBtn = document.querySelector(".modal-edit");
 
 export const ButtonController = {
   toggleButtonVisibility(btn, shouldShow) {
@@ -68,8 +68,8 @@ export const Modal = {
  */
 export const DOM = {
   showEditProduct(index) {
-    const { id, name } = Stock.getItemDetails(index)
-    
+    const { id, name } = Stock.getItemDetails(index);
+
     const renderCategoryOptions = () => {
       const categories = Stock.getCategories();
       return categories
@@ -77,20 +77,14 @@ export const DOM = {
         .join("");
     };
 
-    const renderCategoryField = () => {
-      return ButtonController.isEditModeEnabled()
-        ? `<input type="text" name="category" id="category" class="col-2" placeholder="Categoria">`
-        : `<select class="col-2" name="category" id="category">
-            <option value="" selected disabled>Categoria</option>
-            ${renderCategoryOptions()}
-          </select>`;
-    };
-
     const renderForm = () => {
       return `
         <input type="text" id="id" inputmode="numeric" value="${id}" placeholder="Código" autocomplete="off">
         <input type="text" id="name" value="${name}" placeholder="Nome do Produto" autocomplete="off">
-        ${renderCategoryField()}
+        <select class="col-2" name="category" id="category">
+          <option value="" selected disabled>Categoria</option>
+          ${renderCategoryOptions()}
+        </select>
         <button id="btn-edit" class="btn btn-4">Editar Produto</button>
       `;
     };
@@ -102,7 +96,7 @@ export const DOM = {
     };
 
     const handleModal = () => {
-      ButtonController.toggleButtonVisibility(editBtn, true);
+      // ButtonController.toggleButtonVisibility(editBtn, true);
 
       form.innerHTML = renderForm();
       attachListeners();
@@ -125,16 +119,16 @@ export const DOM = {
       link.className = product > 0 ? "plus" : "minus";
       link.href = "#";
       link.textContent = product;
-      link.addEventListener("click", () => Stock.removeItem(index, i));
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        Stock.removeItem(index, i);
+      });
 
       fragment.appendChild(link);
     });
 
     const handleModal = () => {
-      ButtonController.toggleButtonVisibility(
-        deleteBtn,
-        stock.length
-      );
+      ButtonController.toggleButtonVisibility(deleteBtn, stock.length);
       form.innerHTML = "";
 
       if (stock.length) {
@@ -254,7 +248,7 @@ export const DOM = {
       return header;
     };
 
-    const createProductRow = ({id, name}, index) => {
+    const createProductRow = ({ id, name }, index) => {
       const line = document.createElement("tr");
       const stock = Stock.getTotalStock(index);
       line.id = `item-${index}`;
@@ -277,9 +271,18 @@ export const DOM = {
       const item = line.querySelector(".link.stock");
       const btn = line.querySelector(".btn-table");
 
-      product.addEventListener('click', () => DOM.showEditProduct(index))
-      item.addEventListener("click", () => DOM.showRegisteredItens(index));
-      btn.addEventListener("click", () => DOM.showInsertWindow(index));
+      product.addEventListener("click", (e) => {
+        e.preventDefault();
+        DOM.showEditProduct(index);
+      });
+      item.addEventListener("click", (e) => {
+        e.preventDefault();
+        DOM.showRegisteredItens(index);
+      });
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        DOM.showInsertWindow(index);
+      });
       return line;
     };
 
