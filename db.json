@@ -40,11 +40,6 @@
     "category": "suinos"
   },
   {
-    "id": 946,
-    "name": "banda (581)",
-    "category": "suinos"
-  },
-  {
     "id": 851,
     "name": "pé porco fresco (581)",
     "category": "suinos"
@@ -195,7 +190,7 @@
     "category": "bovinos"
   },
   {
-    "id": 2036,
+    "id": 2035,
     "name": "fraldinha mafrical seleção",
     "category": "bovinos"
   },
@@ -251,7 +246,7 @@
   },
   {
     "id": 865,
-    "name": "picanha marfrical seleção",
+    "name": "picanha mafrical seleção",
     "category": "bovinos"
   },
   {
