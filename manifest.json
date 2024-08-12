@@ -31,5 +31,13 @@
       "src": "/icons/icon-48x48.png",
       "sizes": "48x48"
     }
+  ],
+  "file_handlers": [
+    {
+      "action": "/open-file",
+      "accept": {
+        "application/json": [".json"]
+      }
+    }
   ]
 }
