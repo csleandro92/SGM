@@ -1,8 +1,22 @@
 const CACHE_NAME = "sgm-cache-v1";
+
 const urlsToCache = [
   "/",
+  "/db.json",
   "/index.html",
   "/style.css",
+  "/styles/button.css",
+  "/styles/footer.css",
+  "/styles/header.css",
+  "/styles/main.css",
+  "/styles/modal.css",
+  "/scripts/App.js",
+  "/scripts/DOM.js",
+  "/scripts/FileManager.js",
+  "/scripts/Listener.js",
+  "/scripts/Product.js",
+  "/scripts/Stock.js",
+  "/scripts/Storage.js",
   "/script.js",
   "/icons/icon-192x192.png",
 ];
