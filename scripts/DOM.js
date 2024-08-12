@@ -246,7 +246,7 @@ export const DOM = {
       const categoryLength = products.filter(
         (product) => product.category === category
       ).length;
-      if (categoryLength > 12) {
+      if (categoryLength >= 12) {
         header.classList.add("page-break");
       }
       return header;
