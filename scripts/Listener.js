@@ -23,40 +23,6 @@ export const Listeners = {
   },
 
   init() {
-    document.addEventListener("DOMContentLoaded", async () => {
-      if (window.location.pathname === "/open-file") {
-        if ("launchQueue" in window) {
-          window.launchQueue.seConsumer(async (launchParams) => {
-            if (!launchParams.files.length) {
-              return;
-            }
-          });
-        }
-
-        for (const fileHandle of launchParams.files) {
-          const file = await fileHandle.getFile();
-
-          const reader = new FileReader();
-          reader.onload = (event) => {
-            try {
-              const contents = event.target.result;
-              const data = JSON.parse(contents);
-              console.log("Dados Importados", data);
-              if (Array.isArray(data)) {
-                Products.all = [...data];
-                App.reload();
-              } else {
-                throw new Error("Formato de dados inválido.");
-              }
-            } catch (e) {
-              console.error(e);
-            }
-          };
-          reader.readAsText(file);
-        }
-      }
-    });
-
     document.addEventListener("DOMContentLoaded", () => {
       const links = document.querySelectorAll("a[href^='#']");
       links.forEach((link) => {

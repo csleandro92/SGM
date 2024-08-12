@@ -87,7 +87,7 @@ select {
   :root {
     --c0: #ffffff;
   }
-  
+
   .no-print {
     display: none !important;
   }

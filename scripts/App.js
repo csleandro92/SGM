@@ -1,7 +1,7 @@
-import { DOM } from './DOM.js'
-import { Listeners } from './Listener.js'
-import { Products } from './Product.js';
-import { Storage } from './Storage.js';
+import { DOM } from "./DOM.js";
+import { Listeners } from "./Listener.js";
+import { Products } from "./Product.js";
+import { Storage } from "./Storage.js";
 
 export const App = {
   init() {

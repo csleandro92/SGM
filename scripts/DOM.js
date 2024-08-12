@@ -109,7 +109,7 @@ export const DOM = {
 
     Modal.open(options, handleModal);
   },
-  
+
   showRegisteredItens(index) {
     const { id, name } = Stock.getItemDetails(index);
     const fragment = document.createDocumentFragment();
@@ -231,7 +231,7 @@ export const DOM = {
 
     Modal.open(options, handleModal);
   },
-  
+
   updateList() {
     table.innerHTML = "";
 

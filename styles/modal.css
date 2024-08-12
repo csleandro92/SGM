@@ -69,7 +69,9 @@
   gap: 4px;
 }
 
-.modal-edit, .modal-delete, .modal-close {
+.modal-edit,
+.modal-delete,
+.modal-close {
   display: block;
   color: var(--close-color);
   padding: 4px 12px;
@@ -83,7 +85,7 @@
 
 .modal-delete {
   display: none;
-  background:  #ffaa00;
+  background: #ffaa00;
 }
 
 .modal-delete.active {

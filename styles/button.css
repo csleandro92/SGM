@@ -10,7 +10,7 @@
 }
 
 .btn:hover {
-  opacity: .8;
+  opacity: 0.8;
   transition: all ease-in-out 200ms;
 }
 
