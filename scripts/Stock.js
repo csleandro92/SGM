@@ -56,16 +56,9 @@ export const Stock = {
   },
   getCategories() {
     const products = Products.all;
-    const categories = products.reduce((acc, { category }) => {
-      if (!acc) {
-        acc = [];
-      }
-      const check = acc.find((cat) => cat === category);
-      if (!check) acc.push(category);
-      return acc;
-    }, []);
+    const category = products.map(({category}) => category)
 
-    return categories;
+    return [...new Set(category)];
   },
 
   newProduct() {

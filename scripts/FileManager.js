@@ -42,7 +42,7 @@ export const FileManager = {
   download() {
     const filename = FileManager.formatFileName();
 
-    const data = JSON.stringify(Products.all);
+    const data = JSON.stringify(Products.all, null, 2);
     const blob = new Blob([data], { type: "application/json" });
     const url = URL.createObjectURL(blob);
 
