@@ -37,7 +37,7 @@ export const Listeners = {
     window.addEventListener("load", listenTheme);
     theme.addEventListener("change", listenTheme);
 
-    upload.addEventListener("change", FileManager.upload);
+    upload.addEventListener("change", FileManager.handleFileUpload);
   },
 
   attachHomeListeners() {
@@ -65,7 +65,7 @@ export const Listeners = {
       DOM.showCreateWindow();
     });
 
-    download.addEventListener("click", FileManager.download);
+    download.addEventListener("click", FileManager.downloadFileData);
 
     const addItemBtn = document.getElementById("add-item-btn");
     addItemBtn.addEventListener("click", DOM.showCreateWindow);

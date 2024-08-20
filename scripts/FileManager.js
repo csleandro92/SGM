@@ -4,9 +4,13 @@ import { App } from "./App.js";
 
 function generateFileName() {
   const date = new Date();
-  const invertedDate = date.toISOString().slice(0, 10).replace(/-/g, "");
-  const hours = `${date.getHours().toString().padStart(2, "0")}`;
-  const minutes = `${date.getMinutes().toString().padStart(2, "0")}`;
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+
+  const invertedDate = `${year}${month}${day}`;
+  const hours = date.getHours().toString().padStart(2, "0");
+  const minutes = date.getMinutes().toString().padStart(2, "0");
 
   return `${invertedDate}-${hours}${minutes}`;
 }
@@ -29,8 +33,8 @@ function readFile(file, encoding) {
   });
 }
 
-function processJSONFile(file) {
-  const parseData = (result) => {
+function handleJSONFile(file) {
+  const parseJSONData = (result) => {
     const data = JSON.parse(result);
     if (Array.isArray(data)) {
       Products.all = [...data];
@@ -40,17 +44,17 @@ function processJSONFile(file) {
     }
   };
 
-  readFile(file, "UTF-8").then(parseData);
+  readFile(file, "UTF-8").then(parseJSONData);
 }
 
-function processCSVFile(file) {
-  const parseData = (result) => {
+function handleCSVFile(file) {
+  const parseCSVData = (result) => {
     const data = Balance.clearCSVFile(result);
     Balance.all = data;
-    App.reload()
+    App.reload();
   };
 
-  readFile(file, "ISO-8859-1").then(parseData);
+  readFile(file, "ISO-8859-1").then(parseCSVData);
 }
 
 export const FileManager = {
@@ -59,17 +63,18 @@ export const FileManager = {
     return res.json();
   },
 
-  upload(event) {
+  handleFileUpload(event) {
     const file = event.target.files[0];
-    if (file) {
-      if (file.type === "application/json") {
-        processJSONFile(file);
-      } else if (file.type === "text/csv") {
-        processCSVFile(file);
-      }
+    if (!file) return;
+
+    if (file.type === "application/json") {
+      handleJSONFile(file);
+    } else if (file.type === "text/csv") {
+      handleCSVFile(file);
     }
   },
-  download() {
+  
+  downloadFileData() {
     const filename = generateFileName();
 
     const data = JSON.stringify(Products.all, null, 2);
