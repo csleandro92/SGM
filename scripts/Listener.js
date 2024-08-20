@@ -1,6 +1,7 @@
 import { ButtonController, DOM, Modal } from "./DOM.js";
 import { FileManager } from "./FileManager.js";
 import { Products } from "./Product.js";
+import { Balance } from "./Balance.js";
 
 export const Listeners = {
   toggleDarkMode: () => document.documentElement.classList.toggle("dark"),
@@ -12,24 +13,21 @@ export const Listeners = {
           "Esta ação apagará todos os dados armazenados. Deseja continuar?";
         if (confirm(message)) {
           Products.restart();
+          Balance.reset();
         }
         break;
       case "#save":
         print();
+        break;
+      case "#balance":
+        window.location = "leitura.html";
         break;
       default:
         break;
     }
   },
 
-  init() {
-    document.addEventListener("DOMContentLoaded", () => {
-      const links = document.querySelectorAll("a[href^='#']");
-      links.forEach((link) => {
-        link.addEventListener("click", (e) => e.preventDefault());
-      });
-    });
-
+  initListeners() {
     title.addEventListener("click", this.toggleDarkMode);
 
     const theme = window.matchMedia("(prefers-color-scheme: dark)");
@@ -38,6 +36,17 @@ export const Listeners = {
     };
     window.addEventListener("load", listenTheme);
     theme.addEventListener("change", listenTheme);
+
+    upload.addEventListener("change", FileManager.upload);
+  },
+
+  attachHomeListeners() {
+    document.addEventListener("DOMContentLoaded", () => {
+      const links = document.querySelectorAll("a[href^='#']");
+      links.forEach((link) => {
+        link.addEventListener("click", (e) => e.preventDefault());
+      });
+    });
 
     menu.addEventListener("click", this.handleMenu);
     form.addEventListener("submit", (event) => event.preventDefault());
@@ -56,7 +65,6 @@ export const Listeners = {
       DOM.showCreateWindow();
     });
 
-    upload.addEventListener("change", FileManager.upload);
     download.addEventListener("click", FileManager.download);
 
     const addItemBtn = document.getElementById("add-item-btn");

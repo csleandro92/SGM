@@ -43,7 +43,36 @@ tbody tr th {
     font-family: Arial, sans-serif;
   }
   .page-break {
-    /* display: block; */
     page-break-before: always;
   }
+}
+
+/* Balance Page */
+table#balance-table {
+  margin-inline: auto;
+  /* max-width: 768px; */
+}
+
+@media (max-width: 600px) {
+  main {
+    overflow-x: scroll;
+  }
+
+  table#balance-table {
+    min-width: 510px;
+  }
+
+  .hide-mobile {
+    display: none;
+  }
+}
+
+table#balance-table td{
+padding: 10px 8px;
+}
+
+@media print {
+  table#balance-table td{
+    padding: 4px 8px;
+    }    
 }

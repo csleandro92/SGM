@@ -1,18 +1,35 @@
 import { DOM } from "./DOM.js";
 import { Listeners } from "./Listener.js";
 import { Products } from "./Product.js";
-import { Storage } from "./Storage.js";
+import { Balance } from "./Balance.js";
+
+const { pathname } = window.location;
+const homepage = pathname === "/" || pathname === "/index.html";
 
 export const App = {
   init() {
-    Listeners.init();
-    DOM.updateList();
+    if (homepage) {
+      Listeners.attachHomeListeners();
+      console.log(window.location.href);
+
+      DOM.updateList();
+    } else {
+      // Listeners.attachBalanceListeners();
+      Balance.updateBalance();
+    }
+    
+    Listeners.initListeners()
   },
 
   reload() {
-    Products.sortProducts(Products.all);
-    Storage.set(Products.all);
+    if (homepage) {
+      Products.sortProducts(Products.all);
+      Products.save(Products.all);
 
-    DOM.updateList();
+      DOM.updateList();
+    } else {
+      Balance.save(Balance.all);
+      Balance.updateBalance();
+    }
   },
 };

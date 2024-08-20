@@ -2,6 +2,8 @@ import { Storage } from "./Storage.js";
 import { FileManager } from "./FileManager.js";
 import { App } from "./App.js";
 
+export const PRODUCT_DB = "tb_products";
+
 class Product {
   constructor(id, name, category, stock = []) {
     this.id = id;
@@ -12,7 +14,11 @@ class Product {
 }
 
 export const Products = {
-  all: Storage.get(),
+  all: Storage.get(PRODUCT_DB),
+
+  save(data) {
+    Storage.set(PRODUCT_DB, data);
+  },
 
   insert(product) {
     const { id, name, category, stock } = product;

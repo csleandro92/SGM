@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>SGM | Sistema Gestor de Mercadorias</title>
+  <!-- <link rel="manifest" href="/manifest.json"> -->
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <header class="container no-print">
+    <h1 id="title">SGM</h1>
+    <nav>
+      <ul id="menu">
+        <li><a href="#update">Resetar</a></li>
+        <div>
+          <ul id="input-wrapper">
+            <li class="button-wrapper">
+              <input type="file" name="upload" id="upload" accept=".csv, application/csv" multiple="multiple">
+              <label for="upload">
+                <span>
+                  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="var(--c4)">
+                    <path d="M440-200h80v-167l64 64 56-57-160-160-160 160 57 56 63-63v167ZM240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h320l240 240v480q0 33-23.5 56.5T720-80H240Zm280-520v-200H240v640h480v-440H520ZM240-800v200-200 640-640Z" />
+                  </svg>
+                </span>
+                <span class="label">Carregar</span>
+              </label>
+            </li>
+          </ul>
+        </div>  
+      </ul>
+    </nav>
+  </header>
+  <main class="container">
+    <table id="balance-table">
+      <thead>
+        <tr>
+          <th width="1%">cód</th>
+          <th>produto</th>
+          <th>estoque</th>
+          <th>saldo</th>
+          <th width="1%">diff.</th>
+          <th width="1%" class="hide-mobile">custo</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </main>
+
+  <!-- <footer class="no-print">
+    <div class="container">
+      <div></div>
+      <p>
+        Feito com ❤ por
+        <br>
+        <a href="https://instagram.com/csleandro92" target="_blank">LSCONNECT</a> &copy; 2024
+      </p>
+      <div></div>
+    </div>
+  </footer> -->
+
+  <script type="module" src="./script.js"></script>
+</body>
+
+</html>

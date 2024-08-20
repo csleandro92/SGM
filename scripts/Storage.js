@@ -1,8 +1,8 @@
 export const Storage = {
-  get() {
-    return JSON.parse(localStorage.getItem("tb_products")) || [];
+  get(database) {
+    return JSON.parse(localStorage.getItem(database)) || [];
   },
-  set(tb_products) {
-    localStorage.setItem("tb_products", JSON.stringify(tb_products));
+  set(database, tb_products) {
+    localStorage.setItem(database, JSON.stringify(tb_products));
   },
 };

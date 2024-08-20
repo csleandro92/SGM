@@ -2,287 +2,287 @@
   {
     "id": 945,
     "name": "carre",
-    "category": "suinos"
+    "category": "CARNES SUINAS"
   },
   {
     "id": 185,
     "name": "costelinha de porco",
-    "category": "suinos"
+    "category": "CARNES SUINAS"
   },
   {
     "id": 481,
     "name": "file mignon",
-    "category": "suinos"
+    "category": "CARNES SUINAS"
   },
   {
     "id": 382,
     "name": "figado de porco",
-    "category": "suinos"
+    "category": "CARNES SUINAS"
   },
   {
     "id": 653,
     "name": "suan",
-    "category": "suinos"
+    "category": "CARNES SUINAS"
   },
   {
     "id": 581,
     "name": "costelinha c/ toucinho",
-    "category": "suinos"
+    "category": "CARNES SUINAS"
   },
   {
     "id": 474,
     "name": "barriguinha de porco (581)",
-    "category": "suinos"
+    "category": "CARNES SUINAS"
   },
   {
     "id": 946,
     "name": "dianteiro c/ osso",
-    "category": "suinos"
+    "category": "CARNES SUINAS"
   },
   {
     "id": 851,
     "name": "pé porco fresco (581)",
-    "category": "suinos"
+    "category": "CARNES SUINAS"
   },
   {
     "id": 854,
     "name": "lombo porco",
-    "category": "suinos"
+    "category": "CARNES SUINAS"
   },
   {
     "id": 178,
     "name": "pernil suino s/ osso",
-    "category": "suinos"
+    "category": "CARNES SUINAS"
   },
   {
     "id": 855,
     "name": "toucinho",
-    "category": "suinos"
+    "category": "CARNES SUINAS"
   },
   {
     "id": 754,
     "name": "acem",
-    "category": "bovinos"
+    "category": "CARNES BOVINAS"
   },
   {
     "id": 418,
     "name": "alcatra c/ maminha",
-    "category": "bovinos"
+    "category": "CARNES BOVINAS"
   },
   {
     "id": 413,
     "name": "alcatra cofril gorda",
-    "category": "bovinos"
+    "category": "CARNES BOVINAS"
   },
   {
     "id": 461,
     "name": "alcatra grill peça",
-    "category": "bovinos"
+    "category": "CARNES BOVINAS"
   },
   {
     "id": 931,
     "name": "capa file",
-    "category": "bovinos"
+    "category": "CARNES BOVINAS"
   },
   {
     "id": 590,
     "name": "chã dentro",
-    "category": "bovinos"
+    "category": "CARNES BOVINAS"
   },
   {
     "id": 86,
     "name": "chã fora",
-    "category": "bovinos"
+    "category": "CARNES BOVINAS"
   },
   {
     "id": 489,
     "name": "contra file bife",
-    "category": "bovinos"
+    "category": "CARNES BOVINAS"
   },
   {
     "id": 1210,
     "name": "contra file frisa grill",
-    "category": "bovinos"
+    "category": "CARNES BOVINAS"
   },
   {
     "id": 435,
     "name": "contra file grill frifort",
-    "category": "bovinos"
+    "category": "CARNES BOVINAS"
   },
   {
     "id": 587,
     "name": "bife chorizo bassi",
-    "category": "bovinos"
+    "category": "CARNES BOVINAS"
   },
   {
     "id": 225,
     "name": "contra file grill pv",
-    "category": "bovinos"
+    "category": "CARNES BOVINAS"
   },
   {
     "id": 65,
     "name": "contra file grill",
-    "category": "bovinos"
+    "category": "CARNES BOVINAS"
   },
   {
     "id": 1236,
     "name": "contra file marfrical",
-    "category": "bovinos"
+    "category": "CARNES BOVINAS"
   },
   {
     "id": 288,
-    "name": "coração boi",
-    "category": "bovinos"
+    "name": "coração bovino",
+    "category": "CARNES BOVINAS"
   },
   {
     "id": 132,
     "name": "costela gaúcha",
-    "category": "bovinos"
+    "category": "CARNES BOVINAS"
   },
   {
     "id": 996,
     "name": "costela ripa",
-    "category": "bovinos"
+    "category": "CARNES BOVINAS"
   },
   {
     "id": 925,
     "name": "cupim",
-    "category": "bovinos"
+    "category": "CARNES BOVINAS"
   },
   {
     "id": 130,
     "name": "dobradinha",
-    "category": "bovinos"
+    "category": "CARNES BOVINAS"
   },
   {
     "id": 189,
     "name": "figado boi",
-    "category": "bovinos"
+    "category": "CARNES BOVINAS"
   },
   {
     "id": 845,
-    "name": "file mignon",
-    "category": "bovinos"
+    "name": "file mignon bovino",
+    "category": "CARNES BOVINAS"
   },
   {
     "id": 20,
     "name": "fraldinha",
-    "category": "bovinos"
+    "category": "CARNES BOVINAS"
   },
   {
     "id": 1333,
     "name": "fraldinha pul tradicional",
-    "category": "bovinos"
+    "category": "CARNES BOVINAS"
   },
   {
     "id": 1301,
     "name": "fraldinha pul seleção",
-    "category": "bovinos"
+    "category": "CARNES BOVINAS"
   },
   {
     "id": 758,
     "name": "fraldinha grill",
-    "category": "bovinos"
+    "category": "CARNES BOVINAS"
   },
   {
     "id": 1000,
     "name": "fraldinha frisa",
-    "category": "bovinos"
+    "category": "CARNES BOVINAS"
   },
   {
     "id": 2035,
     "name": "fraldinha mafrical seleção",
-    "category": "bovinos"
+    "category": "CARNES BOVINAS"
   },
   {
     "id": 177,
     "name": "lagarto",
-    "category": "bovinos"
+    "category": "CARNES BOVINAS"
   },
   {
     "id": 770,
-    "name": "lingua boi",
-    "category": "bovinos"
+    "name": "lingua de boi",
+    "category": "CARNES BOVINAS"
   },
   {
     "id": 429,
     "name": "mocotó bovino",
-    "category": "bovinos"
+    "category": "CARNES BOVINAS"
   },
   {
     "id": 682,
     "name": "musculo dianteiro",
-    "category": "bovinos"
+    "category": "CARNES BOVINAS"
   },
   {
     "id": 683,
     "name": "musculo traseiro",
-    "category": "bovinos"
+    "category": "CARNES BOVINAS"
   },
   {
     "id": 480,
     "name": "paleta",
-    "category": "bovinos"
+    "category": "CARNES BOVINAS"
   },
   {
     "id": 87,
     "name": "patinho",
-    "category": "bovinos"
+    "category": "CARNES BOVINAS"
   },
   {
     "id": 997,
-    "name": "peito boi",
-    "category": "bovinos"
+    "name": "peito de boi",
+    "category": "CARNES BOVINAS"
   },
   {
     "id": 84,
     "name": "picanha fatiada",
-    "category": "bovinos"
+    "category": "CARNES BOVINAS"
   },
   {
     "id": 894,
     "name": "picanha frisa grill",
-    "category": "bovinos"
+    "category": "CARNES BOVINAS"
   },
   {
     "id": 865,
     "name": "picanha mafrical seleção",
-    "category": "bovinos"
+    "category": "CARNES BOVINAS"
   },
   {
     "id": 1334,
     "name": "picanha pul tradicional",
-    "category": "bovinos"
+    "category": "CARNES BOVINAS"
   },
   {
     "id": 2034,
     "name": "picanha forte boi",
-    "category": "bovinos"
+    "category": "CARNES BOVINAS"
   },
   {
     "id": 718,
-    "name": "picanha frisa comum",
-    "category": "bovinos"
+    "name": "picanha frisa",
+    "category": "CARNES BOVINAS"
   },
   {
     "id": 898,
     "name": "picanha pul seleção",
-    "category": "bovinos"
+    "category": "CARNES BOVINAS"
   },
   {
     "id": 1671,
-    "name": "picanha corella",
-    "category": "bovinos"
+    "name": "picanha seleta corella",
+    "category": "CARNES BOVINAS"
   },
   {
     "id": 1010,
     "name": "picanha montana",
-    "category": "bovinos"
+    "category": "CARNES BOVINAS"
   },
   {
     "id": 397,
-    "name": "rabada",
-    "category": "bovinos"
+    "name": "rabada bovina",
+    "category": "CARNES BOVINAS"
   },
   {
     "id": 126,

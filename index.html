@@ -9,7 +9,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>SGM | Sistema Gestor de Mercadorias</title>
-  <link rel="manifest" href="/manifest.json">
+  <!-- <link rel="manifest" href="/manifest.json"> -->
   <link rel="stylesheet" href="./style.css">
 </head>
 
@@ -20,6 +20,7 @@
       <ul id="menu">
         <li><a href="#update">Resetar</a></li>
         <li><a href="#save">Imprimir</a></li>
+        <li><a href="#balance">Finalizar</a></li>
       </ul>
     </nav>
   </header>
@@ -43,7 +44,7 @@
       <div>
         <ul id="input-wrapper">
           <li class="button-wrapper">
-            <input type="file" name="upload" id="upload" accept=".json, application/json">
+            <input type="file" name="upload" id="upload" accept=".json, application/json" multiple="multiple">
             <label for="upload">
               <span>
                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="var(--c4)">
