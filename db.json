@@ -1,65 +1,5 @@
 [
   {
-    "id": 945,
-    "name": "carre",
-    "category": "CARNES SUINAS"
-  },
-  {
-    "id": 185,
-    "name": "costelinha de porco",
-    "category": "CARNES SUINAS"
-  },
-  {
-    "id": 481,
-    "name": "file mignon",
-    "category": "CARNES SUINAS"
-  },
-  {
-    "id": 382,
-    "name": "figado de porco",
-    "category": "CARNES SUINAS"
-  },
-  {
-    "id": 653,
-    "name": "suan",
-    "category": "CARNES SUINAS"
-  },
-  {
-    "id": 581,
-    "name": "costelinha c/ toucinho",
-    "category": "CARNES SUINAS"
-  },
-  {
-    "id": 474,
-    "name": "barriguinha de porco (581)",
-    "category": "CARNES SUINAS"
-  },
-  {
-    "id": 946,
-    "name": "dianteiro c/ osso",
-    "category": "CARNES SUINAS"
-  },
-  {
-    "id": 851,
-    "name": "pé porco fresco (581)",
-    "category": "CARNES SUINAS"
-  },
-  {
-    "id": 854,
-    "name": "lombo porco",
-    "category": "CARNES SUINAS"
-  },
-  {
-    "id": 178,
-    "name": "pernil suino s/ osso",
-    "category": "CARNES SUINAS"
-  },
-  {
-    "id": 855,
-    "name": "toucinho",
-    "category": "CARNES SUINAS"
-  },
-  {
     "id": 754,
     "name": "acem",
     "category": "CARNES BOVINAS"
@@ -67,11 +7,6 @@
   {
     "id": 418,
     "name": "alcatra c/ maminha",
-    "category": "CARNES BOVINAS"
-  },
-  {
-    "id": 413,
-    "name": "alcatra cofril gorda",
     "category": "CARNES BOVINAS"
   },
   {
@@ -95,28 +30,18 @@
     "category": "CARNES BOVINAS"
   },
   {
+    "id": 225,
+    "name": "chorizo frisa ranch",
+    "category": "CARNES BOVINAS"
+  },
+  {
     "id": 489,
-    "name": "contra file bife",
-    "category": "CARNES BOVINAS"
-  },
-  {
-    "id": 1210,
-    "name": "contra file frisa grill",
-    "category": "CARNES BOVINAS"
-  },
-  {
-    "id": 435,
-    "name": "contra file grill frifort",
+    "name": "contra file",
     "category": "CARNES BOVINAS"
   },
   {
     "id": 587,
-    "name": "bife chorizo bassi",
-    "category": "CARNES BOVINAS"
-  },
-  {
-    "id": 225,
-    "name": "contra file grill pv",
+    "name": "contra filé frifort porcionado",
     "category": "CARNES BOVINAS"
   },
   {
@@ -125,8 +50,18 @@
     "category": "CARNES BOVINAS"
   },
   {
+    "id": 435,
+    "name": "contra file grill frifort",
+    "category": "CARNES BOVINAS"
+  },
+  {
+    "id": 1210,
+    "name": "contra file grill frisa",
+    "category": "CARNES BOVINAS"
+  },
+  {
     "id": 1236,
-    "name": "contra file marfrical",
+    "name": "contra file mafrical",
     "category": "CARNES BOVINAS"
   },
   {
@@ -141,7 +76,7 @@
   },
   {
     "id": 996,
-    "name": "costela ripa",
+    "name": "costela ripa (fina)",
     "category": "CARNES BOVINAS"
   },
   {
@@ -156,7 +91,7 @@
   },
   {
     "id": 189,
-    "name": "figado boi",
+    "name": "fígado bovino",
     "category": "CARNES BOVINAS"
   },
   {
@@ -165,18 +100,8 @@
     "category": "CARNES BOVINAS"
   },
   {
-    "id": 20,
-    "name": "fraldinha",
-    "category": "CARNES BOVINAS"
-  },
-  {
-    "id": 1333,
-    "name": "fraldinha pul tradicional",
-    "category": "CARNES BOVINAS"
-  },
-  {
-    "id": 1301,
-    "name": "fraldinha pul seleção",
+    "id": 1000,
+    "name": "fraldinha frisa",
     "category": "CARNES BOVINAS"
   },
   {
@@ -185,13 +110,23 @@
     "category": "CARNES BOVINAS"
   },
   {
-    "id": 1000,
-    "name": "fraldinha frisa",
+    "id": 2035,
+    "name": "fraldinha mafrical seleção",
     "category": "CARNES BOVINAS"
   },
   {
-    "id": 2035,
-    "name": "fraldinha mafrical seleção",
+    "id": 20,
+    "name": "fraldinha peça",
+    "category": "CARNES BOVINAS"
+  },
+  {
+    "id": 1333,
+    "name": "fraldinha pul",
+    "category": "CARNES BOVINAS"
+  },
+  {
+    "id": 1301,
+    "name": "fraldinha pul seleção",
     "category": "CARNES BOVINAS"
   },
   {
@@ -240,8 +175,18 @@
     "category": "CARNES BOVINAS"
   },
   {
+    "id": 718,
+    "name": "picanha frisa",
+    "category": "CARNES BOVINAS"
+  },
+  {
+    "id": 2034,
+    "name": "picanha grill forte boi",
+    "category": "CARNES BOVINAS"
+  },
+  {
     "id": 894,
-    "name": "picanha frisa grill",
+    "name": "picanha grill frisa",
     "category": "CARNES BOVINAS"
   },
   {
@@ -250,18 +195,8 @@
     "category": "CARNES BOVINAS"
   },
   {
-    "id": 1334,
-    "name": "picanha pul tradicional",
-    "category": "CARNES BOVINAS"
-  },
-  {
-    "id": 2034,
-    "name": "picanha forte boi",
-    "category": "CARNES BOVINAS"
-  },
-  {
-    "id": 718,
-    "name": "picanha frisa",
+    "id": 1010,
+    "name": "picanha montana",
     "category": "CARNES BOVINAS"
   },
   {
@@ -270,13 +205,13 @@
     "category": "CARNES BOVINAS"
   },
   {
-    "id": 1671,
-    "name": "picanha seleta corella",
+    "id": 1334,
+    "name": "picanha pul tradicional",
     "category": "CARNES BOVINAS"
   },
   {
-    "id": 1010,
-    "name": "picanha montana",
+    "id": 1671,
+    "name": "picanha seleta corella",
     "category": "CARNES BOVINAS"
   },
   {
@@ -285,48 +220,108 @@
     "category": "CARNES BOVINAS"
   },
   {
-    "id": 126,
-    "name": "linguiça lucia frango",
-    "category": "embutidos"
+    "id": 474,
+    "name": "barriguinha de porco (581)",
+    "category": "CARNES SUINAS"
   },
   {
-    "id": 260,
-    "name": "linguiça lucia frescal",
-    "category": "embutidos"
+    "id": 945,
+    "name": "carré",
+    "category": "CARNES SUINAS"
   },
   {
-    "id": 624,
-    "name": "linguiça lucia porco fina",
-    "category": "embutidos"
+    "id": 581,
+    "name": "costelinha c/ toucinho",
+    "category": "CARNES SUINAS"
   },
   {
-    "id": 443,
-    "name": "linguiça lucia porco grossa",
-    "category": "embutidos"
+    "id": 185,
+    "name": "costelinha de porco",
+    "category": "CARNES SUINAS"
+  },
+  {
+    "id": 946,
+    "name": "dianteiro c/ osso (581)",
+    "category": "CARNES SUINAS"
+  },
+  {
+    "id": 382,
+    "name": "fígado de porco",
+    "category": "CARNES SUINAS"
+  },
+  {
+    "id": 481,
+    "name": "file mignon suíno",
+    "category": "CARNES SUINAS"
+  },
+  {
+    "id": 854,
+    "name": "lombo porco",
+    "category": "CARNES SUINAS"
+  },
+  {
+    "id": 851,
+    "name": "pé porco fresco (581)",
+    "category": "CARNES SUINAS"
+  },
+  {
+    "id": 178,
+    "name": "pernil suino s/ osso",
+    "category": "CARNES SUINAS"
+  },
+  {
+    "id": 653,
+    "name": "suan de porco",
+    "category": "CARNES SUINAS"
+  },
+  {
+    "id": 855,
+    "name": "toucinho",
+    "category": "CARNES SUINAS"
   },
   {
     "id": 465,
     "name": "linguiça lorrayne",
-    "category": "embutidos"
+    "category": "EMBUTIDOS"
   },
   {
-    "id": 2029,
-    "name": "linguiça nicole caseira grossa",
-    "category": "embutidos"
+    "id": 126,
+    "name": "linguiça lucia frango",
+    "category": "EMBUTIDOS"
+  },
+  {
+    "id": 260,
+    "name": "linguiça lucia frescal",
+    "category": "EMBUTIDOS"
+  },
+  {
+    "id": 624,
+    "name": "linguiça lucia porco fina",
+    "category": "EMBUTIDOS"
+  },
+  {
+    "id": 443,
+    "name": "linguiça lucia porco grossa",
+    "category": "EMBUTIDOS"
   },
   {
     "id": 2028,
     "name": "linguiça nicole caseira fina",
-    "category": "embutidos"
+    "category": "EMBUTIDOS"
+  },
+  {
+    "id": 2029,
+    "name": "linguiça nicole caseira grossa",
+    "category": "EMBUTIDOS"
   },
   {
     "id": 2145,
     "name": "linguiça nicole frango fina",
-    "category": "embutidos"
+    "category": "EMBUTIDOS"
   },
   {
     "id": 2133,
     "name": "linguiça nicole frescal fina",
-    "category": "embutidos"
+    "category": "EMBUTIDOS"
   }
 ]
