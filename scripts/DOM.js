@@ -96,8 +96,6 @@ export const DOM = {
     };
 
     const handleModal = () => {
-      // ButtonController.toggleButtonVisibility(editBtn, true);
-
       form.innerHTML = renderForm();
       attachListeners();
     };

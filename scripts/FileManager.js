@@ -2,6 +2,15 @@ import { Products } from "./Product.js";
 import { Balance } from "./Balance.js";
 import { App } from "./App.js";
 
+function generateFileName() {
+  const date = new Date();
+  const invertedDate = date.toISOString().slice(0, 10).replace(/-/g, "");
+  const hours = `${date.getHours().toString().padStart(2, "0")}`;
+  const minutes = `${date.getMinutes().toString().padStart(2, "0")}`;
+
+  return `${invertedDate}-${hours}${minutes}`;
+}
+
 function readFile(file, encoding) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -50,15 +59,6 @@ export const FileManager = {
     return res.json();
   },
 
-  formatFileName() {
-    const date = new Date();
-    const invertedDate = date.toISOString().slice(0, 10).replace(/-/g, "");
-    const hours = `${date.getHours().toString().padStart(2, "0")}`;
-    const minutes = `${date.getMinutes().toString().padStart(2, "0")}`;
-
-    return `${invertedDate}-${hours}${minutes}`;
-  },
-
   upload(event) {
     const file = event.target.files[0];
     if (file) {
@@ -70,7 +70,7 @@ export const FileManager = {
     }
   },
   download() {
-    const filename = FileManager.formatFileName();
+    const filename = generateFileName();
 
     const data = JSON.stringify(Products.all, null, 2);
     const blob = new Blob([data], { type: "application/json" });

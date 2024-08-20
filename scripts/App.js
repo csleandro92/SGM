@@ -10,11 +10,8 @@ export const App = {
   init() {
     if (homepage) {
       Listeners.attachHomeListeners();
-      console.log(window.location.href);
-
       DOM.updateList();
     } else {
-      // Listeners.attachBalanceListeners();
       Balance.updateBalance();
     }
     
